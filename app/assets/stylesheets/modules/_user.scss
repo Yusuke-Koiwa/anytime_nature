@@ -52,6 +52,10 @@
       width: 50%;
       height: 50px;
       cursor: pointer;
+
+      &:hover {
+        background: linear-gradient(to right, #26bdca,#59e7c6);;
+      }
     }
   }
 }
