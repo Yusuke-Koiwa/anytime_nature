@@ -1,0 +1,12 @@
+.flash {
+  color: white;
+  text-align: center;
+
+  .alert{
+    background-color: salmon;
+  }
+  
+  .notice {
+    background-color: $main-color;
+  }
+}

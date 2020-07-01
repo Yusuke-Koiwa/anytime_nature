@@ -1,0 +1,18 @@
+= render "layouts/header"
+.form
+  .form__title
+    .form__title--active
+      Sign up
+    = link_to "→ ログイン", new_user_session_path, class: "form__title--other"
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.text_field :name, autofocus: true, maxlength: 12, placeholder: "Nickname"
+    .field
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+    .field
+      = f.password_field :password, autocomplete: "new-password", placeholder: "Password（6文字以上）"
+    .field
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
+    .actions
+      = f.submit "アカウント作成", class: "submit-btn"
