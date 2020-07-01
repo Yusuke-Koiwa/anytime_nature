@@ -8,7 +8,13 @@
       = link_to "#", class: "header-menu" do
         スライドショー
   .header__right
-    = link_to "#", class: "header-menu" do
-      新規登録
-    = link_to "#", class: "header-menu" do
-      ログイン
+    - if user_signed_in?
+      = link_to "#", class: "header-menu" do
+        マイページ
+      = link_to destroy_user_session_path, method: :delete, class: "header-menu" do
+        ログアウト
+    - else
+      = link_to new_user_registration_path, class: "header-menu" do
+        新規登録
+      = link_to new_user_session_path, class: "header-menu" do
+        ログイン
