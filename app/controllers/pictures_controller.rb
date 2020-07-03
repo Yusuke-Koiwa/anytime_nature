@@ -7,7 +7,6 @@ class PicturesController < ApplicationController
 
   def new
     @picture = Picture.new
-    @parent_categories = Category.where(ancestry: nil)
   end
 
   def create

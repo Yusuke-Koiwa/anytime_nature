@@ -13,7 +13,7 @@
         %label<>カテゴリー
         %span<>必須
       .field__input
-        = f.collection_select :category_id, @parent_categories, :id, :name, {prompt: "選択して下さい"}
+        = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: "選択して下さい"}, {id: "category-select"}
     .field
       .field__title
         %label<>画像選択
