@@ -13,3 +13,11 @@ ja:
         crypted_password: パスワード
         created_at: 作成日
         updated_at: 更新日
+    models:
+      picture: 写真
+    attributes:
+      picture:
+        id: ID
+        title: タイトル
+        image: 画像
+        category: カテゴリー

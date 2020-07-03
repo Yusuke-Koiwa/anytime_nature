@@ -1,0 +1,12 @@
+= render "devise/shared/error_messages", resource: @picture
+= form_with model: @picture, local: true do |f|
+  %label<>タイトル
+  %span<>必須
+  = f.text_field :title, placeholder: "タイトルを入力して下さい"
+  %label<>画像選択
+  %span<>必須
+  = f.file_field :image
+  %label<>カテゴリー
+  %span<>必須
+  = f.collection_select :category_id, @parent_categories, :id, :name, {prompt: "選択して下さい"}
+  = f.submit "投稿する"
