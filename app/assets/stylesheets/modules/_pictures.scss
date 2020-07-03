@@ -25,6 +25,8 @@
 
     select {
       height: 35px;
+      width: 150px;
+      padding: 0 5px;
     }
 
     .prev-contents {
@@ -69,5 +71,11 @@
         background: linear-gradient(to right, #26bdca,#59e7c6);;
       }
     }
+  }
+}
+
+.pictures-index {
+  img {
+    height: 250px;
   }
 }
