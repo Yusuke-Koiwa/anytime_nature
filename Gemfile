@@ -68,3 +68,4 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'carrierwave'
 gem 'jquery-rails'
+gem "font-awesome-sass"
