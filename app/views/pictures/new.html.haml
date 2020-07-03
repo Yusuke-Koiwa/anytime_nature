@@ -1,12 +1,32 @@
-= render "devise/shared/error_messages", resource: @picture
-= form_with model: @picture, local: true do |f|
-  %label<>タイトル
-  %span<>必須
-  = f.text_field :title, placeholder: "タイトルを入力して下さい"
-  %label<>画像選択
-  %span<>必須
-  = f.file_field :image
-  %label<>カテゴリー
-  %span<>必須
-  = f.collection_select :category_id, @parent_categories, :id, :name, {prompt: "選択して下さい"}
-  = f.submit "投稿する"
+= render "layouts/header"
+.post
+  = render "devise/shared/error_messages", resource: @picture
+  = form_with model: @picture, local: true do |f|
+    .field
+      .field__title
+        %label<>タイトル
+        %span<>必須
+      .field__input
+        = f.text_field :title, placeholder: "タイトルを入力して下さい"
+    .field
+      .field__title
+        %label<>カテゴリー
+        %span<>必須
+      .field__input
+        = f.collection_select :category_id, @parent_categories, :id, :name, {prompt: "選択して下さい"}
+    .field
+      .field__title
+        %label<>画像選択
+        %span<>必須
+      .field__input
+        = f.label :image, class: 'image_label' do
+          = f.file_field :image, class: "file-input"
+          .prev-contents
+            - if @picture.image.present?
+              = image_tag @picture.image.url, alt: "preview", class: "prev-image"
+            - else
+              .default-prev
+                = icon('far', 'image')
+
+    .action
+      = f.submit "投稿する", class: "submit-btn"
