@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 2020_07_02_063507) do
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "titile", null: false
+    t.string "title", null: false
     t.string "image", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_pictures_on_category_id"
-    t.index ["titile"], name: "index_pictures_on_titile"
+    t.index ["title"], name: "index_pictures_on_title"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
