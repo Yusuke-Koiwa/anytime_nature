@@ -1,8 +1,12 @@
 class PicturesController < ApplicationController
-  before_action :move_to_login, except: %i[index, show], unless: :user_signed_in?
+  before_action :move_to_login, except: %i[index show], unless: :user_signed_in?
+  before_action :set_picture, only: %i[show edit update destroy]
 
   def index
     @pictures = Picture.all.order("created_at DESC").page(params[:page]).per(20)
+  end
+
+  def show
   end
 
   def new
@@ -22,6 +26,10 @@ class PicturesController < ApplicationController
   def move_to_login
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:id])
   end
 
   def picture_params

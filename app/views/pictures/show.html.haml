@@ -1,0 +1,21 @@
+.picture-wrapper
+  .picture-content
+    .picture-content__image
+      = image_tag @picture.image.url
+    .picture-content__footer
+      - if @picture.previous
+        = link_to picture_path(@picture.previous), class: "page-btn" do
+          = icon('fas', 'caret-left')
+      - else
+        = icon('fas', 'caret-left', class: "page-btn disappear")
+      .picture-info
+        .picture-title
+          = @picture.title
+        .picture-user
+          投稿者：
+          %span= @picture.user.name
+      - if @picture.next
+        = link_to picture_path(@picture.next), class: "page-btn" do
+          = icon('fas', 'caret-right')
+      - else
+        = icon('fas', 'caret-left', class: "page-btn disappear")

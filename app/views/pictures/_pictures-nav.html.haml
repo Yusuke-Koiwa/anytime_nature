@@ -1,0 +1,9 @@
+.pictures-nav
+  .category-search
+    カテゴリーから探す
+  .keyword-search
+    %input.keyword-input{placeholder: "キーワードで検索"}
+    = button_tag type: "submit" do
+      = icon('fas', 'search')
+  = link_to new_picture_path, class: "new-picture-link" do
+    投稿
