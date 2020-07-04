@@ -20,11 +20,8 @@
         = f.label :image, class: 'image_label' do
           = f.file_field :image, class: "file-input"
           .prev-contents
-            - if @picture.image.present?
-              = image_tag @picture.image.url, alt: "preview", class: "prev-image"
-            - else
-              .default-prev
-                = icon('far', 'image')
+            .default-prev
+              = icon('far', 'image')
 
     .action
       = f.submit "投稿する", class: "submit-btn"

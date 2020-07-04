@@ -22,7 +22,8 @@
           = f.file_field :image, class: "file-input"
           .prev-contents
             - if @picture.image.present?
-              = image_tag @picture.image.url, alt: "preview", class: "prev-image"
+              .prev-content
+                = image_tag @picture.image.url, alt: "preview", class: "prev-image"
             - else
               .default-prev
                 = icon('far', 'image')
