@@ -21,7 +21,7 @@
         - if user_signed_in?
           = link_to "#", class: "header-menu" do
             マイページ
-          = link_to destroy_user_session_path, method: :delete, class: "header-menu" do
+          = link_to destroy_user_session_path, method: :delete, class: "header-menu", data: { confirm: 'ログアウトしますか?' } do
             ログアウト
         - else
           = link_to new_user_registration_path, class: "header-menu" do
