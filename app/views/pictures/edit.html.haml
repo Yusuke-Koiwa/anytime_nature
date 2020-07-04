@@ -11,7 +11,8 @@
         %label<>カテゴリー
         %span<>必須
       .field__input.category-input
-        = f.collection_select :category_id, @parents, :id, :name, {prompt: "選択して下さい"}, {class: "select-default", id: "category-select"}
+        = f.collection_select :category_id, @parents, :id, :name, {selected: @parent.id}, {class: "select-default", id: "category-select"}
+        = f.collection_select :category_id, @children, :id, :name, {selected: @child.id}, {class: "select-default", id: "children-categories"}
     .field
       .field__title
         %label<>画像選択
@@ -27,4 +28,4 @@
                 = icon('far', 'image')
 
     .action
-      = f.submit "投稿する", class: "submit-btn"
+      = f.submit "更新する", class: "submit-btn"

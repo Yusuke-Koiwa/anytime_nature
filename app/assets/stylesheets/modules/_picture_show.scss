@@ -11,7 +11,7 @@
       @include line_up_side(center);
 
       .page-btn {
-        transition: color 0.3s;
+        transition: color 0.2s;
         color: gray;
         margin: 0 75px;
         font-size: 35px;
@@ -39,8 +39,25 @@
           color: rgb(56, 56, 56);
   
           span {
-            transition: color 0.3s;
+            transition: color 0.2s;
             text-decoration: underline;
+            &:hover {
+              color: black;
+            }
+          }
+        }
+
+        .picture-action {
+          @include line_up_side(center);
+          margin-top: 10px;
+
+          .action-btn {
+            transition: color 0.2s;
+            text-decoration: underline;
+            color: rgb(56, 56, 56);
+            margin: 0 7px;
+            font-size: 15px;
+
             &:hover {
               color: black;
             }
