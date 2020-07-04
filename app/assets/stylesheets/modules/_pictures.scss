@@ -44,12 +44,25 @@
 }
 
 .pictures-index {
+  @include line_up_side(center);
   background-color: whitesmoke;
+  flex-wrap: wrap;
   padding: 20px;
   text-align: center;
 
+  .image-mask {
+    height: 250px;
+    margin: 3px;
+    overflow: hidden;
+  }
+
   img {
     height: 250px;
+
+    &:hover {
+      transition: transform 0.3s;
+      transform: scale(1.05, 1.05);
+    }
   }
 }
 
