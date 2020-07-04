@@ -13,5 +13,8 @@
       = f.password_field :password, autocomplete: "new-password", placeholder: "Password（6文字以上）"
     .field
       = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
+    .field
+      プロフィール画像
+      = f.file_field :image
     .actions
       = f.submit "アカウント作成", class: "submit-btn"
