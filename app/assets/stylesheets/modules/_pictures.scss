@@ -57,10 +57,10 @@
   }
 
   img {
+    transition: transform 0.3s;
     height: 250px;
 
     &:hover {
-      transition: transform 0.3s;
       transform: scale(1.05, 1.05);
     }
   }
