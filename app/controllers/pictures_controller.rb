@@ -7,7 +7,6 @@ class PicturesController < ApplicationController
 
   def new
     @picture = Picture.new
-    @parent_categories = Category.where(ancestry: nil)
   end
 
   def create
@@ -15,7 +14,7 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to pictures_path, notice: "写真を投稿しました"
     else
-      render :new
+      redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
     end
   end
 
