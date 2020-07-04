@@ -13,7 +13,7 @@
           = @picture.title
         .picture-user
           投稿者：
-          %span= @picture.user.name
+          %span=link_to @picture.user.name, user_path(@picture.user)
         - if @picture.user == current_user || user_signed_in? && current_user.admin?
           .picture-action
             = link_to edit_picture_path(@picture), class: "action-btn" do

@@ -19,7 +19,7 @@
             スライドショー
       .header__right
         - if user_signed_in?
-          = link_to "#", class: "header-menu" do
+          = link_to user_path(current_user), class: "header-menu" do
             マイページ
           = link_to destroy_user_session_path, method: :delete, class: "header-menu", data: { confirm: 'ログアウトしますか?' } do
             ログアウト
