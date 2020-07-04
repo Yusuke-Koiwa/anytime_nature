@@ -14,7 +14,7 @@
         .picture-user
           投稿者：
           %span= @picture.user.name
-        - if @picture.user == current_user || current_user.admin?
+        - if @picture.user == current_user || user_signed_in? && current_user.admin?
           .picture-action
             = link_to edit_picture_path(@picture), class: "action-btn" do
               編集
