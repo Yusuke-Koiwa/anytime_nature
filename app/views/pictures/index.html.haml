@@ -1,16 +1,7 @@
-= render "layouts/header"
-.pictures-nav
-  .category-search
-    カテゴリーから探す
-  .keyword-search
-    %input.keyword-input{placeholder: "キーワードで検索"}
-    = button_tag type: "submit" do
-      = icon('fas', 'search')
-  = link_to new_picture_path, class: "new-picture-link" do
-    投稿
+= render "pictures-nav"
 
 .pictures-index
   - @pictures.each do |picture|
-    .image-mask
+    = link_to picture_path(picture), class: "image-mask" do
       = image_tag picture.image_url
 = paginate @pictures
