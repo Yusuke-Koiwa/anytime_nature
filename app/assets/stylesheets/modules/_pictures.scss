@@ -1,7 +1,7 @@
 .pictures-nav {
   @include line_up_side(space-between);
-  height: 50px;
-  line-height: 50px;
+  height: 80px;
+  line-height: 80px;
   padding: 0 75px;
 
   .keyword-search {
@@ -40,5 +40,36 @@
     &:hover {
       background: linear-gradient(to right, #26bdca,#59e7c6);;
     }
+  }
+}
+
+.pictures-index {
+  background-color: whitesmoke;
+  padding: 20px;
+  text-align: center;
+
+  img {
+    height: 250px;
+  }
+}
+
+.pagination {
+  text-align: center;
+  height: 75px;
+  line-height: 75px;
+  font-size: 18px;
+
+  span {
+    padding: 0 7px;
+  }
+
+  .current {
+    color: $main-color;
+    font-weight: bold;
+  }
+
+  a:hover {
+    color: gray;
+    text-decoration: underline;
   }
 }
