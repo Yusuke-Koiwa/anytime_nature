@@ -13,6 +13,9 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def edit
+  end
+
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
@@ -20,6 +23,14 @@ class PicturesController < ApplicationController
     else
       redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
     end
+  end
+
+  def update
+  end
+
+  def destroy
+    @picture.destroy
+    redirect_to root_path
   end
 
   private
