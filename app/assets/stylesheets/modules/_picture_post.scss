@@ -1,0 +1,75 @@
+.post {
+  background-color: whitesmoke;
+  width: 800px;
+  margin: 50px auto 0;
+  padding: 40px;
+  border-radius: 5px;
+
+  .field {
+    margin-bottom: 30px;
+
+    &__title span{
+      background-color: salmon;
+      color: white;
+      font-size: 12px;
+      margin-left: 10px;
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    input {
+      height: 35px;
+      width: 300px;
+      padding: 0 5px;
+    }
+
+    select {
+      height: 35px;
+      width: 150px;
+      padding: 0 5px;
+    }
+
+    .prev-contents {
+      width: 75%;
+      margin: 30px auto 0;
+      text-align: center;
+      cursor: pointer;
+
+      .default-prev {
+        width: 100%;
+        height: 250px;
+        border: 1px dashed #333;
+        margin: 0 auto;
+        line-height: 250px;
+
+        i {
+          font-size: 35px;
+        }
+      }
+
+      .prev-image {
+        width: 100%;
+      }
+    }
+  }
+
+  .action {
+    width: 100%;
+    text-align: center;
+    
+    .submit-btn {
+      margin-top: 20px;
+      background: linear-gradient(to right, #23aeba,#53d8b9);
+      color: white;
+      border-style: none;
+      border-radius: 25px;
+      width: 50%;
+      height: 50px;
+      cursor: pointer;
+
+      &:hover {
+        background: linear-gradient(to right, #26bdca,#59e7c6);;
+      }
+    }
+  }
+}

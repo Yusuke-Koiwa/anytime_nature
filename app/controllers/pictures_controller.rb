@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
   before_action :move_to_login, except: %i[index, show], unless: :user_signed_in?
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def new
@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to pictures_path, notice: "写真を投稿しました"
+      redirect_to root_path, notice: "写真を投稿しました"
     else
       redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
     end

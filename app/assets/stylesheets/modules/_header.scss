@@ -8,6 +8,7 @@
   border-bottom: 1px solid $main-color;
 
   .header-menu {
+    transition: background-color 0.3s;
     height: 50px;
     padding: 0 15px;
     &:hover {
