@@ -12,3 +12,4 @@
 .pictures-index
   - @pictures.each do |picture|
     = image_tag picture.image_url
+= paginate @pictures
