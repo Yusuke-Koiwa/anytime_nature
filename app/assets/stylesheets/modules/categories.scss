@@ -1,0 +1,69 @@
+h3 {
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  font-size: 18px;
+  border-bottom: 1px solid lightgray;
+}
+
+.category-index {
+  @include line_up_side(center);
+  flex-wrap: wrap;
+  padding-top: 20px;
+
+  .category-box {
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 3px gray;
+    margin: 20px;
+    padding: 20px 30px;
+    border-radius: 10px;
+
+    .parent-category {
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(75, 75, 75);
+      }
+    }
+
+    &__name {
+      font-size: 18px;
+      margin-bottom: 5px;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    &__image {
+      width: 300px;
+      height: 200px;
+      border-radius: 5px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    
+        &:hover {
+          transform: scale(1.05, 1.05);
+        }
+      }
+    }
+
+
+    &__children {
+      padding-top: 20px;
+      
+      .child-name {
+        color: $main-color;
+        padding-right: 5px;
+
+        &:hover {
+          text-decoration: underline;
+          color: #53d8b9;
+        }
+      }
+    }
+  }
+}
