@@ -4,7 +4,8 @@ class PicturesController < ApplicationController
   before_action :correct_user?, only: %i[edit update destroy]
 
   def index
-    @pictures = Picture.all.order("created_at DESC").page(params[:page]).per(20)
+    @q = Picture.ransack(params[:q])
+    @pictures = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(20)
   end
 
   def show
