@@ -1,0 +1,50 @@
+.user-header {
+  background-color: whitesmoke;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+
+  &__name {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  &__icon img {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  &__action {
+    margin-top: 10px;
+
+    .user-edit-btn {
+      font-size: 14px;
+      color: gray;
+      text-decoration: underline;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}
+
+.user-contents {
+  margin-top: 20px;
+  text-align: center;
+
+  &__nav {
+    height: 30px;
+    line-height: 30px;
+
+    .menu {
+      &--active {
+        color: $main-color;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,7 +1,2 @@
 = render "pictures-nav"
-
-.pictures-index
-  - @pictures.each do |picture|
-    = link_to picture_path(picture), class: "image-mask" do
-      = image_tag picture.image_url
-= paginate @pictures
+= render partial: "pictures", locals: { pictures: @pictures}
