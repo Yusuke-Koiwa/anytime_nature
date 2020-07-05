@@ -1,6 +1,5 @@
 .user-header {
   background-color: whitesmoke;
-  // color: white;
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -16,6 +15,20 @@
     height: 100px;
     border-radius: 50%;
     border: 2px solid white;
+  }
+
+  &__action {
+    margin-top: 10px;
+
+    .user-edit-btn {
+      font-size: 14px;
+      color: gray;
+      text-decoration: underline;
+
+      &:hover {
+        color: #333;
+      }
+    }
   }
 }
 

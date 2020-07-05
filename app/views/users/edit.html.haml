@@ -1,0 +1,15 @@
+.form
+  .form__title
+    .form__title--active
+      ユーザー編集
+  = form_with(model: @user, local: true) do |f|
+    = render "devise/shared/error_messages", resource: @user
+    .field
+      = f.label "ニックネーム"
+      %br/
+      = f.text_field :name, autofocus: true, maxlength: 20, placeholder: "Nickname"
+    .field
+      プロフィール画像
+      = f.file_field :image
+    .actions
+      = f.submit "アカウント更新", class: "submit-btn"
