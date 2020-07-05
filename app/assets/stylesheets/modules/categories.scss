@@ -5,6 +5,29 @@
   border-bottom: 1px solid lightgray;
 }
 
+#category-title {
+  padding: 15px 0;
+  text-align: center;
+
+  span {
+    font-weight: bold;
+  }
+
+  .categories {
+    padding-top: 10px;
+
+    .category-links {
+      color: $main-color;
+      margin-right: 8px;
+
+      &:hover {
+        text-decoration: underline;
+        color: #53d8b9;
+      }
+    }
+  }
+}
+
 .category-index {
   @include line_up_side(center);
   flex-wrap: wrap;

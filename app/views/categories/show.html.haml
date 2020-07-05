@@ -1,3 +1,7 @@
-#page-title
-  = "カテゴリー：#{@category.name}"
+#category-title
+  カテゴリー：
+  %span= @category.name
+  .categories
+    - @category_links.each do |link|
+      = link_to link.name, category_path(link), class: "category-links"
 = render partial: "pictures/pictures", locals: { pictures: @pictures}
