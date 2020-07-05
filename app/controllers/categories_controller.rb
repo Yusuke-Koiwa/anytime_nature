@@ -6,6 +6,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.find(params[:id])
+    @pictures = @category.set_pictures.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def children
