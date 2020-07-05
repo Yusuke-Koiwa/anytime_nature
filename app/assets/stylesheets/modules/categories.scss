@@ -8,9 +8,16 @@
 #category-title {
   padding: 15px 0;
   text-align: center;
+  line-height: 20px;
 
-  span {
+  .category-name {
     font-weight: bold;
+    transition: color 0.1s;
+
+    &:hover {
+      color: rgb(85, 85, 85);
+      text-decoration: underline;
+    }
   }
 
   .categories {
@@ -24,6 +31,12 @@
         text-decoration: underline;
         color: #53d8b9;
       }
+    }
+
+    .current-category {
+      color: $main-color;
+      margin-right: 8px;
+      font-weight: bold;
     }
   }
 }

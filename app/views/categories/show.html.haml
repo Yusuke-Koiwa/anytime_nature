@@ -1,7 +1,20 @@
-#category-title
-  カテゴリー：
-  %span= @category.name
-  .categories
-    - @category_links.each do |link|
-      = link_to link.name, category_path(link), class: "category-links"
+.pictures-nav
+  .category-search
+    = link_to 'カテゴリーから探す', categories_path
+  #category-title
+    .root-category
+      - if @category.root?
+        = link_to @category.name, category_path(@category), class: "category-name"
+      - else
+        = link_to @category.parent.name, category_path(@category.parent), class: "category-name"
+    .categories
+      - @category_links.each do |link|
+        - if link == @category
+          %span.current-category
+            = link.name
+        - else
+          = link_to link.name, category_path(link), class: "category-links"
+  = link_to new_picture_path, class: "new-picture-link" do
+    投稿する
+
 = render partial: "pictures/pictures", locals: { pictures: @pictures}
