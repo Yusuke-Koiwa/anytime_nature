@@ -1,8 +1,9 @@
 .pictures-nav
   .category-search
     カテゴリーから探す
-  .keyword-search
-    %input.keyword-input{placeholder: "キーワードで検索"}
+  
+  = search_form_for @q, url: pictures_path, class: "keyword-search" do |f|
+    = f.search_field :title_cont, class: "keyword-input", placeholder: "キーワードで検索"
     = button_tag type: "submit" do
       = icon('fas', 'search')
   = link_to new_picture_path, class: "new-picture-link" do
