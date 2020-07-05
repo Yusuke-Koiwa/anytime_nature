@@ -1,0 +1,14 @@
+#page-title
+  カテゴリーから探す
+.category-index
+  - @parents.each_with_index do |parent, index|
+    .category-box
+      = link_to category_path(parent) do
+        %label.parent-category
+          .category-box__name
+            = parent.name
+          .category-box__image
+            = image_tag asset_path(@images[index])
+      .category-box__children
+        - parent.children.each do |child|
+          = link_to child.name, category_path(child), class: "child-name"
