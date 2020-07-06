@@ -9,6 +9,7 @@
 
     &__footer {
       @include line_up_side(center);
+      position: relative;
 
       .page-btn {
         transition: color 0.2s;
@@ -50,7 +51,8 @@
 
         .picture-action {
           @include line_up_side(center);
-          margin-top: 10px;
+          position: absolute;
+          right: 0;
 
           .action-btn {
             transition: color 0.2s;
