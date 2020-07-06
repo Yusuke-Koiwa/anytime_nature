@@ -4,10 +4,12 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = current_user.create_favorite(@picture)
+    @picture.reload
   end
 
   def destroy
     @favorite = current_user.delete_favorite(@picture)
+    @picture.reload
   end
 
   private
