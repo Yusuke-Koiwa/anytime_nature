@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_063507) do
+ActiveRecord::Schema.define(version: 2020_07_06_053357) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "picture_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_favorites_on_picture_id"
+    t.index ["user_id", "picture_id"], name: "index_favorites_on_user_id_and_picture_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -25,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_063507) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorites_count", default: 0, null: false
     t.index ["category_id"], name: "index_pictures_on_category_id"
     t.index ["title"], name: "index_pictures_on_title"
     t.index ["user_id"], name: "index_pictures_on_user_id"
@@ -45,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_063507) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "pictures"
+  add_foreign_key "favorites", "users"
   add_foreign_key "pictures", "categories"
   add_foreign_key "pictures", "users"
 end
