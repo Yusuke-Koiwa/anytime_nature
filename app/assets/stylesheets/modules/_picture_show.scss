@@ -32,8 +32,30 @@
         text-align: center;
   
         .picture-title {
-          margin-bottom: 7px;
+          margin-bottom: 10px;
           font-size: 18px;
+        }
+
+        .picture-favorite {
+          @include line_up_side(center);
+          margin-bottom: 5px;
+
+          .fav-btn {
+            margin-right: 5px;
+            font-size: 20px;
+
+            &--on {
+              color: rgb(224, 36, 94);
+            }
+
+            &--off {
+              color: gray;
+            }
+          }
+
+          .fav-count--on {
+            color: rgb(224, 36, 94);
+          }
         }
   
         .picture-user {
