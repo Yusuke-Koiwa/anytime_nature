@@ -11,6 +11,8 @@
       .picture-info
         .picture-title
           = @picture.title
+        .picture-favorite{id: "favorite-#{@picture.id}"}
+          = render partial: "favorite", locals: { picture: @picture }
         .picture-user
           投稿者：
           %span=link_to @picture.user.name, user_path(@picture.user)

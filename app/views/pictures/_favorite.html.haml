@@ -1,0 +1,16 @@
+- if user_signed_in?
+  - if current_user.already_favorite?(picture)
+    = link_to picture_favorite_path(picture, id: current_user), method: :delete, class: "favorite", remote: true do
+      = icon('fas', 'heart', class: "favorite__btn favorite__btn--on") 
+    .favorite__count
+      = picture.favorites_count
+  - else
+    = link_to picture_favorites_path(picture), method: :post, class: "favorite", remote: true do
+      = icon('far', 'heart', class: "favorite__btn favorite__btn--off")
+    .favorite__count
+      = picture.favorites_count
+- else
+  .favorite
+    = icon('far', 'heart', class: "favorite__btn favorite__btn--off not-login")
+    .favorite__count
+      = picture.favorites_count
