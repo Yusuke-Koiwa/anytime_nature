@@ -1,12 +1,4 @@
-.user-header
-  .user-header__name
-    = @user.name
-  .user-header__icon
-    = image_tag @user.image.url
-  .user-header__action
-    - if user_signed_in? && @user == current_user
-      = link_to '編集', edit_user_path(current_user), class: "user-edit-btn"
-
+= render "user_header"
 .user-contents
   .user-contents__nav
     .menu.menu--active
