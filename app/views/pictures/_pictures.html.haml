@@ -1,8 +1,14 @@
 .pictures-index
   - if pictures.present?
     - pictures.each do |picture|
-      = link_to picture_path(picture), class: "image-mask" do
-        = image_tag picture.image_url
+      .picture
+        = link_to picture_path(picture) do
+          = image_tag picture.image_url
+        .picture-info
+          .picture-title
+            = picture.title
+          .picture-favorite{id: "favorite-#{picture.id}"}
+            = render partial: "pictures/favorite", locals: { picture: picture }
   - else
     投稿がありません
 = paginate pictures

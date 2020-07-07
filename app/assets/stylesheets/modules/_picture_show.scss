@@ -44,8 +44,13 @@
             margin-right: 5px;
             font-size: 20px;
 
+            &:hover {
+              filter: drop-shadow(0 0 5px red);
+            }
+
             &--on {
               color: rgb(224, 36, 94);
+
             }
 
             &--off {
