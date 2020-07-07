@@ -35,4 +35,18 @@ class User < ApplicationRecord
     end
     return sum
   end
+
+  def already_followed?(other_user)
+    follow_users.include?(other_user)
+  end
+
+  def follow(other_user)
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
+  end
+
+  def unfollow(other_user)
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship&.destroy
+  end
+
 end
