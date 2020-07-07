@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
-  before_action :set_user
+  before_action :set_user, except: :favorite
   before_action :correct_user?, only: %i[edit update]
 
   def show
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
 
   def popular
     @pictures = @user.pictures.order("favorites_count DESC").order("created_at DESC").page(params[:page]).per(20)
+  end
+
+  def favorite
+    @pictures = current_user.favorite_pictures.order("favorites.created_at DESC").page(params[:page]).per(20)
   end
 
   private
