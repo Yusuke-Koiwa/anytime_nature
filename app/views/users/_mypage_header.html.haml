@@ -8,5 +8,5 @@
   .user-menu
     = link_to "投稿：#{@user.pictures.count} /", user_path(@user)
     = link_to "お気に入り獲得：#{@favorites_counts} /", popular_user_path(@user)
-    = "フォロー：#{@user.follow_users.count} /"
-    = "フォロワー：#{@user.follower_users.count}"
+    = link_to "フォロー：#{@user.follow_users.count} /", following_user_path(@user)
+    = link_to "フォロワー：#{@user.follower_users.count}", follower_user_path(@user)

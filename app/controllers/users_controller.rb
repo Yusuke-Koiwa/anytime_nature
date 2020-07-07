@@ -29,9 +29,11 @@ class UsersController < ApplicationController
   end
 
   def following
+    @users = @user.follow_users
   end
 
   def follower
+    @users = @user.follower_users
   end
 
   private
