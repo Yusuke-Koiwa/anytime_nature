@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pictures#index"
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: %i[show edit update] do
+    resources :relationships, only: %i[create destroy]
     collection do
-      get "favorite"
+      get :favorite
     end
     member do
-      get "popular"
+      get :popular, :following, :follower
     end
   end
   resources :pictures do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: %i[create destroy]
   end
-  resources :categories, only: [:index, :show] do
+  resources :categories, only: %i[index show] do
     collection do
-      get "children"
+      get :children
     end
   end
 end
