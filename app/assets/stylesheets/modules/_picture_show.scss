@@ -9,6 +9,7 @@
 
     &__footer {
       @include line_up_side(center);
+      position: relative;
 
       .page-btn {
         transition: color 0.2s;
@@ -31,8 +32,35 @@
         text-align: center;
   
         .picture-title {
-          margin-bottom: 7px;
+          margin-bottom: 10px;
           font-size: 18px;
+        }
+
+        .picture-favorite {
+          @include line_up_side(center);
+          margin-bottom: 5px;
+
+          .fav-btn {
+            margin-right: 5px;
+            font-size: 20px;
+
+            &:hover {
+              filter: drop-shadow(0 0 5px red);
+            }
+
+            &--on {
+              color: rgb(224, 36, 94);
+
+            }
+
+            &--off {
+              color: gray;
+            }
+          }
+
+          .fav-count--on {
+            color: rgb(224, 36, 94);
+          }
         }
   
         .picture-user {
@@ -50,7 +78,8 @@
 
         .picture-action {
           @include line_up_side(center);
-          margin-top: 10px;
+          position: absolute;
+          right: 0;
 
           .action-btn {
             transition: color 0.2s;

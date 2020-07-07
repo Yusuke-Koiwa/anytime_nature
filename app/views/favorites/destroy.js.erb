@@ -1,0 +1,1 @@
+$("#favorite-<%= @picture.id %>").html("<%= j(render partial: 'pictures/favorite', locals: { picture: @picture }) %>");
