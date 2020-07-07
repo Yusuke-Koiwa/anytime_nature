@@ -10,7 +10,7 @@
     .fav-count
       = picture.favorites_count
 - else
-  .favorite
+  = link_to new_user_session_path, class: "favorite" do
     = icon('far', 'heart', class: "fav-btn fav-btn--off not-login")
-    .fav-count
-      = picture.favorites_count
+  .fav-count
+    = picture.favorites_count
