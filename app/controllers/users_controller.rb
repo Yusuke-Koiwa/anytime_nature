@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
   before_action :set_user, except: :favorite
   before_action :correct_user?, only: %i[edit update]
+  before_action :set_favorites_counts, only: %i[show popular]
 
   def show
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
-    @favorites_counts = @user.favorites_sum
   end
 
   def edit
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :image)
+  end
+
+  def set_favorites_counts
+    @favorites_counts = @user.favorites_sum
   end
 
 end
