@@ -23,4 +23,12 @@ class User < ApplicationRecord
     favorite = favorites.find_by(picture_id: picture.id)
     favorite&.destroy
   end
+
+  def favorites_sum
+    sum = 0
+    self.pictures.where("favorites_count > ?", 0).each do |picture|
+      sum += picture.favorites_count
+    end
+    return sum
+  end
 end

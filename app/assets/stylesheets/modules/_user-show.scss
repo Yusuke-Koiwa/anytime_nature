@@ -1,34 +1,39 @@
 .user-header {
   background-color: whitesmoke;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 
   &__name {
-    font-size: 22px;
+    @include line_up_side(center);
+    font-size: 20px;
     margin-bottom: 10px;
-  }
-
-  &__icon img {
-    background-color: white;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid white;
-  }
-
-  &__action {
-    margin-top: 10px;
 
     .user-edit-btn {
-      font-size: 14px;
+      font-size: 15px;
       color: gray;
       text-decoration: underline;
+      margin-left: 10px;
 
       &:hover {
         color: #333;
       }
     }
+  }
+
+  &__icon {
+    img {
+      background-color: white;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-bottom: 5px;
+    }
+  }
+
+  .user-menu {
+    font-size: 14px;
   }
 }
 

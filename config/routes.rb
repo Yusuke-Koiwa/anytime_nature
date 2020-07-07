@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pictures#index"
   resources :users, only: [:show, :edit, :update] do
+    collection do
+      get "favorite"
+    end
     member do
       get "popular"
     end

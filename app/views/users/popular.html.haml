@@ -1,4 +1,16 @@
-= render "user_header"
+.pictures-nav
+  .category-search
+    = link_to 'カテゴリーから探す', categories_path
+  .links
+    - if user_signed_in? && @user == current_user
+      = link_to favorite_users_path, class: "btn favorite-picture-link" do
+        お気に入りした写真
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
+- if user_signed_in? && @user == current_user
+  = render "mypage_header"
+- else
+  = render "user_header"
 .user-contents
   .user-contents__nav
     = link_to '新着', user_path(@user), class: "menu menu--no-active"
