@@ -1,6 +1,8 @@
 .user-header
   .user-header__name
     = @user.name
+    .follow-contents{id: "follow-#{@user.id}"}
+      = render partial: "users/follow", lacals: { user: @user }
   .user-header__icon
     = image_tag @user.image.url
   .user-menu

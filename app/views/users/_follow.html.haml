@@ -1,0 +1,7 @@
+- if user_signed_in?
+  - if current_user.already_followed?(@user)
+    = link_to 'フォロー中', user_relationship_path(@user, id: current_user), class: "follow-btn follow-btn--on", method: :delete, remote: true
+  - else
+    = link_to 'フォローする', user_relationships_path(@user), class: "follow-btn follow-btn--off", method: :post, remote: true
+- else
+  = link_to 'フォローする', new_user_session_path, class: "follow-btn follow-btn--off"
