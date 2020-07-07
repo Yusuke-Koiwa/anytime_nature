@@ -1,6 +1,7 @@
 .pictures-nav
   .category-search
     = link_to 'カテゴリーから探す', categories_path
-  = link_to new_picture_path, class: "new-picture-link" do
-    投稿する
+  .links
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
 = render partial: "pictures/pictures", locals: { pictures: @pictures }
