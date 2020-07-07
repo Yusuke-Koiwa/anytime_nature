@@ -6,7 +6,7 @@
   .user-header__icon
     = image_tag @user.image.url
   .user-menu
-    = "投稿：#{@user.pictures.count} /"
-    = "お気に入り獲得：#{@favorites_counts} /"
-    フォロー：0 /
-    フォロワー：0
+    = link_to "投稿：#{@user.pictures.count} /", user_path(@user)
+    = link_to "お気に入り獲得：#{@favorites_counts} /", popular_user_path(@user)
+    = "フォロー：#{@user.follow_users.count} /"
+    = "フォロワー：#{@user.follower_users.count}"

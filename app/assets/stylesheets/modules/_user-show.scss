@@ -19,36 +19,6 @@
         color: #333;
       }
     }
-
-    .follow-contents {
-
-      .follow-btn {
-        display: block;
-        font-size: 12px;
-        margin-left: 10px;
-        height: 25px;
-        line-height: 25px;
-        width: 90px;
-        border-radius: 17.5px;
-
-        &--on {
-          background-color: rgb(86, 196, 240);
-          color: white;
-
-          &:hover {
-            background-color: rgb(113, 204, 240);
-          }
-        }
-        &--off {
-          background-color: white;
-          border: 1px solid lightskyblue;
-
-          &:hover {
-            background-color: rgb(238, 248, 255);
-          }
-        }
-      }
-    }
   }
 
   &__icon {
@@ -64,6 +34,10 @@
 
   .user-menu {
     font-size: 14px;
+
+    a:hover {
+      color: rgb(68, 67, 67);
+    }
   }
 }
 
@@ -91,6 +65,36 @@
         color: $main-color;
         font-weight: bold;
         text-decoration: underline;
+      }
+    }
+  }
+}
+
+.follow-contents {
+
+  .follow-btn {
+    display: block;
+    font-size: 12px;
+    margin-left: 10px;
+    height: 25px;
+    line-height: 25px;
+    width: 90px;
+    border-radius: 17.5px;
+
+    &--on {
+      background-color: rgb(86, 196, 240);
+      color: white;
+
+      &:hover {
+        background-color: rgb(113, 204, 240);
+      }
+    }
+    &--off {
+      background-color: white;
+      border: 1px solid lightskyblue;
+
+      &:hover {
+        background-color: rgb(238, 248, 255);
       }
     }
   }

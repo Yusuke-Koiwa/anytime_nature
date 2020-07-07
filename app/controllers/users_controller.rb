@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     @pictures = current_user.favorite_pictures.order("favorites.created_at DESC").page(params[:page]).per(20)
   end
 
+  def following
+  end
+
+  def follower
+  end
+
   private
 
   def move_to_login
