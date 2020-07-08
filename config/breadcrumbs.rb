@@ -16,6 +16,26 @@ crumb :favorite do
   parent :mypage
 end
 
+crumb :follow do |user|
+  user = User.find(params[:id])
+  link "フォロー", following_user_path(user)
+  if user == current_user
+    parent :mypage
+  else
+    parent :user
+  end
+end
+
+crumb :follower do |user|
+  user = User.find(params[:id])
+  link "フォロワー", follower_user_path(user)
+  if user == current_user
+    parent :mypage
+  else
+    parent :user
+  end
+end
+
 crumb :category_index do
   link "カテゴリーから探す", categories_path
 end
