@@ -25,8 +25,9 @@
                 = other.name
               .user-icon
                 = image_tag other.image.url
-              .follow-contents{id: "follow-#{other.id}"}
-                = render partial: "users/follow", locals: { user: other }
+              - if current_user != other
+                .follow-contents{id: "follow-#{other.id}"}
+                  = render partial: "users/follow", locals: { user: other }
           = link_to user_path(other) do
             .user-box__right
               - if other.pictures.present?
