@@ -78,9 +78,11 @@
     padding: 20px 0;
 
     .user-box {
-      @include line_up_side(center);
+      display: flex;
+      align-items: center;
       background-color: white;
-      width: 950px;
+      width: 95%;
+      max-width: 950px;
       margin: 0 auto 20px;
       padding: 20px 10px;
       box-shadow: 1px 1px 3px gray;
@@ -108,6 +110,8 @@
       }
       &__right {
         @include line_up_side(left);
+        width: calc(100% - 220px);
+        overflow: scroll;
 
         img {
           height: 150px;
