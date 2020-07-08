@@ -99,12 +99,12 @@
     text-align: center;
     line-height: 16px;
 
-    &__top {
-      margin-bottom: 5px;
+    &__top a:hover {
+      text-decoration: underline;
+    }
 
-      a:hover {
-        text-decoration: underline;
-      }
+    &__bottom {
+      margin-top: 5px;
     }
   }
 

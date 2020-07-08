@@ -44,6 +44,10 @@ class UsersController < ApplicationController
   end
 
   def popular_show
+    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count DESC").order("id DESC")
+    @index = @pictures.index(@picture)
+    @previous = @pictures[@index - 1] if @index != 0
+    @next = @pictures[@index + 1]
   end
 
   def favorite_show
