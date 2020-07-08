@@ -1,0 +1,30 @@
+.picture-wrapper
+  .picture-content
+    .picture-content__image
+      = image_tag picture.image.url
+    .picture-content__footer
+      - if picture.previous
+        = link_to picture_path(picture.previous), class: "page-btn" do
+          = icon('fas', 'caret-left')
+      - else
+        = icon('fas', 'caret-left', class: "page-btn disappear")
+      .picture-info
+        .picture-title
+          = picture.title
+        .picture-favorite{id: "favorite-#{picture.id}"}
+          = render partial: "pictures/favorite", locals: { picture: picture }
+        .picture-user
+          投稿者：
+          %span=link_to picture.user.name, user_path(picture.user)
+        - if picture.user == current_user || user_signed_in? && current_user.admin?
+          .picture-action
+            = link_to edit_picture_path(picture), class: "action-btn" do
+              編集
+            = link_to picture_path(picture), method: :delete, class: "action-btn", data: { confirm: 'この写真を削除しますか?' } do
+              削除
+
+      - if picture.next
+        = link_to picture_path(picture.next), class: "page-btn" do
+          = icon('fas', 'caret-right')
+      - else
+        = icon('fas', 'caret-left', class: "page-btn disappear")

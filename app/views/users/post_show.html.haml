@@ -1,0 +1,7 @@
+.pictures-nav
+  - breadcrumb :post_show
+  = render "layouts/breadcrumbs"
+  .links
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
+= render partial: "users/picture_show", locals: { picture: @picture }

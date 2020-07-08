@@ -36,6 +36,16 @@ crumb :follower do |user|
   end
 end
 
+crumb :post_show do |user|
+  user = User.find(params[:id])
+  link "投稿", "#"
+  if user == current_user
+    parent :mypage
+  else
+    parent :user
+  end
+end
+
 crumb :category_index do
   link "カテゴリーから探す", categories_path
 end
