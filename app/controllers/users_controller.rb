@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def popular
-    @pictures = @user.pictures.order("favorites_count DESC").order("created_at DESC").page(params[:page]).per(20)
+    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count DESC").order("created_at DESC").page(params[:page]).per(20)
   end
 
   def favorite
