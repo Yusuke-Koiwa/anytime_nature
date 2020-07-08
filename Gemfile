@@ -70,3 +70,4 @@ gem 'carrierwave'
 gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'ransack'
+gem "gretel"
