@@ -1,12 +1,13 @@
 .user-header
   .user-header__name
-    = @user.name
+    .user-name
+      = user.name
     = link_to edit_user_path(current_user), class: "user-edit-btn" do
       = icon('fa', 'cog')
   .user-header__icon
-    = image_tag @user.image.url
+    = image_tag user.image.url
   .user-menu
-    = "投稿：#{@user.pictures.count} /"
-    = "お気に入り獲得：#{@favorites_counts} /"
-    フォロー：0 /
-    フォロワー：0
+    = link_to "投稿：#{user.pictures.count} /", user_path(user)
+    = link_to "お気に入り獲得：#{user.favorites_sum} /", popular_user_path(user)
+    = link_to "フォロー：#{user.follow_users.count} /", following_user_path(user)
+    = link_to "フォロワー：#{user.follower_users.count}", follower_user_path(user)
