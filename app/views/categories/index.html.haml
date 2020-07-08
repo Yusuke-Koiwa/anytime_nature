@@ -1,5 +1,6 @@
 #page-title
-  カテゴリーから探す
+  - breadcrumb :category_index
+  = render "layouts/breadcrumbs"
 .category-index
   - @parents.each_with_index do |parent, index|
     .category-box

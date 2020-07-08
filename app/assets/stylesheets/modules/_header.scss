@@ -33,3 +33,23 @@
     display: flex;
   }
 }
+
+.breadcrumbs {
+  font-size: 14px;
+
+  a {
+    color: $main-color;
+    margin: 10px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #53d8b9;
+    }
+  }
+
+  .current {
+    color: #333;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+}

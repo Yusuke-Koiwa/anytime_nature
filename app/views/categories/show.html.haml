@@ -1,6 +1,10 @@
 .pictures-nav
   .category-search
-    = link_to 'カテゴリーから探す', categories_path
+    - if @category.root?
+      - breadcrumb :parent_category
+    - else
+      - breadcrumb :child_category
+    = render "layouts/breadcrumbs"
   #category-title
     .root-category
       - if @category.root?
