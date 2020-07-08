@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
   before_action :set_user, except: :favorite
   before_action :correct_user?, only: %i[edit update]
-  before_action :set_picture, only: %i[post_show]
+  before_action :set_picture, only: %i[post_show popular_show]
 
   def show
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
@@ -37,6 +37,9 @@ class UsersController < ApplicationController
   end
 
   def post_show
+  end
+
+  def popular_show
   end
 
   private

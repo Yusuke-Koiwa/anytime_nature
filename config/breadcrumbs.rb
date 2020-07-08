@@ -46,6 +46,16 @@ crumb :post_show do |user|
   end
 end
 
+crumb :popular_show do |user|
+  user = User.find(params[:id])
+  link "人気の投稿", "#"
+  if user == current_user
+    parent :mypage
+  else
+    parent :user
+  end
+end
+
 crumb :category_index do
   link "カテゴリーから探す", categories_path
 end
