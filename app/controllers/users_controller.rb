@@ -51,6 +51,11 @@ class UsersController < ApplicationController
   end
 
   def favorite_show
+    @pictures = current_user.favorite_pictures.order("favorites.created_at ASC")
+    @index = @pictures.index(@picture)
+    @previous = @pictures[@index + 1]
+    @next = @pictures[@index - 1] if @index != 0
+    @count = @pictures.index(@picture) + 1
   end
 
   private
