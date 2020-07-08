@@ -2,6 +2,15 @@ crumb :root do
   link "Home", root_path
 end
 
+crumb :user do |user|
+  user = User.find(params[:id])
+  if user == current_user
+    link "マイページ", user_path(user)
+  else
+    link "#{user.name}", user_path(user)
+  end
+end
+
 crumb :category_index do
   link "カテゴリーから探す", categories_path
 end
