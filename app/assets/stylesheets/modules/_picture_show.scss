@@ -11,21 +11,6 @@
       @include line_up_side(center);
       position: relative;
 
-      .page-btn {
-        transition: color 0.2s;
-        color: gray;
-        margin: 0 75px;
-        font-size: 35px;
-
-        &:hover {
-          color: #333;
-        }
-      }
-
-      .disappear {
-        opacity: 0;
-      }
-
       .picture-info {
         @include line_up_vertical_side-center;
         margin-top: 10px;
@@ -102,5 +87,35 @@
         box-shadow: 2px 2px 10px gray;
       }
     }
+  }
+}
+
+.front-back {
+  display: flex;
+  font-size: 14px;
+
+  &__count {
+    @include line_up_vertical(center);
+    text-align: center;
+    line-height: 16px;
+
+    &__top {
+      margin-bottom: 5px;
+    }
+  }
+
+  .page-btn {
+    transition: color 0.2s;
+    color: gray;
+    margin: 0 20px;
+    font-size: 35px;
+
+    &:hover {
+      color: #333;
+    }
+  }
+
+  .disappear {
+    opacity: 0;
   }
 }

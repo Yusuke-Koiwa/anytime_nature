@@ -3,11 +3,6 @@
     .picture-content__image
       = image_tag picture.image.url
     .picture-content__footer
-      - if picture.previous
-        = link_to picture_path(picture.previous), class: "page-btn" do
-          = icon('fas', 'caret-left')
-      - else
-        = icon('fas', 'caret-left', class: "page-btn disappear")
       .picture-info
         .picture-title
           = picture.title
@@ -22,9 +17,3 @@
               編集
             = link_to picture_path(picture), method: :delete, class: "action-btn", data: { confirm: 'この写真を削除しますか?' } do
               削除
-
-      - if picture.next
-        = link_to picture_path(picture.next), class: "page-btn" do
-          = icon('fas', 'caret-right')
-      - else
-        = icon('fas', 'caret-left', class: "page-btn disappear")

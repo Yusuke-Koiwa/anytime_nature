@@ -37,6 +37,10 @@ class UsersController < ApplicationController
   end
 
   def post_show
+    @pictures = @user.pictures
+    @previous = @pictures.where("id > ?", @picture.id).order("id ASC").first
+    @next = @pictures.where("id < ?", @picture.id).order("id DESC").first
+    @count = @pictures.index(@picture) + 1
   end
 
   def popular_show
