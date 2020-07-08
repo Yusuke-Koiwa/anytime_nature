@@ -1,6 +1,7 @@
 .user-header
   .user-header__name
-    = user.name
+    .user-name
+      = user.name
     .follow-contents{id: "follow-#{user.id}"}
       = render partial: "users/follow", locals: { user: user }
   .user-header__icon

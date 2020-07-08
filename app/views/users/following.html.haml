@@ -8,18 +8,32 @@
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
 - if user_signed_in? && @user == current_user
-  = render "users/mypage_header"
+  = render partial: "users/mypage_header", locals: { user: @user }
 - else
-  = render "users/user_header"
+  = render partial: "users/user_header", locals: { user: @user }
 .user-contents
   .user-contents__nav
     = link_to 'フォロー', following_user_path(@user), class: "menu menu--active"
     = link_to 'フォロワー', follower_user_path(@user), class: "menu menu--no-active"
   .user-contents__users
     - if @users.present?
-      - @users.each do |user|
-        = link_to user_path(user) do
-          = user.name
-          = image_tag user.image.url
+      - @users.each do |other|
+        .user-box
+          = link_to user_path(other) do
+            .user-box__left
+              .user-name
+                = other.name
+              .user-icon
+                = image_tag other.image.url
+              .follow-contents{id: "follow-#{other.id}"}
+                = render partial: "users/follow", locals: { user: other }
+          = link_to user_path(other) do
+            .user-box__right
+              - if other.pictures.present?
+                - other.pictures.reverse.first(3).each do |picture|
+                  = image_tag picture.image.url
+              - else
+                投稿がありません
+
     - else
       フォローしているユーザーがいません
