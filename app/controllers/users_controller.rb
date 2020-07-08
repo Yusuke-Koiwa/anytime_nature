@@ -28,11 +28,11 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.follow_users.includes(:pictures)
+    @users = @user.follow_users.includes(:pictures).page(params[:page]).per(20)
   end
 
   def follower
-    @users = @user.follower_users.includes(:pictures)
+    @users = @user.follower_users.includes(:pictures).page(params[:page]).per(20)
   end
 
   private
