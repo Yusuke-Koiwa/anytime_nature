@@ -11,6 +11,8 @@
       .front-back__count__top
         = link_to "#{@user.name}", user_path(@user)
         %span<> の人気投稿
+      .front-back__count__bottom
+        = "(#{@count}/#{@pictures.size})"
     - if @next.present?
       = link_to "/users/#{@user.id}/popular/#{@next.id}", class: "page-btn" do
         = icon('fas', 'caret-right')
