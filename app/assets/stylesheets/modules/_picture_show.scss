@@ -101,6 +101,10 @@
 
     &__top {
       margin-bottom: 5px;
+
+      a:hover {
+        text-decoration: underline;
+      }
     }
   }
 

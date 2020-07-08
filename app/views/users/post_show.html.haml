@@ -9,7 +9,8 @@
       = icon('fas', 'caret-left', class: "page-btn disappear")
     .front-back__count
       .front-back__count__top
-        = "#{@user.name}の投稿"
+        = link_to "#{@user.name}", user_path(@user)
+        %span<> の投稿
       .front-back__count__bottom
         = "(#{@count}/#{@user.pictures.size})"
     - if @next.present?
