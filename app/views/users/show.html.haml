@@ -1,5 +1,8 @@
 .pictures-nav
-  - breadcrumb :user
+  - if @user == current_user
+    - breadcrumb :mypage
+  - else
+    - breadcrumb :user
   = render "layouts/breadcrumbs"
   .links
     - if user_signed_in? && @user == current_user

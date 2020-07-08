@@ -4,11 +4,16 @@ end
 
 crumb :user do |user|
   user = User.find(params[:id])
-  if user == current_user
-    link "マイページ", user_path(user)
-  else
-    link "#{user.name}", user_path(user)
-  end
+  link "#{user.name}", user_path(user)
+end
+
+crumb :mypage do
+  link "マイページ", user_path(current_user)
+end
+
+crumb :favorite do
+  link "お気に入り", favorite_users_path
+  parent :mypage
 end
 
 crumb :category_index do

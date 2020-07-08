@@ -4,6 +4,15 @@
   line-height: 80px;
   padding: 0 75px;
 
+  .category-search a{
+    color: $main-color;
+
+    &:hover {
+      text-decoration: underline;
+      color: #53d8b9;
+    }
+  }
+
   .keyword-search {
     @include line_up_side(space-between);
     line-height: 30px;
