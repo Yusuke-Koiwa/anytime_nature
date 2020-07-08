@@ -56,6 +56,12 @@ crumb :popular_show do |user|
   end
 end
 
+crumb :favorite_show do |picture|
+  picture = Picture.find(params[:picture_id])
+  link "#{picture.title}", "#"
+  parent :favorite
+end
+
 crumb :category_index do
   link "カテゴリーから探す", categories_path
 end
