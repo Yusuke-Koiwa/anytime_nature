@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :popular, :following, :follower
     end
   end
-  resources :pictures do
+  resources :pictures, exept: :edit do
     resources :favorites, only: %i[create destroy]
   end
   resources :categories, only: %i[index show] do

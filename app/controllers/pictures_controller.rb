@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :move_to_login, except: %i[index show], unless: :user_signed_in?
-  before_action :set_picture, only: %i[show edit update destroy]
-  before_action :correct_user?, only: %i[edit update destroy]
+  before_action :set_picture, only: %i[show update destroy]
+  before_action :correct_user?, only: %i[update destroy]
 
   def index
     @q = Picture.ransack(params[:q])
@@ -17,13 +17,6 @@ class PicturesController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
-  def edit
-    @child = @picture.category
-    @parent = @child.parent
-    @children = @parent.children
-    @parents = Category.where(ancestry: nil)
-  end
-
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
@@ -34,11 +27,8 @@ class PicturesController < ApplicationController
   end
 
   def update
-    if @picture.update(edit_params)
-      redirect_to picture_path(@picture), notice: "変更内容を保存しました"
-    else
-      redirect_to edit_picture_path(@picture), alert: "必須項目を入力して下さい"
-    end
+    @picture.update(edit_params)
+    redirect_to picture_path(@picture)
   end
 
   def destroy
