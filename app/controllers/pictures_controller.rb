@@ -34,7 +34,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    if @picture.update(picture_params)
+    if @picture.update(edit_params)
       redirect_to picture_path(@picture), notice: "変更内容を保存しました"
     else
       redirect_to edit_picture_path(@picture), alert: "必須項目を入力して下さい"
@@ -66,6 +66,10 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title, :image, :category_id).merge(user_id: current_user.id)
+  end
+
+  def edit_params
+    params.require(:picture).permit(:title).merge(user_id: current_user.id)
   end
 
 end
