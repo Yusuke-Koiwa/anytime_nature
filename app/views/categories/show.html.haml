@@ -1,21 +1,36 @@
 .pictures-nav
-  .category-search
-    = link_to 'カテゴリーから探す', categories_path
-  #category-title
-    .root-category
-      - if @category.root?
-        = link_to @category.name, category_path(@category), class: "category-name"
-      - else
-        = link_to @category.parent.name, category_path(@category.parent), class: "category-name"
-    .categories
-      - @category_links.each do |link|
-        - if link == @category
-          %span.current-category
-            = link.name
-        - else
-          = link_to link.name, category_path(link), class: "category-links"
+  - if @category.root?
+    - breadcrumb :parent_category
+  - else
+    - breadcrumb :child_category
+  = render "layouts/breadcrumbs"
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
 
-= render partial: "pictures/pictures", locals: { pictures: @pictures}
+.categories
+  %span<> 関連カテゴリー：
+  - @category_links.each do |link|
+    - if link == @category
+      %span.current-category
+        = link.name
+    - else
+      = link_to link.name, category_path(link), class: "category-links"
+.pictures-index
+  - if @pictures.present?
+    - @pictures.each do |picture|
+      .picture
+        - if @category.root?
+          - url = "/categories/parent/#{picture.category.parent.id}/#{picture.id}"
+        - else
+          - url = "/categories/#{picture.category.id}/#{picture.id}"
+        = link_to url do
+          = image_tag picture.image_url
+        .picture-info
+          .picture-title
+            = picture.title
+          .picture-favorite{id: "favorite-#{picture.id}"}
+            = render partial: "pictures/favorite", locals: { picture: picture }
+  - else
+    投稿がありません
+= paginate @pictures

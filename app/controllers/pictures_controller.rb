@@ -9,6 +9,7 @@ class PicturesController < ApplicationController
   end
 
   def show
+    @category = @picture.category
   end
 
   def new

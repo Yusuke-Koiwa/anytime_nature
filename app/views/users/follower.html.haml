@@ -1,6 +1,6 @@
 .pictures-nav
-  .category-search
-    = link_to 'カテゴリーから探す', categories_path
+  - breadcrumb :follower
+  = render "layouts/breadcrumbs"
   .links
     - if user_signed_in? && @user == current_user
       = link_to favorite_users_path, class: "btn favorite-picture-link" do

@@ -1,6 +1,22 @@
 .pictures-nav
-  - breadcrumb :show
+  - breadcrumb :category_picture
   = render "layouts/breadcrumbs"
+  .front-back
+    - if @previous.present?
+      = link_to "/categories/#{@category.id}/#{@previous.id}", class: "page-btn" do
+        = icon('fas', 'caret-left')
+    - else
+      = icon('fas', 'caret-left', class: "page-btn disappear")
+    .front-back__count
+      .front-back__count__top
+        = link_to "#{@category.name}", category_path(@category)
+      .front-back__count__bottom
+        = "(#{@count}/#{@pictures.size})"
+    - if @next.present?
+      = link_to "/categories/#{@category.id}/#{@next.id}", class: "page-btn" do
+        = icon('fas', 'caret-right')
+    - else
+      = icon('fas', 'caret-right', class: "page-btn disappear")
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
@@ -19,7 +35,7 @@
         .picture-title
           = @picture.title
         .picture-favorite{id: "favorite-#{@picture.id}"}
-          = render partial: "favorite", locals: { picture: @picture }
+          = render partial: "pictures/favorite", locals: { picture: @picture }
         .picture-user
           投稿者：
           %span=link_to @picture.user.name, user_path(@picture.user)

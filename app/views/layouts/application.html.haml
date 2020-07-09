@@ -12,11 +12,9 @@
       .header__left
         = link_to root_path, class: "logo header-menu" do
           Anytime Nature
-        .index-select
-          = link_to root_path, class: "header-menu" do
-            写真
-          = link_to "#", class: "header-menu" do
-            スライドショー
+        .header-about
+          〜自然に特化した写真共有サイト〜
+
       .header__right
         - if user_signed_in?
           = link_to user_path(current_user), class: "header-menu" do

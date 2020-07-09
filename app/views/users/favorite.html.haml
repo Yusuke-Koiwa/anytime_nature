@@ -1,7 +1,20 @@
 .pictures-nav
-  .category-search
-    = link_to 'カテゴリーから探す', categories_path
+  - breadcrumb :favorite
+  = render "layouts/breadcrumbs"
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
-= render partial: "pictures/pictures", locals: { pictures: @pictures }
+.pictures-index
+  - if @pictures.present?
+    - @pictures.each do |picture|
+      .picture
+        = link_to "/users/favorite/#{picture.id}" do
+          = image_tag picture.image_url
+        .picture-info
+          .picture-title
+            = picture.title
+          .picture-favorite{id: "favorite-#{picture.id}"}
+            = render partial: "pictures/favorite", locals: { picture: picture }
+  - else
+    投稿がありません
+= paginate @pictures

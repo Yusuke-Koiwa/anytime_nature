@@ -1,7 +1,7 @@
 #page-title {
   height: 75px;
   line-height: 75px;
-  text-align: center;
+  padding-left: 75px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -19,25 +19,30 @@
       text-decoration: underline;
     }
   }
+}
 
-  .categories {
-    padding-top: 10px;
 
-    .category-links {
-      color: $main-color;
-      margin-right: 8px;
+.categories {
+  background-color: whitesmoke;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
 
-      &:hover {
-        text-decoration: underline;
-        color: #53d8b9;
-      }
+  a {
+    font-size: 15px;
+    color: $main-color;
+    margin: 0 5px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #53d8b9;
     }
+  }
 
-    .current-category {
-      color: $main-color;
-      margin-right: 8px;
-      font-weight: bold;
-    }
+  .current-category {
+    color: $main-color;
+    margin: 0 5px;
+    font-weight: bold;
   }
 }
 

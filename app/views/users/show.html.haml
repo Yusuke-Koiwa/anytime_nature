@@ -1,6 +1,9 @@
 .pictures-nav
-  .category-search
-    = link_to 'カテゴリーから探す', categories_path
+  - if @user == current_user
+    - breadcrumb :mypage
+  - else
+    - breadcrumb :user
+  = render "layouts/breadcrumbs"
   .links
     - if user_signed_in? && @user == current_user
       = link_to favorite_users_path, class: "btn favorite-picture-link" do
@@ -16,4 +19,17 @@
     = link_to '新着', user_path(@user), class: "menu menu--active"
     = link_to '人気', popular_user_path(@user), class: "menu menu--no-active"
   .user-contents__body
-    = render partial: "pictures/pictures", locals: { pictures: @pictures}
+    .pictures-index
+      - if @pictures.present?
+        - @pictures.each do |picture|
+          .picture
+            = link_to "/users/#{@user.id}/#{picture.id}" do
+              = image_tag picture.image_url
+            .picture-info
+              .picture-title
+                = picture.title
+              .picture-favorite{id: "favorite-#{picture.id}"}
+                = render partial: "pictures/favorite", locals: { picture: picture }
+      - else
+        投稿がありません
+    = paginate @pictures

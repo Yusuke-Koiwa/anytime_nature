@@ -2,7 +2,17 @@
   @include line_up_side(space-between);
   height: 80px;
   line-height: 80px;
-  padding: 0 75px;
+  padding: 0 45px;
+  position: relative;
+
+  .category-search a{
+    color: $main-color;
+
+    &:hover {
+      text-decoration: underline;
+      color: #53d8b9;
+    }
+  }
 
   .keyword-search {
     @include line_up_side(space-between);
@@ -28,6 +38,43 @@
       &:hover {
         background-color: #3fd6c7;
       }
+    }
+  }
+
+  .front-back {
+    position: absolute;
+    display: flex;
+    font-size: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__count {
+      @include line_up_vertical(center);
+      text-align: center;
+      line-height: 16px;
+
+      &__top a:hover {
+        text-decoration: underline;
+      }
+
+      &__bottom {
+        margin-top: 5px;
+      }
+    }
+
+    .page-btn {
+      transition: color 0.2s;
+      color: gray;
+      margin: 0 20px;
+      font-size: 35px;
+
+      &:hover {
+        color: #333;
+      }
+    }
+
+    .disappear {
+      opacity: 0;
     }
   }
 
