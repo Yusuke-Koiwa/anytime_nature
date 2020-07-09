@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: %i[favorite favorite_show]
   before_action :correct_user?, only: %i[edit update]
   before_action :set_picture, only: %i[post_show popular_show favorite_show]
+  before_action :set_category, only: %i[post_show popular_show favorite_show]
 
   def show
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
@@ -83,6 +84,11 @@ class UsersController < ApplicationController
 
   def set_picture
     @picture = Picture.find(params[:picture_id])
+  end
+
+  def set_category
+    @category = @picture.category
+    @category_links = @category.siblings
   end
 
 end

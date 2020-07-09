@@ -1,11 +1,11 @@
 .picture-wrapper {
   background-color: whitesmoke;
-  padding: 20px;
+  padding: 0 10px 20px;
 
   .picture-content {
     max-width: 1100px;
     width: 95%;
-    margin: 20px auto 0;
+    margin: 0 auto;
 
     &__footer {
       @include line_up_side(center);

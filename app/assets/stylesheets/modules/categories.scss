@@ -24,19 +24,14 @@
 
 .categories {
   background-color: whitesmoke;
-  font-size: 15px;
-  height: 30px;
-  line-height: 30px;
+  font-size: 14px;
+  padding: 10px;
   text-align: center;
 
-  span {
-    font-size: 14px;
-    margin-right: 5px;
-  }
-
-  .category-links {
+  a {
+    font-size: 15px;
     color: $main-color;
-    margin-right: 8px;
+    margin: 0 5px;
 
     &:hover {
       text-decoration: underline;
@@ -46,7 +41,7 @@
 
   .current-category {
     color: $main-color;
-    margin-right: 8px;
+    margin: 0 5px;
     font-weight: bold;
   }
 }

@@ -2,6 +2,11 @@ crumb :root do
   link "Home", root_path
 end
 
+crumb :show do
+  picture = Picture.find(params[:id])
+  link "写真", "#"
+end
+
 crumb :user do |user|
   user = User.find(params[:id])
   link "#{user.name}", user_path(user)
@@ -57,7 +62,7 @@ crumb :popular_show do |user|
 end
 
 crumb :favorite_show do
-  link "詳細", "#"
+  link "写真", "#"
   parent :favorite
 end
 

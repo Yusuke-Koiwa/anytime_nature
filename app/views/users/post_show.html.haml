@@ -21,4 +21,10 @@
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
+.categories
+  .own-category
+    カテゴリー :
+    = link_to @category.parent.name, category_path(@category.parent)
+    &rsaquo;
+    = link_to @category.name, category_path(@category), class: "current-category"
 = render partial: "users/picture_show", locals: { picture: @picture }

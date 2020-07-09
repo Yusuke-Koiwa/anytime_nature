@@ -1,3 +1,15 @@
+.pictures-nav
+  - breadcrumb :show
+  = render "layouts/breadcrumbs"
+  .links
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
+.categories
+  .own-category
+    カテゴリー :
+    = link_to @category.parent.name, category_path(@category.parent)
+    &rsaquo;
+    = link_to @category.name, category_path(@category), class: "current-category"
 .picture-wrapper
   .picture-content
     .picture-content__image
