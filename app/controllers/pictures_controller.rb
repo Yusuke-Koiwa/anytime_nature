@@ -28,7 +28,7 @@ class PicturesController < ApplicationController
 
   def update
     @picture.update(edit_params)
-    redirect_to picture_path(@picture)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
