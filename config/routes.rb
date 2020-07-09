@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
   get "/users/favorite/:picture_id", to: "users#favorite_show"
-  get "/users/:id/:picture_id", to: "users#post_show"
   get "/users/:id/popular/:picture_id", to: "users#popular_show"
+  get "/users/:id/:picture_id", to: "users#post_show"
+  get "/categories/parent/:id/:picture_id", to: "categories#parent_picture"
+  get "/categories/:id/:picture_id", to: "categories#picture"
 end

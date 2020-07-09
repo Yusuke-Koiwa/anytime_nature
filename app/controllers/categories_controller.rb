@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: :show
+  before_action :set_category, only: %i[show picture parent_picture]
+  before_action :set_picture, only: %i[picture parent_picture]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -8,6 +9,20 @@ class CategoriesController < ApplicationController
 
   def show
     @pictures = @category.set_pictures.order("created_at DESC").page(params[:page]).per(20)
+  end
+
+  def picture
+    @pictures = @category.set_pictures
+    @previous = @pictures.where("id > ?", @picture.id).order("id ASC").first
+    @next = @pictures.where("id < ?", @picture.id).order("id DESC").first
+    @count = @pictures.index(@picture) + 1
+  end
+
+  def parent_picture
+    @pictures = @category.set_pictures
+    @previous = @pictures.where("id > ?", @picture.id).order("id ASC").first
+    @next = @pictures.where("id < ?", @picture.id).order("id DESC").first
+    @count = @pictures.index(@picture) + 1
   end
   
   def children
@@ -23,6 +38,10 @@ class CategoriesController < ApplicationController
     else
       @category_links = @category.siblings
     end
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:picture_id])
   end
 
 end

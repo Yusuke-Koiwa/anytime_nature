@@ -16,4 +16,21 @@
         = link.name
     - else
       = link_to link.name, category_path(link), class: "category-links"
-= render partial: "pictures/pictures", locals: { pictures: @pictures}
+.pictures-index
+  - if @pictures.present?
+    - @pictures.each do |picture|
+      .picture
+        - if @category.root?
+          - url = "/categories/parent/#{picture.category.parent.id}/#{picture.id}"
+        - else
+          - url = "/categories/#{picture.category.id}/#{picture.id}"
+        = link_to url do
+          = image_tag picture.image_url
+        .picture-info
+          .picture-title
+            = picture.title
+          .picture-favorite{id: "favorite-#{picture.id}"}
+            = render partial: "pictures/favorite", locals: { picture: picture }
+  - else
+    投稿がありません
+= paginate @pictures

@@ -81,3 +81,13 @@ crumb :child_category do |category|
   link "#{category.name}", category_path(category)
   parent :parent_category
 end
+
+crumb :category_picture do |category|
+  category = Category.find(params[:id])
+  link "写真", "#"
+  if category.root?
+    parent :parent_category
+  else
+    parent :child_category
+  end
+end
