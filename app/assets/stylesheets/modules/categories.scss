@@ -19,25 +19,35 @@
       text-decoration: underline;
     }
   }
+}
 
-  .categories {
-    padding-top: 10px;
 
-    .category-links {
-      color: $main-color;
-      margin-right: 8px;
+.categories {
+  background-color: whitesmoke;
+  font-size: 15px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 
-      &:hover {
-        text-decoration: underline;
-        color: #53d8b9;
-      }
+  span {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .category-links {
+    color: $main-color;
+    margin-right: 8px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #53d8b9;
     }
+  }
 
-    .current-category {
-      color: $main-color;
-      margin-right: 8px;
-      font-weight: bold;
-    }
+  .current-category {
+    color: $main-color;
+    margin-right: 8px;
+    font-weight: bold;
   }
 }
 
