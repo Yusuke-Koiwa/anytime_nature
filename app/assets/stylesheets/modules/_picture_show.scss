@@ -19,6 +19,17 @@
         .picture-title {
           margin-bottom: 10px;
           font-size: 18px;
+
+          #edit-btn {
+            color: gray;
+            margin-left: 5px;
+            font-size: 16px;
+            cursor: pointer;
+
+            &:hover {
+              color: #545454;
+            }
+          }
         }
 
         .picture-favorite {
@@ -85,6 +96,77 @@
       img {
         width: 100%;
         box-shadow: 2px 2px 10px gray;
+      }
+    }
+  }
+}
+
+#edit-form {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+
+  #modal {
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #picture-title-edit {
+    background-color: white;
+    z-index: 15;
+    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    border-radius: 10px;
+    padding: 25px;
+
+    #close-btn {
+      color: gray;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: #545454;
+      }
+    }
+
+    .form-title {
+      border-bottom: 1px solid lightgray;
+    }
+
+    .form-contents {
+      @include line_up_side(center);
+      margin: 25px 0 10px;
+
+      .input-title {
+        width: 350px;
+        height: 35px;
+        padding: 0 5px;
+      }
+
+      .send-btn {
+        background-color: $main-color;
+        color: white;
+        border-style: none;
+        border-radius: 5px;
+        margin-left: 5px;
+        padding: 0 10px;
+        height: 35px;
+        font-size: 14px;
+        line-height: 35px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #3dd4c5;
+        }
       }
     }
   }
