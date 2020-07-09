@@ -3,7 +3,7 @@
     .user-name
       = user.name
     = link_to edit_user_path(current_user), class: "user-edit-btn" do
-      = icon('fa', 'cog')
+      = icon('fa', 'edit')
   .user-header__icon
     = image_tag user.image.url
   .user-menu

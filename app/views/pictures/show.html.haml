@@ -18,6 +18,9 @@
       .picture-info
         .picture-title
           = @picture.title
+          - if @picture.user == current_user
+            %sapn
+              = icon('fa', 'edit', id: "edit-btn")
         .picture-favorite{id: "favorite-#{@picture.id}"}
           = render partial: "favorite", locals: { picture: @picture }
         .picture-user
@@ -25,8 +28,6 @@
           %span=link_to @picture.user.name, user_path(@picture.user)
         - if @picture.user == current_user || user_signed_in? && current_user.admin?
           .picture-action
-            #edit-btn
-              編集
             = link_to picture_path(@picture), method: :delete, class: "action-btn", data: { confirm: 'この写真を削除しますか?' } do
               削除
           #edit-form

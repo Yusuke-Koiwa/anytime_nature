@@ -19,6 +19,16 @@
         .picture-title {
           margin-bottom: 10px;
           font-size: 18px;
+
+          #edit-btn {
+            color: gray;
+            font-size: 16px;
+            cursor: pointer;
+
+            &:hover {
+              color: #545454;
+            }
+          }
         }
 
         .picture-favorite {
