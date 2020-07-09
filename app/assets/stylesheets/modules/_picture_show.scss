@@ -89,37 +89,3 @@
     }
   }
 }
-
-.front-back {
-  display: flex;
-  font-size: 14px;
-
-  &__count {
-    @include line_up_vertical(center);
-    text-align: center;
-    line-height: 16px;
-
-    &__top a:hover {
-      text-decoration: underline;
-    }
-
-    &__bottom {
-      margin-top: 5px;
-    }
-  }
-
-  .page-btn {
-    transition: color 0.2s;
-    color: gray;
-    margin: 0 20px;
-    font-size: 35px;
-
-    &:hover {
-      color: #333;
-    }
-  }
-
-  .disappear {
-    opacity: 0;
-  }
-}
