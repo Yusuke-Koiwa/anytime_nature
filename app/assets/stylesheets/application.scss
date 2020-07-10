@@ -1,4 +1,12 @@
 @import "reset";
-@import "modules/*";
+@import "modules/color";
+@import "modules/flash";
+@import "modules/header";
+@import "modules/picture_post";
+@import "modules/picture_show";
+@import "modules/pictures";
+@import "modules/user";
+@import "modules/user-show";
+@import "modules/categories";
 @import "font-awesome-sprockets";
 @import "font-awesome";
