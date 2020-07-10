@@ -1,0 +1,1 @@
+server '54.178.118.236', user: 'koiwa', roles: %w{app db web}
