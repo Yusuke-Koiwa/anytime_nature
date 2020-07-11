@@ -14,12 +14,12 @@ default: &default
   charset: utf8
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
 
 development:
   <<: *default
   database: anytime_nature_development
+  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
   host: db
 
 # Warning: The database defined as "test" will be erased and
@@ -28,6 +28,8 @@ development:
 test:
   <<: *default
   database: anytime_nature_test
+  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
   host: db
 
 # As with config/secrets.yml, you never want to store sensitive information,
