@@ -83,3 +83,4 @@ gem "font-awesome-sass"
 gem 'ransack'
 gem "gretel"
 gem 'dotenv-rails'
+gem 'fog-aws'
