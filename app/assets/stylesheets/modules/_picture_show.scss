@@ -143,8 +143,7 @@
     }
 
     .form-contents {
-      @include line_up_side(center);
-      margin: 25px 0 10px;
+      margin-top: 25px;
 
       .input-title {
         width: 350px;
@@ -152,20 +151,28 @@
         padding: 0 5px;
       }
 
-      .send-btn {
-        background-color: $main-color;
+      ul {
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 400px;
+        height: 35px;
+      }
+
+      input.send-btn {
+        background: linear-gradient(to right, #23aeba,#53d8b9);
         color: white;
         border-style: none;
-        border-radius: 5px;
+        border-radius: 20px;
         margin-left: 5px;
-        padding: 0 10px;
-        height: 35px;
-        font-size: 14px;
-        line-height: 35px;
+        width: 125px;
+        height: 40px;
+        line-height: 40px;
         cursor: pointer;
 
         &:hover {
-          background-color: #3dd4c5;
+          background: linear-gradient(to right, #26bdca,#59e7c6);;
         }
       }
     }

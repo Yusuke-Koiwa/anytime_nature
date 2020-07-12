@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   before_action :move_to_login, except: %i[index show], unless: :user_signed_in?
   before_action :set_picture, only: %i[show update destroy]
   before_action :correct_user?, only: %i[update destroy]
+  before_action :set_all_tags, only: %i[new show]
 
   def index
     @q = Picture.ransack(params[:q])
@@ -10,6 +11,7 @@ class PicturesController < ApplicationController
 
   def show
     @category = @picture.category
+    @tag_list = @picture.tags.pluck(:name).join(",")
   end
 
   def new
@@ -19,7 +21,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    tag_list = params[:tag_list].split(",")
     if @picture.save
+      @picture.save_tags(tag_list)
       redirect_to root_path, notice: "写真を投稿しました"
     else
       redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
@@ -27,7 +31,8 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture.update(edit_params)
+    tag_list = params[:tag_list].split(",")
+    @picture.save_tags(tag_list)
     redirect_back(fallback_location: root_path)
   end
 
@@ -58,8 +63,8 @@ class PicturesController < ApplicationController
     params.require(:picture).permit(:title, :image, :category_id).merge(user_id: current_user.id)
   end
 
-  def edit_params
-    params.require(:picture).permit(:title).merge(user_id: current_user.id)
+  def set_all_tags
+    @all_tags = Tag.pluck(:name)
   end
 
 end

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user?, only: %i[edit update]
   before_action :set_picture, only: %i[post_show popular_show favorite_show]
   before_action :set_category, only: %i[post_show popular_show favorite_show]
+  before_action :set_tags, only: %i[post_show popular_show favorite_show]
 
   def show
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
@@ -89,6 +90,11 @@ class UsersController < ApplicationController
   def set_category
     @category = @picture.category
     @category_links = @category.siblings
+  end
+
+  def set_tags
+    @tag_list = @picture.tags.pluck(:name).join(",")
+    @all_tags = Tag.pluck(:name)
   end
 
 end
