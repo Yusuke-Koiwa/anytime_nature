@@ -19,7 +19,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    tag_list = params[:tag_list].split(",")
     if @picture.save
+      @picture.save_tags(tag_list)
       redirect_to root_path, notice: "写真を投稿しました"
     else
       redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
