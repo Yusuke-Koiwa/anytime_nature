@@ -8,13 +8,21 @@
   .field {
     margin-bottom: 30px;
 
-    &__title span{
-      background-color: salmon;
-      color: white;
-      font-size: 12px;
-      margin-left: 10px;
-      padding: 3px;
-      border-radius: 5px;
+    &__title {
+      margin-bottom: 5px;
+
+      span{
+        background-color: salmon;
+        color: white;
+        font-size: 12px;
+        margin-left: 10px;
+        padding: 3px;
+        border-radius: 5px;
+      }
+
+      .optional {
+        background-color: gray;
+      }
     }
 
     input {
@@ -77,4 +85,38 @@
       }
     }
   }
+}
+
+#picture-tags {
+
+  li.tagit-choice {
+    display: inline-block;
+    background-color: $main-color;
+    color: white;
+    margin: 0 5px 5px 0;
+    height: 35px;
+    line-height: 30px;
+    padding: 0 7px;
+    border: 1px solid lightseagreen;
+    border-radius: 5px;
+
+    a.tagit-close {
+      color: gray;
+      cursor: pointer;
+      margin-left: 5px;
+      font-size: 18px;
+
+      &:hover {
+        color: #545454;
+      }
+    }
+  }
+
+  .tagit-new {
+    height: 35px;
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }
