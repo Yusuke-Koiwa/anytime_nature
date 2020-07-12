@@ -1,27 +1,3 @@
-#page-title {
-  height: 75px;
-  line-height: 75px;
-  padding-left: 75px;
-  border-bottom: 1px solid lightgray;
-}
-
-#category-title {
-  padding: 15px 0;
-  text-align: center;
-  line-height: 20px;
-
-  .category-name {
-    font-weight: bold;
-    transition: color 0.1s;
-
-    &:hover {
-      color: rgb(85, 85, 85);
-      text-decoration: underline;
-    }
-  }
-}
-
-
 .categories {
   background-color: whitesmoke;
   font-size: 14px;

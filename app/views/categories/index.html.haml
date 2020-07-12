@@ -1,6 +1,9 @@
-#page-title
+.pictures-nav
   - breadcrumb :category_index
   = render "layouts/breadcrumbs"
+  .links
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
 .category-index
   - @parents.each_with_index do |parent, index|
     .category-box
