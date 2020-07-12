@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show picture parent_picture]
   before_action :set_picture, only: %i[picture parent_picture]
+  before_action :set_tags, only: %i[picture parent_picture]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -42,6 +43,10 @@ class CategoriesController < ApplicationController
 
   def set_picture
     @picture = Picture.find(params[:picture_id])
+  end
+
+  def set_tags
+    @tag_list = @picture.tags.pluck(:name).join(",")
   end
 
 end

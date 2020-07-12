@@ -51,7 +51,8 @@
             = form_with(model: @picture, url: picture_path(@picture), id: "picture-title-edit", local: true) do |f|
               = icon('fa', 'times', id: "close-btn")
               .form-title
-                写真タイトルを変更
+                タグの変更
               .form-contents
-                = f.text_field :title, placeholder: "タイトルを入力して下さい", class: "input-title"
+                %ul#picture-tags
+                = hidden_field_tag :tag_hidden, @tag_list
                 = f.submit "送信", class: "send-btn"

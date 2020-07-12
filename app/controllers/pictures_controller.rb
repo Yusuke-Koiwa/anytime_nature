@@ -10,6 +10,7 @@ class PicturesController < ApplicationController
 
   def show
     @category = @picture.category
+    @tag_list = @picture.tags.pluck(:name).join(",")
   end
 
   def new
@@ -29,7 +30,8 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture.update(edit_params)
+    tag_list = params[:tag_list].split(",")
+    @picture.save_tags(tag_list)
     redirect_back(fallback_location: root_path)
   end
 
@@ -58,10 +60,6 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title, :image, :category_id).merge(user_id: current_user.id)
-  end
-
-  def edit_params
-    params.require(:picture).permit(:title).merge(user_id: current_user.id)
   end
 
 end
