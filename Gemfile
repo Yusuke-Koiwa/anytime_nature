@@ -79,6 +79,7 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'carrierwave'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "font-awesome-sass"
 gem 'ransack'
 gem "gretel"
