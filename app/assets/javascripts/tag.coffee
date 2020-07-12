@@ -3,7 +3,7 @@ $(document).on 'ready page:load', ->
     fieldName:   'tag_list'
     singleField: true
   $('#picture-tags').tagit()
-  $('.ui-autocomplete-input').attr("placeholder", "タグを入力")
+  $('.ui-autocomplete-input').attr()
   tag_string = $("#tag_hidden").val()
   try
     tag_list = tag_string.split(',')
