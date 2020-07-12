@@ -12,7 +12,6 @@
           = image_tag picture.image_url
         .picture-info
           .picture-title
-            = picture.title
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
   - else

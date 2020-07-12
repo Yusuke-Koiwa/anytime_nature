@@ -17,7 +17,6 @@
     .picture-content__footer
       .picture-info
         .picture-title
-          = @picture.title
           - if @picture.user == current_user
             %sapn
               = icon('fa', 'edit', id: "edit-btn")
