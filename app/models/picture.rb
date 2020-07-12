@@ -7,7 +7,7 @@ class Picture < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :title, :image, presence: true
+  validates :image, presence: true
 
   def save_tags(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

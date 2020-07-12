@@ -2,12 +2,6 @@
   = form_with model: @picture, local: true do |f|
     .field
       .field__title
-        %label<>タイトル
-        %span<>必須
-      .field__input
-        = f.text_field :title, placeholder: "タイトルを入力して下さい"
-    .field
-      .field__title
         %label<>画像選択
         %span<>必須
       .field__input
