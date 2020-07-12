@@ -28,6 +28,7 @@
         %span.optional<>任意
       .field__input
         %ul#picture-tags
+          = hidden_field_tag :all_tags_hidden, @all_tags
 
     .action
       = f.submit "投稿する", class: "submit-btn"

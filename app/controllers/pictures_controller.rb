@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   before_action :move_to_login, except: %i[index show], unless: :user_signed_in?
   before_action :set_picture, only: %i[show update destroy]
   before_action :correct_user?, only: %i[update destroy]
+  before_action :set_all_tags, only: %i[new show]
 
   def index
     @q = Picture.ransack(params[:q])
@@ -60,6 +61,10 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title, :image, :category_id).merge(user_id: current_user.id)
+  end
+
+  def set_all_tags
+    @all_tags = Tag.pluck(:name)
   end
 
 end

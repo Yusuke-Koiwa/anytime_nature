@@ -112,8 +112,29 @@
     }
   }
 
-  .tagit-new {
+  .tagit-new input {
+    width: 400px;
     height: 35px;
+  }
+
+}
+
+.ui-autocomplete {
+  width: 400px;
+  background-color: white;
+  z-index: 50;
+  border: 1px solid gray;
+  border-radius: 3px;
+
+  li {
+    height: 30px;
+    padding: 0 5px;
+    line-height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3ac9bb25;
+    }
   }
 }
 

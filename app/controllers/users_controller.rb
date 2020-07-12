@@ -94,6 +94,7 @@ class UsersController < ApplicationController
 
   def set_tags
     @tag_list = @picture.tags.pluck(:name).join(",")
+    @all_tags = Tag.pluck(:name)
   end
 
 end

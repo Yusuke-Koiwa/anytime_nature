@@ -27,4 +27,5 @@
               .form-contents
                 %ul#picture-tags
                 = hidden_field_tag :tag_hidden, @tag_list
+                = hidden_field_tag :all_tags_hidden, @all_tags
                 = f.submit "送信", class: "send-btn"
