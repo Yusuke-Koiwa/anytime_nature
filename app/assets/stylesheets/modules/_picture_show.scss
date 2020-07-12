@@ -7,6 +7,22 @@
     width: 95%;
     margin: 0 auto;
 
+    .picture-user {
+      font-size: 15px;
+      color: rgb(56, 56, 56);
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+
+      span {
+        transition: color 0.2s;
+        text-decoration: underline;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+
     &__footer {
       @include line_up_side(center);
       position: relative;
@@ -15,26 +31,9 @@
         @include line_up_vertical_side-center;
         margin-top: 10px;
         text-align: center;
-  
-        .picture-title {
-          margin-bottom: 10px;
-          font-size: 18px;
-
-          #edit-btn {
-            color: gray;
-            margin-left: 5px;
-            font-size: 16px;
-            cursor: pointer;
-
-            &:hover {
-              color: #545454;
-            }
-          }
-        }
 
         .picture-favorite {
           @include line_up_side(center);
-          margin-bottom: 5px;
 
           .fav-btn {
             margin-right: 5px;
@@ -58,19 +57,6 @@
             color: rgb(224, 36, 94);
           }
         }
-  
-        .picture-user {
-          font-size: 15px;
-          color: rgb(56, 56, 56);
-  
-          span {
-            transition: color 0.2s;
-            text-decoration: underline;
-            &:hover {
-              color: black;
-            }
-          }
-        }
 
         .picture-action {
           @include line_up_side(center);
@@ -79,10 +65,10 @@
 
           .action-btn {
             transition: color 0.2s;
-            text-decoration: underline;
             color: rgb(56, 56, 56);
             margin: 0 7px;
             font-size: 15px;
+            cursor: pointer;
 
             &:hover {
               color: black;
