@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get "/users/:id/:picture_id", to: "users#post_show"
   get "/categories/parent/:id/:picture_id", to: "categories#parent_picture"
   get "/categories/:id/:picture_id", to: "categories#picture"
+  get "/tags/:id/:picture_id", to: "tags#picture"
 end

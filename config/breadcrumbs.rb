@@ -96,3 +96,8 @@ crumb :tag_show do |tag|
   tag = Tag.find(params[:id])
   link icon('fas', 'tag') +  " #{tag.name}", tag_path(tag)
 end
+
+crumb :tag_picture do |tag|
+  link "写真", "#"
+  parent :tag_show
+end
