@@ -38,6 +38,26 @@
       height: 40px;
       padding: 0 5px;
     }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .prev-contents {
+      text-align: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid lightgray;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
   }
 
   .actions {
