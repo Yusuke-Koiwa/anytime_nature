@@ -91,3 +91,8 @@ crumb :category_picture do |category|
     parent :child_category
   end
 end
+
+crumb :tag_show do |tag|
+  tag = Tag.find(params[:id])
+  link icon('fas', 'tag') +  " #{tag.name}", tag_path(tag)
+end

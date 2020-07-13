@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :children
     end
   end
+  resources :tags, only: :show
   get "/users/favorite/:picture_id", to: "users#favorite_show"
   get "/users/:id/popular/:picture_id", to: "users#popular_show"
   get "/users/:id/:picture_id", to: "users#post_show"
