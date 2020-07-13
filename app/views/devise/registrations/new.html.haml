@@ -15,6 +15,11 @@
       = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password 再入力"
     .field
       プロフィール画像
-      = f.file_field :image
+      = f.label :image, class: 'image_label' do
+        = f.file_field :image, class: "file-input"
+        .prev-contents
+          .default-prev
+            = image_tag asset_path("default.png")
+            %p デフォルト
     .actions
       = f.submit "アカウント作成", class: "submit-btn"

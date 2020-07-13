@@ -10,6 +10,10 @@
       = f.text_field :name, autofocus: true, maxlength: 20, placeholder: "Nickname"
     .field
       プロフィール画像
-      = f.file_field :image
+      = f.label :image, class: 'image_label' do
+        = f.file_field :image, class: "file-input"
+        .prev-contents
+          .prev-content
+            = image_tag @user.image.url, alt: "preview", class: "prev-image"
     .actions
       = f.submit "アカウント更新", class: "submit-btn"
