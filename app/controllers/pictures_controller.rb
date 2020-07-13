@@ -60,7 +60,7 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:title, :image, :category_id).merge(user_id: current_user.id)
+    params.require(:picture).permit(:image, :category_id).merge(user_id: current_user.id)
   end
 
   def set_all_tags

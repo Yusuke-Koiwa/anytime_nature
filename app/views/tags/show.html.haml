@@ -1,19 +1,22 @@
 .pictures-nav
-  - breadcrumb :favorite
+
+  - breadcrumb :tag_show
   = render "layouts/breadcrumbs"
+
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
+
 .pictures-index
   - if @pictures.present?
     - @pictures.each do |picture|
       .picture
-        = link_to "/users/favorite/#{picture.id}" do
+        = link_to "/tags/#{@tag.id}/#{picture.id}" do
           = image_tag picture.image_url
         .picture-info
           .picture-title
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
   - else
-    お気に入りがありません
+    投稿がありません
 = paginate @pictures

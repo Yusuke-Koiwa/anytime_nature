@@ -1,0 +1,42 @@
+
+.picture-content
+
+  .picture-user
+    投稿者：
+    = link_to picture.user.name, user_path(picture.user), class: "user-name"
+
+  = image_tag picture.image.url
+
+  .picture-favorite{id: "favorite-#{picture.id}"}
+    = render partial: "pictures/favorite", locals: { picture: picture }
+
+    #edit-form
+      #modal
+      = form_with(model: picture, url: picture_path(picture), id: "picture-title-edit", local: true) do |f|
+        = icon('fa', 'times', id: "close-btn")
+        .form-title
+          タグの変更
+        .form-contents
+          %ul#picture-tags
+          = hidden_field_tag :tag_hidden, tag_list
+          = hidden_field_tag :all_tags_hidden, all_tags
+          = f.submit "送信", class: "send-btn"
+
+  .categories
+    .own-category
+      カテゴリー :
+      = link_to category.parent.name, category_path(category.parent)
+      &rsaquo;
+      = link_to category.name, category_path(category), class: "current-category"
+
+  - if picture.tags.present?
+    .tags
+      = icon('fas', 'tag')
+      - picture.tags.each do |tag|
+        = link_to tag.name, tag_path(tag), class: "tag"
+
+  - if picture.user == current_user || user_signed_in? && current_user.admin?
+    .picture-action
+      #edit-btn.action-btn
+        タグ編集
+      = link_to '投稿削除', picture_path(picture), method: :delete, class: "action-btn", data: { confirm: 'この写真を削除しますか?' }

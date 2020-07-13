@@ -1,11 +1,12 @@
 .pictures-nav
   .category-search
     = link_to 'カテゴリーから探す', categories_path
-  
+
   = search_form_for @q, url: pictures_path, class: "keyword-search" do |f|
-    = f.search_field :title_cont, class: "keyword-input", placeholder: "キーワードで検索"
+    = f.search_field :tags_name_cont, class: "keyword-input", placeholder: "キーワードで検索"
     = button_tag type: "submit" do
       = icon('fas', 'search')
+
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_234026) do
+ActiveRecord::Schema.define(version: 2020_07_12_052937) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_07_11_234026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "favorites_count", default: 0, null: false
-    t.string "title"
     t.index ["category_id"], name: "index_pictures_on_category_id"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end

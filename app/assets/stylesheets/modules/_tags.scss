@@ -1,0 +1,26 @@
+.tags {
+  text-align: center;
+  margin-top: 10px;
+
+  i {
+    color: #545454;
+    margin-right: 5px;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: $main-color;
+    color: white;
+    margin: 0 5px 5px 0;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    padding: 0 7px;
+    border: 1px solid lightseagreen;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $main-color-light;
+    }
+  }
+}
