@@ -4,7 +4,8 @@ class TagsController < ApplicationController
   before_action :set_tags, only: :picture
 
   def show
-    @pictures = @tag.pictures.order("created_at DESC").page(params[:page]).per(20)
+    @q = @tag.pictures.ransack(search_params)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def picture
@@ -29,6 +30,14 @@ class TagsController < ApplicationController
   def set_tags
     @tag_list = @picture.tags.pluck(:name).join(",")
     @all_tags = Tag.pluck(:name)
+  end
+
+  def search_params
+    if params[:q].present?
+      params.require(:q).permit(:sorts)
+    else
+      params[:q] = { sorts: 'id desc' }
+    end
   end
 
 end
