@@ -16,6 +16,11 @@
         = link.name
     - else
       = link_to link.name, category_path(link), class: "category-links"
+
+- if @pictures.present?
+  = search_form_for @q, url: category_path(@category), class: "sort-field" do |f|
+    = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+
 .pictures-index
   - if @pictures.present?
     - @pictures.each do |picture|
@@ -32,4 +37,5 @@
             = render partial: "pictures/favorite", locals: { picture: picture }
   - else
     投稿がありません
+
 = paginate @pictures

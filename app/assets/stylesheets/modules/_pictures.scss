@@ -15,7 +15,7 @@
     }
   }
 
-  .keyword-search {
+  .search-home {
     @include line_up_side(space-between);
     line-height: 30px;
     
@@ -24,6 +24,22 @@
       height: 30px;
       padding: 0 5px;
     }
+
+    .select-field {
+      position: absolute;
+      width: 100%;
+      top: 90px;
+      left: 0;
+      text-align: center;
+
+      select {
+        color: #333;
+        height: 30px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+
 
     button {
       display: block;
@@ -111,12 +127,29 @@
   }
 }
 
+.sort-field {
+  background-color: whitesmoke;
+  padding-top: 20px;
+  text-align: center;
+    
+  select {
+    color: #333;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
 .pictures-index {
   @include line_up_side(center);
   background-color: whitesmoke;
   flex-wrap: wrap;
   padding: 20px;
   text-align: center;
+
+  &--home {
+    padding-top: 50px;
+  }
 
   .picture {
     position: relative;

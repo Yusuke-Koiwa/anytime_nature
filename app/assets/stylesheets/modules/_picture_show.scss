@@ -3,13 +3,19 @@
   background-color: whitesmoke;
   margin: 0 auto;
   padding: 0 10px 20px;
-
+  
   .picture-user {
+    @include line_up_side(center);
     font-size: 15px;
     color: #333;
     height: 35px;
     line-height: 35px;
     text-align: center;
+
+    .created-time {
+      font-size: 12px;
+      margin-left: 20px;
+    }
 
     .user-name {
       color: #545454;
