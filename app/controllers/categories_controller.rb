@@ -9,7 +9,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @pictures = @category.set_pictures.order("created_at DESC").page(params[:page]).per(20)
+    @q = @category.set_pictures.ransack(search_params)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def picture
@@ -48,6 +49,14 @@ class CategoriesController < ApplicationController
   def set_tags
     @tag_list = @picture.tags.pluck(:name).join(",")
     @all_tags = Tag.pluck(:name)
+  end
+
+  def search_params
+    if params[:q].present?
+      params.require(:q).permit(:sorts)
+    else
+      params[:q] = { sorts: 'id desc' }
+    end
   end
 
 end
