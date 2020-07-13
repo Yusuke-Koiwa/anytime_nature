@@ -4,6 +4,9 @@
   .picture-user
     投稿者：
     = link_to picture.user.name, user_path(picture.user), class: "user-name"
+    .created-time
+      = time_ago_in_words(picture.created_at).upcase
+      %span<>前
 
   = image_tag picture.image.url
 
