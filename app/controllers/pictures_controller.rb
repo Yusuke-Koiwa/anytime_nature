@@ -5,8 +5,8 @@ class PicturesController < ApplicationController
   before_action :set_all_tags, only: %i[new show]
 
   def index
-    @q = Picture.ransack(params[:q])
-    @pictures = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(20)
+    @q = Picture.ransack(search_params)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def show
@@ -65,6 +65,14 @@ class PicturesController < ApplicationController
 
   def set_all_tags
     @all_tags = Tag.pluck(:name)
+  end
+
+  def search_params
+    if params[:q].present?
+      params.require(:q).permit(:tags_name_cont, :sorts)
+    else
+      params[:q] = { sorts: 'id desc' }
+    end
   end
 
 end

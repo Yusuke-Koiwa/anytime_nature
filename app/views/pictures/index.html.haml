@@ -1,2 +1,28 @@
-= render "pictures-nav"
-= render partial: "pictures", locals: { pictures: @pictures}
+.pictures-nav
+  .category-search
+    = link_to 'カテゴリーから探す', categories_path
+
+  = search_form_for @q, url: pictures_path, class: "search-home" do |f|
+    = f.search_field :tags_name_cont, class: "keyword-input", placeholder: "キーワードで検索"
+    .select-field
+      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+    = button_tag type: "submit" do
+      = icon('fas', 'search')
+
+  .links
+    = link_to new_picture_path, class: "btn new-picture-link" do
+      投稿する
+
+.pictures-index.pictures-index--home
+  - if @pictures.present?
+    - @pictures.each do |picture|
+      .picture
+        = link_to picture_path(picture) do
+          = image_tag picture.image_url
+        .picture-info
+          .picture-title
+          .picture-favorite{id: "favorite-#{picture.id}"}
+            = render partial: "pictures/favorite", locals: { picture: picture }
+  - else
+    投稿がありません
+= paginate @pictures
