@@ -1,6 +1,8 @@
 .pictures-nav
+
   - breadcrumb :favorite_show
   = render "layouts/breadcrumbs"
+
   .front-back
     - if @previous.present?
       = link_to "/users/favorite/#{@previous.id}", class: "page-btn" do
@@ -17,13 +19,9 @@
         = icon('fas', 'caret-right')
     - else
       = icon('fas', 'caret-right', class: "page-btn disappear")
+
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
-.categories
-  .own-category
-    カテゴリー :
-    = link_to @category.parent.name, category_path(@category.parent)
-    &rsaquo;
-    = link_to @category.name, category_path(@category), class: "current-category"
-= render partial: "users/picture_show", locals: { picture: @picture }
+
+= render partial: "pictures/picture", locals: { picture: @picture, category: @category, tag_list: @tag_list, all_tags: @all_tags }

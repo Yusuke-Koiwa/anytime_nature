@@ -1,6 +1,8 @@
 .pictures-nav
+
   - breadcrumb :category_picture
   = render "layouts/breadcrumbs"
+
   .front-back
     - if @previous.present?
       = link_to "/categories/#{@category.id}/#{@previous.id}", class: "page-btn" do
@@ -17,42 +19,9 @@
         = icon('fas', 'caret-right')
     - else
       = icon('fas', 'caret-right', class: "page-btn disappear")
+
   .links
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
-.categories
-  .own-category
-    カテゴリー :
-    = link_to @category.parent.name, category_path(@category.parent)
-    &rsaquo;
-    = link_to @category.name, category_path(@category), class: "current-category"
-.picture-wrapper
-  .picture-content
-    .picture-content__image
-      = image_tag @picture.image.url
-    .picture-content__footer
-      .picture-info
-        .picture-title
-          - if @picture.user == current_user
-            %sapn
-              = icon('fa', 'edit', id: "edit-btn")
-        .picture-favorite{id: "favorite-#{@picture.id}"}
-          = render partial: "pictures/favorite", locals: { picture: @picture }
-        .picture-user
-          投稿者：
-          %span=link_to @picture.user.name, user_path(@picture.user)
-        - if @picture.user == current_user || user_signed_in? && current_user.admin?
-          .picture-action
-            = link_to picture_path(@picture), method: :delete, class: "action-btn", data: { confirm: 'この写真を削除しますか?' } do
-              削除
-          #edit-form
-            #modal
-            = form_with(model: @picture, url: picture_path(@picture), id: "picture-title-edit", local: true) do |f|
-              = icon('fa', 'times', id: "close-btn")
-              .form-title
-                タグの変更
-              .form-contents
-                %ul#picture-tags
-                = hidden_field_tag :tag_hidden, @tag_list
-                = hidden_field_tag :all_tags_hidden, @all_tags
-                = f.submit "送信", class: "send-btn"
+
+= render partial: "pictures/picture", locals: { picture: @picture, category: @category, tag_list: @tag_list, all_tags: @all_tags }
