@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_052937) do
+ActiveRecord::Schema.define(version: 2020_07_13_225348) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "picture_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_comments_on_picture_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_052937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "favorites_count", default: 0, null: false
+    t.integer "comments_count", default: 0, null: false
     t.index ["category_id"], name: "index_pictures_on_category_id"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end
@@ -81,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_052937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "pictures"
+  add_foreign_key "comments", "users"
   add_foreign_key "favorites", "pictures"
   add_foreign_key "favorites", "users"
   add_foreign_key "pictures", "categories"
