@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :follow_users, through: :relationships, source: :follow
   has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :follower_users, through: :reverse_relationships, source: :user
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   mount_uploader :image, IconsUploader
   
