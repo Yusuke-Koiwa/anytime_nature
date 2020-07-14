@@ -1,0 +1,20 @@
+- if comments.present?
+  - comments.each do |comment|
+    .comment
+      .comment__head
+        = link_to user_path(comment.user), class: "comment__head__left" do
+          .user-image
+            = image_tag comment.user.image.url
+          .user-name
+            = comment.user.name
+        .comment__head__right
+          .comment-time
+            = time_ago_in_words(comment.created_at).upcase
+            %span<>前
+          - if comment.user == current_user || user_signed_in? && current_user.admin?
+            = link_to "#", class: "comment-delete" do
+              = icon('fas', 'trash')
+      .comment__body
+        = comment.text
+- else
+  コメントはありません

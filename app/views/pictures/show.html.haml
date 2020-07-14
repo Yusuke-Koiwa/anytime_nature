@@ -5,3 +5,18 @@
     = link_to new_picture_path, class: "btn new-picture-link" do
       投稿する
 = render partial: "pictures/picture", locals: { picture: @picture, category: @category, tag_list: @tag_list, all_tags: @all_tags }
+
+.comments-wrapper
+  .comment-contents
+    .comment-contents__title
+      = icon('far', 'comments')
+      コメント
+    #comments-index
+      = render partial: "comments/comments", locals: { comments: @comments }
+    .comment-contents__form
+      - if user_signed_in?
+        = form_with(model: [@picture, @comment], url: picture_comments_path(@picture), id: "comment-form") do |f|
+          = f.text_area :text, placeholder: "コメントを入力"
+          = f.submit "送信", id: "comment-submit"
+      - else
+        コメントの投稿にはログインが必要です

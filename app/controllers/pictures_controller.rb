@@ -12,6 +12,8 @@ class PicturesController < ApplicationController
   def show
     @category = @picture.category
     @tag_list = @picture.tags.pluck(:name).join(",")
+    @comment = Comment.new
+    @comments = @picture.comments.includes(:user)
   end
 
   def new
