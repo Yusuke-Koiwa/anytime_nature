@@ -1,7 +1,7 @@
 .comments-wrapper {
   background-color: whitesmoke;
-  border-top: 2px solid white;
-}
+  border-top: 1px solid lightgray;
+
   .comment-contents {
     background-color: whitesmoke;
     color: #333;
@@ -67,7 +67,7 @@
       text-align: center;
 
       textarea {
-        width: 80%;
+        width: 90%;
         padding: 5px;
         height: 75px;
         resize: none;
@@ -85,4 +85,9 @@
         &:hover {background-color: $main-color-light;}
       }
     }
+
+    .comment-message {
+      padding: 10px 10px 0;
+    }
   }
+}
