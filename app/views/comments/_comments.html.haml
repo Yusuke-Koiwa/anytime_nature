@@ -12,9 +12,10 @@
             = time_ago_in_words(comment.created_at).upcase
             %span<>前
           - if comment.user == current_user || user_signed_in? && current_user.admin?
-            = link_to "#", class: "comment-delete" do
+            = link_to picture_comment_path(comment.picture.id, comment.id), method: :delete, remote: true, class: "comment-delete",  data: { confirm: 'コメントを削除しますか?' } do
               = icon('fas', 'trash')
       .comment__body
         = comment.text
 - else
-  コメントはありません
+  .comment-message
+    コメントはありません
