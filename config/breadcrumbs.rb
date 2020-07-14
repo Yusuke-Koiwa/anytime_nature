@@ -101,3 +101,8 @@ crumb :tag_picture do |tag|
   link "写真", "#"
   parent :tag_show
 end
+
+crumb :notifications do
+  link "通知", "#"
+  parent :mypage
+end

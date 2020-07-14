@@ -1,0 +1,39 @@
+- visitor = notification.visitor
+- visited = notification.visited
+.notification-box
+  .notification-box__top
+    .sentence
+      .sentence__visitor
+        = link_to user_path(visitor) do
+          = image_tag visitor.image.url, class: "user-icon"
+        = link_to visitor.name, user_path(visitor)
+        %span<>が
+
+      - case notification.action
+      - when 'follow' then
+        = "あなたをフォローしました"
+      - when 'favorite' then
+        = link_to 'あなたの投稿', notification.picture
+        = link_to picture_path(notification.picture) do
+          = image_tag notification.picture.image.url(:thumb), class: "picture"
+        = "をお気に入り登録しました"
+      - when 'comment' then
+        - if notification.picture.user_id == visited.id
+          = link_to "あなたの投稿", picture_path(notification.picture)
+          = link_to picture_path(notification.picture) do
+            = image_tag notification.picture.image.url(:thumb), class: "picture"
+        - else
+          = link_to user_path(notification.picture.user) do
+            = image_tag notification.picture.user.image.url, class: "user-icon" 
+          = link_to "#{notification.picture.user.name}", picture_path(notification.picture)
+          = "の"
+          = link_to "投稿", picture_path(notification.picture)
+          = link_to picture_path(notification.picture) do
+            = image_tag notification.picture.image.url(:thumb), class: "picture"
+        = "にコメントしました"
+    .time
+      = time_ago_in_words(notification.created_at).upcase
+      %span<> 前
+  - if notification.action == "comment"
+    .notification-box__bottom
+      = Comment.find_by(id: notification.comment_id)&.text
