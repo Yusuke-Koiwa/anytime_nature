@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :follow_users, through: :relationships, source: :follow
   has_many :reverse_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :follower_users, through: :reverse_relationships, source: :user
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   mount_uploader :image, IconsUploader
   
@@ -48,6 +50,17 @@ class User < ApplicationRecord
   def unfollow(other_user)
     relationship = relationships.find_by(follow_id: other_user.id)
     relationship&.destroy
+  end
+
+  def create_notification_follow(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
+    return unless temp.blank?
+
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: 'follow'
+    )
+    notification.save if notification.valid?
   end
 
 end

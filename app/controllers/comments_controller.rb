@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.build(comment_params)
     @comment.save
+    @comment.picture.create_notification_comment(current_user, @comment.id)
     @comments = @comment.picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
 

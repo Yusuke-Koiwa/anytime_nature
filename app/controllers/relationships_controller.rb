@@ -4,10 +4,13 @@ class RelationshipsController < ApplicationController
 
   def create
     current_user.follow(@user)
+    @user.create_notification_follow(current_user)
   end
 
   def destroy
     current_user.unfollow(@user)
+    @notification = Notification.find_by(visitor_id: current_user.id, visited_id: @user.id, action: "follow")
+    @notification.destroy if @notification
   end
 
   private

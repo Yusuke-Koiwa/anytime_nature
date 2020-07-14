@@ -17,6 +17,11 @@
 
       .header__right
         - if user_signed_in?
+          = link_to notifications_path, class: "header-menu bell" do
+            = icon('far', 'bell')
+            - if unchecked_notifications.any?
+              .notice-circle
+                = @notifications.size
           = link_to user_path(current_user), class: "header-menu" do
             マイページ
           = link_to destroy_user_session_path, method: :delete, class: "header-menu", data: { confirm: 'ログアウトしますか?' } do
