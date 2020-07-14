@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = current_user.create_favorite(@picture)
+    @picture.create_notification_favorite(current_user)
     @picture.reload
   end
 
