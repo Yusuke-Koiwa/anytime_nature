@@ -31,7 +31,7 @@
           = link_to user_path(other), class: "user-box__right" do
             - if other.pictures.present?
               - other.pictures.reverse.first(3).each do |picture|
-                = image_tag picture.image.url
+                = image_tag picture.image.url(:thumb)
             - else
               投稿がありません
     - else
