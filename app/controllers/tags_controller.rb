@@ -2,6 +2,7 @@ class TagsController < ApplicationController
   before_action :set_tag
   before_action :set_picture, only: :picture
   before_action :set_tags, only: :picture
+  before_action :set_comments, only: :picture
 
   def show
     @q = @tag.pictures.ransack(search_params)
@@ -38,6 +39,11 @@ class TagsController < ApplicationController
     else
       params[:q] = { sorts: 'id desc' }
     end
+  end
+
+  def set_comments
+    @comment = Comment.new
+    @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
 
 end

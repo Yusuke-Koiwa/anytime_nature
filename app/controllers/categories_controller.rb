@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show picture parent_picture]
   before_action :set_picture, only: %i[picture parent_picture]
   before_action :set_tags, only: %i[picture parent_picture]
+  before_action :set_comments, only: %i[picture parent_picture]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -57,6 +58,11 @@ class CategoriesController < ApplicationController
     else
       params[:q] = { sorts: 'id desc' }
     end
+  end
+
+  def set_comments
+    @comment = Comment.new
+    @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
 
 end

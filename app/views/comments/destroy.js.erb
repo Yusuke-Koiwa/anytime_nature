@@ -1,0 +1,3 @@
+$("#comments-index").html("<%= j(render partial: 'comments/comments', locals: { comments: @comments }) %>");
+$("textarea").val('');
+$('#comments-count').html("<%= @comments.size %>")

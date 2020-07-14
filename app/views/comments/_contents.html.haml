@@ -1,0 +1,16 @@
+.comments-wrapper
+  .comment-contents
+    .comment-contents__title
+      = icon('far', 'comment')
+      コメント
+      %span#comments-count= @picture.comments_count
+    #comments-index
+      = render partial: "comments/comments", locals: { comments: @comments }
+    = paginate @comments
+    .comment-contents__form
+      - if user_signed_in?
+        = form_with(model: [@picture, @comment], url: picture_comments_path(@picture), id: "comment-form") do |f|
+          = f.text_area :text, placeholder: "コメントを入力"
+          = f.submit "送信", id: "comment-submit"
+      - else
+        コメントの投稿にはログインが必要です

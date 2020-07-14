@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :pictures, exept: :edit do
     resources :favorites, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
   end
   resources :categories, only: %i[index show] do
     collection do
