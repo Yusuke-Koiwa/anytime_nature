@@ -5,6 +5,7 @@
       コメント
     #comments-index
       = render partial: "comments/comments", locals: { comments: @comments }
+    = paginate @comments
     .comment-contents__form
       - if user_signed_in?
         = form_with(model: [@picture, @comment], url: picture_comments_path(@picture), id: "comment-form") do |f|

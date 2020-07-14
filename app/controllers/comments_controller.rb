@@ -6,12 +6,12 @@ class CommentsController < ApplicationController
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.build(comment_params)
     @comment.save
-    @comments = @comment.picture.comments.includes(:user)
+    @comments = @comment.picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def destroy
     @comment.destroy
-    @comments = @comment.picture.comments.includes(:user)
+    @comments = @comment.picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
   end
 
   private

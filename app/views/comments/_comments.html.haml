@@ -1,5 +1,5 @@
 - if comments.present?
-  - comments.each do |comment|
+  - comments.reverse.each do |comment|
     .comment
       .comment__head
         = link_to user_path(comment.user), class: "comment__head__left" do
@@ -9,7 +9,7 @@
             = comment.user.name
         .comment__head__right
           .comment-time
-            = time_ago_in_words(comment.created_at).upcase
+            = time_ago_in_words(comment.created_at)
             %span<>前
           - if comment.user == current_user || user_signed_in? && current_user.admin?
             = link_to picture_comment_path(comment.picture.id, comment.id), method: :delete, remote: true, class: "comment-delete",  data: { confirm: 'コメントを削除しますか?' } do
