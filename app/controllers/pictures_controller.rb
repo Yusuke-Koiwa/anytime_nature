@@ -6,12 +6,13 @@ class PicturesController < ApplicationController
 
   def index
     @params = search_params
-    @q = Picture.ransack(search_params)
+    @q = Picture.ransack(@params)
     @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def slideshow
-    @q = Picture.ransack(search_params)
+    @params = search_params
+    @q = Picture.ransack(@params)
     @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 

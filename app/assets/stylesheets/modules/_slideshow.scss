@@ -1,4 +1,5 @@
 .slideshow-actions {
+  @include line_up_side(center);
   height: 25px;
   position: absolute;
   z-index: 5;
@@ -7,6 +8,11 @@
   right: 45px;
   font-size: 20px;
   line-height: 25px;
+
+  .back-btn {
+    color: lightgray;
+    margin-right: 25px;
+  }
 
   .btn {
     cursor: pointer;
