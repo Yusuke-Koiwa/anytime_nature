@@ -1,3 +1,32 @@
+.slideshow-actions {
+  height: 25px;
+  position: absolute;
+  z-index: 5;
+  color: lightgray;
+  top: 70px;
+  right: 45px;
+  font-size: 20px;
+  line-height: 25px;
+
+  .btn {
+    cursor: pointer;
+
+    &:hover {
+      color: whitesmoke;
+    }
+
+    p {
+      float: right;
+      margin-left: 5px;
+      font-size: 15px;
+    }
+  }
+
+  #stop-btn {
+    display: none;
+  }
+}
+
 #slideshow-contents {
   padding: 30px 0;
   background-color: #545454;
