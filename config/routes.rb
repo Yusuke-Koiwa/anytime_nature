@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
   end
   resources :pictures, exept: :edit do
+    collection do
+      get :slideshow
+    end
     resources :favorites, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
   end

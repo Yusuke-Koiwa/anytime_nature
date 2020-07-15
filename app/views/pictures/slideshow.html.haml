@@ -6,7 +6,7 @@
   - @pictures.each do |picture|
     .slide
       = image_tag picture.image.url
-      .actions
+      .picture-actions
         = link_to "詳細をみる", picture_path(picture), class: "picture-link"
         .picture-favorite{id: "favorite-#{picture.id}"}
           = render partial: "pictures/favorite", locals: { picture: picture }

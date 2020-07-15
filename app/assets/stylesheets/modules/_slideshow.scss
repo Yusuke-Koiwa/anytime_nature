@@ -4,8 +4,8 @@
   overflow-x: hidden;
   
   .slick-track {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
 
     .slide {
       
@@ -17,7 +17,7 @@
         object-fit: contain;
       }
 
-      .actions {
+      .picture-actions {
         @include line_up_side(center);
         margin: 20px 0;
 
@@ -66,20 +66,24 @@
   }
 
   .slick-dots {
-    background-color: #545454;
-    position: static;
+    background-color: #545454 !important;
+    position: static !important;
 
     button {
       &:before {
-        font-size: 20px;
+        font-size: 20px !important;
       }
       &:hover:before {
-        color: $main-color;
+        color: $main-color !important;
       }
     }
 
+    
     .slick-active button:before{
-      color: $main-color;
+      color: $main-color !important;
     }
   }
+}
+.slick-dotted {
+  margin-bottom: 0 !important;
 }

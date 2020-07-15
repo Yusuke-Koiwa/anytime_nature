@@ -1,12 +1,18 @@
 class PicturesController < ApplicationController
-  before_action :move_to_login, except: %i[index show], unless: :user_signed_in?
+  before_action :move_to_login, except: %i[index show slideshow], unless: :user_signed_in?
   before_action :set_picture, only: %i[show update destroy]
   before_action :correct_user?, only: %i[update destroy]
   before_action :set_all_tags, only: %i[new show]
 
   def index
+    @params = search_params
     @q = Picture.ransack(search_params)
     @pictures = @q.result(distinct: true).page(params[:page]).per(20)
+  end
+
+  def slideshow
+    @q = Picture.ransack(search_params)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def show
