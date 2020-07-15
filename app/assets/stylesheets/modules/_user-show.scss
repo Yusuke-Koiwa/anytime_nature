@@ -75,24 +75,23 @@
   &__users {
     background-color: whitesmoke;
     margin-top: 10px;
-    padding: 20px 0;
+    padding-bottom: 30px;
 
     .user-box {
       display: flex;
       align-items: center;
-      background-color: white;
       width: 95%;
       max-width: 950px;
-      margin: 0 auto 20px;
-      padding: 20px 10px;
-      box-shadow: 1px 1px 3px gray;
+      margin: 0 auto;
+      padding: 30px 10px;
       z-index: 1;
+      border-bottom: 2px solid lightgray;
 
       &__left {
         @include line_up_vertical_side-center;
-        width: 200px;
+        width: 150px;
+        padding-right: 10px;
         overflow: hidden;
-        margin-right: 20px;
 
         .user-name {
           text-decoration: underline;
@@ -110,8 +109,12 @@
       }
       &__right {
         @include line_up_side(left);
-        width: calc(100% - 220px);
+        width: calc(100% - 170px);
         overflow: scroll;
+        border: 1px solid lightgray;
+        min-height: 150px;
+        padding: 5px;
+        box-shadow: -1px -1px 1px lightgray;
 
         img {
           height: 150px;

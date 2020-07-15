@@ -13,7 +13,7 @@
         = link_to root_path, class: "logo header-menu" do
           Anytime Nature
         .header-about
-          〜自然に特化した写真共有サイト〜
+          〜自然の写真共有サイト〜
 
       .header__right
         - if user_signed_in?
@@ -22,14 +22,20 @@
             - if unchecked_notifications.any?
               .notice-circle
                 = @notifications.size
-          = link_to user_path(current_user), class: "header-menu" do
+          = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
             マイページ
-          = link_to destroy_user_session_path, method: :delete, class: "header-menu", data: { confirm: 'ログアウトしますか?' } do
-            ログアウト
         - else
           = link_to new_user_registration_path, class: "header-menu" do
             新規登録
           = link_to new_user_session_path, class: "header-menu" do
             ログイン
+      - if user_signed_in?
+        %ul#mypage-menu
+          = link_to "投稿一覧", user_path(current_user), class: "menu-link"
+          = link_to "お気に入り", favorite_users_path, class: "menu-link"
+          = link_to "フォロー", following_user_path(current_user), class: "menu-link"
+          = link_to "フォロワー", follower_user_path(current_user), class: "menu-link"
+          = link_to "通知", notifications_path, class: "menu-link"
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
     = render 'layouts/flash'
     = yield

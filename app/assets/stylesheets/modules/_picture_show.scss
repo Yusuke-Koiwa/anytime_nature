@@ -79,7 +79,7 @@
 #edit-form {
 display: none;
 position: fixed;
-z-index: 10;
+z-index: 15;
 top: 0;
 text-align: center;
 
@@ -91,7 +91,7 @@ text-align: center;
 
   #picture-title-edit {
     background-color: white;
-    z-index: 15;
+    z-index: 20;
     position: relative;
     position: absolute;
     top: 50%;
