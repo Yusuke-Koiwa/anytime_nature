@@ -25,7 +25,7 @@
         - else
           = link_to user_path(notification.picture.user) do
             = image_tag notification.picture.user.image.url, class: "user-icon" 
-          = link_to "#{notification.picture.user.name}", picture_path(notification.picture)
+          = link_to "#{notification.picture.user.name}", user_path(notification.picture.user)
           = "の"
           = link_to "投稿", picture_path(notification.picture)
           = link_to picture_path(notification.picture) do
