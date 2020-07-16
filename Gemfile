@@ -45,6 +45,11 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'capybara', '>= 2.15'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem "rspec_junit_formatter"
 end
 
 group :development do
@@ -57,6 +62,7 @@ group :development do
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
   gem 'bullet'
+  gem 'rubocop', require: false
 end
 
 group :test do
