@@ -12,11 +12,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
+    @pictures = @q.result(distinct: true).includes(:category).page(params[:page]).per(20)
   end
 
   def slideshow
-    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
+    @pictures = @q.result(distinct: true).includes(:category).page(params[:page]).per(10)
   end
 
   def picture;end
