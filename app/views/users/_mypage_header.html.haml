@@ -8,6 +8,6 @@
     = image_tag user.image.url
   .user-menu
     = link_to "投稿：#{user.pictures.count} /", user_path(user)
-    = link_to "お気に入り獲得：#{user.favorites_sum} /", popular_user_path(user)
+    = link_to "お気に入り獲得：#{user.favorites_sum} /", user_path(user)
     = link_to "フォロー：#{user.follow_users.count} /", following_user_path(user)
     = link_to "フォロワー：#{user.follower_users.count}", follower_user_path(user)

@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
   before_action :set_user, except: %i[favorite favorite_show]
   before_action :correct_user?, only: %i[edit update]
-  before_action :set_picture, only: %i[post_show popular_show favorite_show]
-  before_action :set_category, only: %i[post_show popular_show favorite_show]
-  before_action :set_tags, only: %i[post_show popular_show favorite_show]
-  before_action :set_comments, only: %i[post_show popular_show favorite_show]
+  before_action :set_picture, only: %i[post_show favorite_show]
+  before_action :set_category, only: %i[post_show favorite_show]
+  before_action :set_tags, only: %i[post_show favorite_show]
+  before_action :set_comments, only: %i[post_show favorite_show]
 
   def show
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
@@ -19,10 +19,6 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def popular
-    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count DESC").order("created_at DESC").page(params[:page]).per(20)
   end
 
   def favorite
@@ -39,11 +35,6 @@ class UsersController < ApplicationController
 
   def post_show
     @pictures = @user.pictures
-    set_prev_and_next_picture
-  end
-
-  def popular_show
-    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count ASC").order("id ASC")
     set_prev_and_next_picture
   end
 
