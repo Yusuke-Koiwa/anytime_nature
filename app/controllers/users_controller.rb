@@ -11,13 +11,11 @@ class UsersController < ApplicationController
     @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
   end
 
-  def edit
-  end
+  def edit;end
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "変更を保存しました"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: "変更を保存しました"
     else
       render :edit
     end
@@ -41,25 +39,17 @@ class UsersController < ApplicationController
 
   def post_show
     @pictures = @user.pictures
-    @previous = @pictures.where("id > ?", @picture.id).order("id ASC").first
-    @next = @pictures.where("id < ?", @picture.id).order("id DESC").first
-    @count = @pictures.index(@picture) + 1
+    set_prev_and_next_picture
   end
 
   def popular_show
     @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count ASC").order("id ASC")
-    @index = @pictures.index(@picture)
-    @previous = @pictures[@index + 1]
-    @next = @pictures[@index - 1] if @index != 0
-    @count = @pictures.index(@picture) + 1
+    set_prev_and_next_picture
   end
 
   def favorite_show
     @pictures = current_user.favorite_pictures.order("favorites.created_at ASC")
-    @index = @pictures.index(@picture)
-    @previous = @pictures[@index + 1]
-    @next = @pictures[@index - 1] if @index != 0
-    @count = @pictures.index(@picture) + 1
+    set_prev_and_next_picture
   end
 
   private
@@ -101,6 +91,13 @@ class UsersController < ApplicationController
   def set_comments
     @comment = Comment.new
     @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+  end
+
+  def set_prev_and_next_picture
+    @index = @pictures.index(@picture)
+    @previous = @pictures[@index + 1]
+    @next = @pictures[@index - 1] if @index != 0
+    @count = @pictures.index(@picture) + 1
   end
 
 end
