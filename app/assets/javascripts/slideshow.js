@@ -8,7 +8,9 @@ $(function() {
         infinite: true,
         speed: 500,
         fade: true,
-        cssEase: 'linear'
+        cssEase: 'linear',
+        prevArrow: '<div class="slide-arrow prev-arrow"><i class="fa fa-arrow-circle-left"></i></div>',
+        nextArrow: '<div class="slide-arrow next-arrow"><i class="fa fa-arrow-circle-right"></div>'
     });
   
     $('.slick-dots li').on('mouseover', function() {

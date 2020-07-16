@@ -37,6 +37,28 @@
   padding: 60px 0 30px;
   background-color: #545454;
   overflow-x: hidden;
+  position: relative;
+
+  .slide-arrow {
+    position: absolute;
+    color: lightgray;
+    z-index: 5;
+    top: 45%;
+    cursor: pointer;
+    font-size: 20px;
+
+    &:hover {
+      color: whitesmoke;
+    }
+  }
+
+  .prev-arrow {
+    left: 2%;
+  }
+
+  .next-arrow {
+    right: 2%;
+  }
   
   .slick-track {
     
