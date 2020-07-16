@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
   def set_favorite_search
     @params = search_params
-    @q = current_user.pictures.ransack(@params)
+    @q = current_user.favorite_pictures.ransack(@params)
   end
 
   def correct_user?
