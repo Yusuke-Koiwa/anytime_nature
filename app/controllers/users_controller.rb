@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
   before_action :set_user, except: %i[favorite favorite_show]
+  before_action :set_search, only: %i[show slideshow]
   before_action :correct_user?, only: %i[edit update]
   before_action :set_picture, only: %i[post_show favorite_show]
   before_action :set_category, only: %i[post_show favorite_show]
@@ -8,7 +9,11 @@ class UsersController < ApplicationController
   before_action :set_comments, only: %i[post_show favorite_show]
 
   def show
-    @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
+  end
+
+  def slideshow
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def edit;end
@@ -54,6 +59,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def set_search
+    @params = search_params
+    @q = @user.pictures.ransack(@params)
+  end
+
   def correct_user?
     return if @user == current_user || current_user.admin?
 
@@ -89,6 +99,14 @@ class UsersController < ApplicationController
     @previous = @pictures[@index + 1]
     @next = @pictures[@index - 1] if @index != 0
     @count = @pictures.index(@picture) + 1
+  end
+
+  def search_params
+    if params[:q].present?
+      params.require(:q).permit(:sorts)
+    else
+      params[:q] = { sorts: 'id desc' }
+    end
   end
 
 end

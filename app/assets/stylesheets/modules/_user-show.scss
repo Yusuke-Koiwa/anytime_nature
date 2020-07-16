@@ -46,8 +46,8 @@
 }
 
 .user-contents {
-  margin-top: 20px;
   text-align: center;
+  border-top: 5px solid white;
 
   &__nav {
     height: 30px;
@@ -95,7 +95,10 @@
         overflow: hidden;
 
         .user-name {
-          text-decoration: underline;
+          &:hover {
+            color: #545454;
+            text-decoration: underline;
+          }
         }
         .user-icon {
           img {

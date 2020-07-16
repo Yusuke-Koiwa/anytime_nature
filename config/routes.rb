@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get :favorite
     end
     member do
-      get :popular, :following, :follower
+      get :slideshow, :following, :follower
     end
   end
   resources :pictures, exept: :edit do
@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   end
   resources :notifications, only: :index
   get "/users/favorite/:picture_id", to: "users#favorite_show"
-  get "/users/:id/popular/:picture_id", to: "users#popular_show"
   get "/users/:id/:picture_id", to: "users#post_show"
   get "/categories/parent/:id/:picture_id", to: "categories#parent_picture"
   get "/categories/:id/:picture_id", to: "categories#picture"
