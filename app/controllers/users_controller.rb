@@ -36,11 +36,11 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.follow_users.includes(:pictures).page(params[:page]).per(20)
+    @users = @user.follow_users.includes(:pictures).order("relationships.created_at DESC").page(params[:page]).per(20)
   end
 
   def follower
-    @users = @user.follower_users.includes(:pictures).page(params[:page]).per(20)
+    @users = @user.follower_users.includes(:pictures).order("relationships.created_at DESC").page(params[:page]).per(20)
   end
 
   def post_show
