@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     collection do
       get :children
     end
+    member do
+      get :slideshow
+    end
   end
   resources :tags, only: :show
   resources :notifications, only: :index

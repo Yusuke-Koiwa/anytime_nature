@@ -24,7 +24,7 @@
       padding: 0 5px;
     }
 
-    .pictures-menu {
+    .pictures-index-actions {
       @include line_up_side(center);
       position: absolute;
       color: #333;
@@ -145,11 +145,27 @@
   }
 }
 
-.sort-field {
+.pictures-actions {
+  @include line_up_side(center);
   background-color: whitesmoke;
   padding-top: 20px;
-  text-align: center;
-    
+
+  .slideshow-link {
+    line-height: 20px;
+    margin-right: 30px;
+
+    i {
+      font-size: 20px;
+    }
+    span {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    &:hover {
+      color: #545454;
+    }
+  }
+
   select {
     color: #333;
     height: 30px;

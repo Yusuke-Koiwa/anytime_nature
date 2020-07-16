@@ -4,7 +4,7 @@
 
   = search_form_for @q, url: pictures_path, class: "search-home" do |f|
     = f.search_field :tags_name_cont, class: "keyword-input", placeholder: "キーワードで検索"
-    .pictures-menu
+    .pictures-index-actions
       .menu
         = link_to slideshow_pictures_path(params: {q: @params}), class: "slideshow-link" do
           = icon('fa', 'images')
