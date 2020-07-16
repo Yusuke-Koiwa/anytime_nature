@@ -8,8 +8,13 @@
       投稿する
 
 - if @pictures.present?
-  = search_form_for @q, url: tag_path(@tag), class: "sort-field" do |f|
-    = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+  .pictures-actions
+    .menu
+      = link_to slideshow_tag_path(@tag, params: {q: @params}), class: "slideshow-link" do
+        = icon('fa', 'images')
+        %span<>スライドショー
+    = search_form_for @q, url: tag_path(@tag), class: "menu" do |f|
+      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
 
 .pictures-index
   - if @pictures.present?

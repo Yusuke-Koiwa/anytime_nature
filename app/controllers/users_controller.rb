@@ -1,34 +1,38 @@
 class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
-  before_action :set_user, except: %i[favorite favorite_show]
+  before_action :set_user, except: %i[favorite favorite_show favorite_slideshow]
+  before_action :set_search, only: %i[show slideshow]
+  before_action :set_favorite_search, only: %i[favorite favorite_slideshow]
   before_action :correct_user?, only: %i[edit update]
-  before_action :set_picture, only: %i[post_show popular_show favorite_show]
-  before_action :set_category, only: %i[post_show popular_show favorite_show]
-  before_action :set_tags, only: %i[post_show popular_show favorite_show]
-  before_action :set_comments, only: %i[post_show popular_show favorite_show]
+  before_action :set_picture, only: %i[post_show favorite_show]
+  before_action :set_category, only: %i[post_show favorite_show]
+  before_action :set_tags, only: %i[post_show favorite_show]
+  before_action :set_comments, only: %i[post_show favorite_show]
 
   def show
-    @pictures = @user.pictures.order("created_at DESC").page(params[:page]).per(20)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
-  def edit
+  def slideshow
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
+
+  def edit;end
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "変更を保存しました"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: "変更を保存しました"
     else
       render :edit
     end
   end
 
-  def popular
-    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count DESC").order("created_at DESC").page(params[:page]).per(20)
+  def favorite
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
-  def favorite
-    @pictures = current_user.favorite_pictures.order("favorites.created_at DESC").page(params[:page]).per(20)
+  def favorite_slideshow
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def following
@@ -41,25 +45,12 @@ class UsersController < ApplicationController
 
   def post_show
     @pictures = @user.pictures
-    @previous = @pictures.where("id > ?", @picture.id).order("id ASC").first
-    @next = @pictures.where("id < ?", @picture.id).order("id DESC").first
-    @count = @pictures.index(@picture) + 1
-  end
-
-  def popular_show
-    @pictures = @user.pictures.where("favorites_count > ?", 0).order("favorites_count ASC").order("id ASC")
-    @index = @pictures.index(@picture)
-    @previous = @pictures[@index + 1]
-    @next = @pictures[@index - 1] if @index != 0
-    @count = @pictures.index(@picture) + 1
+    set_prev_and_next_picture
   end
 
   def favorite_show
     @pictures = current_user.favorite_pictures.order("favorites.created_at ASC")
-    @index = @pictures.index(@picture)
-    @previous = @pictures[@index + 1]
-    @next = @pictures[@index - 1] if @index != 0
-    @count = @pictures.index(@picture) + 1
+    set_prev_and_next_picture
   end
 
   private
@@ -71,6 +62,16 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_search
+    @params = search_params
+    @q = @user.pictures.ransack(@params)
+  end
+
+  def set_favorite_search
+    @params = search_params
+    @q = current_user.favorite_pictures.ransack(@params)
   end
 
   def correct_user?
@@ -101,6 +102,21 @@ class UsersController < ApplicationController
   def set_comments
     @comment = Comment.new
     @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+  end
+
+  def set_prev_and_next_picture
+    @index = @pictures.index(@picture)
+    @previous = @pictures[@index + 1]
+    @next = @pictures[@index - 1] if @index != 0
+    @count = @pictures.index(@picture) + 1
+  end
+
+  def search_params
+    if params[:q].present?
+      params.require(:q).permit(:sorts)
+    else
+      params[:q] = { sorts: 'id desc' }
+    end
   end
 
 end

@@ -1,0 +1,14 @@
+= render partial: "pictures/slideshow", locals: { pictures: @pictures, url: category_path(@category, params: {q: @params}) }
+#slideshow-contents
+  - @pictures.each do |picture|
+    .slide
+      = image_tag picture.image.url
+      .picture-actions
+        - if @category.root?
+          - link = "/categories/parent/#{picture.category.parent.id}/#{picture.id}"
+        - else
+          - link = "/categories/#{picture.category.id}/#{picture.id}"
+        = link_to "詳細をみる", link, class: "picture-link"
+        .picture-favorite{id: "favorite-#{picture.id}"}
+          = render partial: "pictures/favorite", locals: { picture: picture }
+= paginate @pictures

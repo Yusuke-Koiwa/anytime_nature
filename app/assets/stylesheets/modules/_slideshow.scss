@@ -1,0 +1,146 @@
+.slideshow-actions {
+  @include line_up_side(center);
+  height: 25px;
+  position: absolute;
+  z-index: 5;
+  color: lightgray;
+  top: 70px;
+  right: 45px;
+  font-size: 20px;
+  line-height: 25px;
+
+  .back-btn {
+    color: lightgray;
+    margin-right: 25px;
+  }
+
+  .btn {
+    cursor: pointer;
+
+    &:hover {
+      color: whitesmoke;
+    }
+
+    p {
+      float: right;
+      margin-left: 5px;
+      font-size: 15px;
+    }
+  }
+
+  #stop-btn {
+    display: none;
+  }
+}
+
+#slideshow-contents {
+  padding: 60px 0 30px;
+  background-color: #545454;
+  overflow-x: hidden;
+  position: relative;
+
+  .slide-arrow {
+    position: absolute;
+    color: lightgray;
+    z-index: 5;
+    top: 45%;
+    cursor: pointer;
+    font-size: 20px;
+
+    &:hover {
+      color: whitesmoke;
+    }
+  }
+
+  .prev-arrow {
+    left: 2%;
+  }
+
+  .next-arrow {
+    right: 2%;
+  }
+  
+  .slick-track {
+    
+    .slide {
+      height: calc(100vh - 165px);
+      @include line_up_vertical(center);
+      
+      img {
+        margin: 0 auto;
+        max-height: calc(100vh - 230px);
+        max-width: 1200px;
+        width: 90%;
+        object-fit: contain;
+      }
+
+      .picture-actions {
+        @include line_up_side(center);
+        margin: 20px 0;
+
+        .picture-link {
+          background-color: gray;
+          display: block;
+          text-align: center;
+          width: 125px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 15px;
+    
+          &:hover {
+            background-color: lightgray;
+          }
+        }
+          
+        .picture-favorite {
+          @include line_up_side(center);
+          color: lightgray;
+          margin-left: 20px;
+  
+          .fav-btn {
+            margin-right: 5px;
+            font-size: 18px;
+  
+            &:hover {
+              filter: drop-shadow(0 0 4px red);
+            }
+  
+            &--on {
+              color: rgb(224, 36, 94);
+            }
+  
+            &--off {
+              color: lightgray;
+            }
+          }
+  
+          .fav-count--on {
+            color: rgb(224, 36, 94);
+          }
+        }
+      }
+    }
+  }
+
+  .slick-dots {
+    background-color: #545454 !important;
+    position: static !important;
+
+    button {
+      &:before {
+        font-size: 20px !important;
+      }
+      &:hover:before {
+        color: $main-color !important;
+      }
+    }
+
+    
+    .slick-active button:before{
+      color: $main-color !important;
+    }
+  }
+}
+.slick-dotted {
+  margin-bottom: 0 !important;
+}

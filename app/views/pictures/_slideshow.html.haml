@@ -1,0 +1,14 @@
+%link{rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
+%link{rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"}
+%script{type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
+
+.slideshow-actions
+  = link_to url, class: "back-btn btn" do
+    = icon('fa', 'undo-alt') 
+    %p 戻る
+  #play-btn.btn
+    = icon('fa', 'play')
+    %p 再生
+  #stop-btn.btn
+    = icon('fa', 'stop')
+    %p 停止

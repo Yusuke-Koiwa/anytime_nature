@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update] do
     resources :relationships, only: %i[create destroy]
     collection do
-      get :favorite
+      get :favorite, :favorite_slideshow
     end
     member do
-      get :popular, :following, :follower
+      get :slideshow, :following, :follower
     end
   end
   resources :pictures, exept: :edit do
+    collection do
+      get :slideshow
+    end
     resources :favorites, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
   end
@@ -18,11 +21,17 @@ Rails.application.routes.draw do
     collection do
       get :children
     end
+    member do
+      get :slideshow
+    end
   end
-  resources :tags, only: :show
+  resources :tags, only: :show do
+    member do 
+      get :slideshow
+    end
+  end
   resources :notifications, only: :index
   get "/users/favorite/:picture_id", to: "users#favorite_show"
-  get "/users/:id/popular/:picture_id", to: "users#popular_show"
   get "/users/:id/:picture_id", to: "users#post_show"
   get "/categories/parent/:id/:picture_id", to: "categories#parent_picture"
   get "/categories/:id/:picture_id", to: "categories#picture"
