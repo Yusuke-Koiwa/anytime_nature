@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update] do
     resources :relationships, only: %i[create destroy]
     collection do
-      get :favorite
+      get :favorite, :favorite_slideshow
     end
     member do
       get :slideshow, :following, :follower

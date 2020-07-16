@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
-  before_action :set_user, except: %i[favorite favorite_show]
+  before_action :set_user, except: %i[favorite favorite_show favorite_slideshow]
   before_action :set_search, only: %i[show slideshow]
+  before_action :set_favorite_search, only: %i[favorite favorite_slideshow]
   before_action :correct_user?, only: %i[edit update]
   before_action :set_picture, only: %i[post_show favorite_show]
   before_action :set_category, only: %i[post_show favorite_show]
@@ -27,7 +28,11 @@ class UsersController < ApplicationController
   end
 
   def favorite
-    @pictures = current_user.favorite_pictures.order("favorites.created_at DESC").page(params[:page]).per(20)
+    @pictures = @q.result(distinct: true).page(params[:page]).per(20)
+  end
+
+  def favorite_slideshow
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def following
@@ -62,6 +67,11 @@ class UsersController < ApplicationController
   def set_search
     @params = search_params
     @q = @user.pictures.ransack(@params)
+  end
+
+  def set_favorite_search
+    @params = search_params
+    @q = current_user.pictures.ransack(@params)
   end
 
   def correct_user?
