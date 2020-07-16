@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       get :slideshow
     end
   end
-  resources :tags, only: :show
+  resources :tags, only: :show do
+    member do 
+      get :slideshow
+    end
+  end
   resources :notifications, only: :index
   get "/users/favorite/:picture_id", to: "users#favorite_show"
   get "/users/:id/popular/:picture_id", to: "users#popular_show"

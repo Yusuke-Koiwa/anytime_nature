@@ -1,12 +1,16 @@
 class TagsController < ApplicationController
   before_action :set_tag
+  before_action :set_search, only: %i[show slideshow]
   before_action :set_picture, only: :picture
   before_action :set_tags, only: :picture
   before_action :set_comments, only: :picture
 
   def show
-    @q = @tag.pictures.ransack(search_params)
     @pictures = @q.result(distinct: true).page(params[:page]).per(20)
+  end
+
+  def slideshow
+    @pictures = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def picture
@@ -19,6 +23,11 @@ class TagsController < ApplicationController
 
   def set_tag
     @tag = Tag.find(params[:id])
+  end
+
+  def set_search
+    @params = search_params
+    @q = @tag.pictures.ransack(@params)
   end
 
   def set_picture
