@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
+  before_action :move_to_login, only: %i[edit update favorite favorite_slideshow], unless: :user_signed_in?
   before_action :set_user, except: %i[favorite favorite_show favorite_slideshow]
   before_action :set_search, only: %i[show slideshow]
   before_action :set_favorite_search, only: %i[favorite favorite_slideshow]
