@@ -101,7 +101,7 @@ class UsersController < ApplicationController
 
   def set_comments
     @comment = Comment.new
-    @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    @comments = @picture.comments.includes(:user).order("id DESC").page(params[:page]).per(10)
   end
 
   def set_prev_and_next_picture
