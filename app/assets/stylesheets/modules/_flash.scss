@@ -1,6 +1,10 @@
 #flash {
   color: white;
   text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  z-index: 20;
 
   .alert{
     background-color: salmon;
