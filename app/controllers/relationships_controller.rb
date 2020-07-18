@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
   before_action :move_to_login, unless: :user_signed_in?
   before_action :set_user
+  before_action :correct_user?
 
   def create
     current_user.follow(@user)
@@ -22,5 +23,12 @@ class RelationshipsController < ApplicationController
   def move_to_login
     flash[:alert] = "ログインが必要です"
     redirect_to new_user_session_path
+  end
+
+  def correct_user?
+    return unless @user == current_user
+
+    flash[:alert] = "無効な操作です"
+    redirect_to root_path
   end
 end
