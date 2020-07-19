@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :slideshow, :following, :follower
     end
   end
-  resources :pictures, exept: :edit do
+  resources :pictures, except: :edit do
     collection do
       get :slideshow
     end

@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
     @category = @picture.category
     @tag_list = @picture.tags.pluck(:name).join(",")
     @comment = Comment.new
-    @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    @comments = @picture.comments.includes(:user).order("id DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -27,9 +27,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-    tag_list = params[:tag_list].split(",")
+    tag_list = params[:tag_list].split(",") if params[:tag_list].present?
     if @picture.save
-      @picture.save_tags(tag_list)
+      @picture.save_tags(tag_list) if tag_list.present?
       redirect_to root_path, notice: "写真を投稿しました"
     else
       redirect_to new_picture_path, alert: "必須項目を全て入力して下さい"
@@ -37,8 +37,10 @@ class PicturesController < ApplicationController
   end
 
   def update
-    tag_list = params[:tag_list].split(",")
-    @picture.save_tags(tag_list)
+    if params[:tag_list].present?
+      tag_list = params[:tag_list].split(",")
+      @picture.save_tags(tag_list)
+    end
     redirect_back(fallback_location: root_path)
   end
 

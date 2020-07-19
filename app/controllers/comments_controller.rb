@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :move_to_login, unless: :user_signed_in?
   before_action :set_comment, only: :destroy
+  before_action :correct_user?, only: :destroy
 
   def create
     @picture = Picture.find(params[:picture_id])
@@ -28,6 +29,13 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def correct_user?
+    return if @comment.user == current_user || current_user.admin?
+
+    flash[:alert] = "権限がありません"
+    redirect_to root_path
   end
 
 end

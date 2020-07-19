@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_login, only: %i[edit update], unless: :user_signed_in?
+  before_action :move_to_login, only: %i[edit update favorite favorite_slideshow], unless: :user_signed_in?
   before_action :set_user, except: %i[favorite favorite_show favorite_slideshow]
   before_action :set_search, only: %i[show slideshow]
   before_action :set_favorite_search, only: %i[favorite favorite_slideshow]
@@ -36,11 +36,11 @@ class UsersController < ApplicationController
   end
 
   def following
-    @users = @user.follow_users.includes(:pictures).page(params[:page]).per(20)
+    @users = @user.follow_users.includes(:pictures).order("relationships.created_at DESC").page(params[:page]).per(20)
   end
 
   def follower
-    @users = @user.follower_users.includes(:pictures).page(params[:page]).per(20)
+    @users = @user.follower_users.includes(:pictures).order("relationships.created_at DESC").page(params[:page]).per(20)
   end
 
   def post_show
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
 
   def set_comments
     @comment = Comment.new
-    @comments = @picture.comments.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    @comments = @picture.comments.includes(:user).order("id DESC").page(params[:page]).per(10)
   end
 
   def set_prev_and_next_picture

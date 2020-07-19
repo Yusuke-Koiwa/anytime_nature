@@ -15,8 +15,9 @@ class User < ApplicationRecord
 
   mount_uploader :image, IconsUploader
   
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
+  validates :password, :password_confirmation, presence: true, on: :create
 
   def already_favorite?(picture)
     favorite_pictures.include?(picture)

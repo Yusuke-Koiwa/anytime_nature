@@ -45,6 +45,12 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'capybara', '>= 2.15'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem "rspec_junit_formatter"
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -57,14 +63,15 @@ group :development do
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
   gem 'bullet'
+  gem 'rubocop', require: false
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 3.0'
+  gem 'faker', '~> 2.8'
 end
 
 group :production do
