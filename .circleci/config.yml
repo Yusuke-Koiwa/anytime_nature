@@ -1,0 +1,83 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          - BUNDLER_VERSION: 2.1.4
+      - image: circleci/mysql:5.7
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
+
+commands:
+  setup:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+  
+jobs:
+  build:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - setup
+      - run: mv config/database.yml.ci config/database.yml 
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    executor: default
+    steps:
+      - setup
+      - add_ssh_keys:
+          fingerprints:
+            - "eb:da:d4:9e:dc:9c:f0:24:47:35:77:cd:17:c2:fc:cd"
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
