@@ -60,7 +60,24 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+  deploy:
+    executor: default
+    steps:
+      - setup
+      - add_ssh_keys:
+          fingerprints:
+            - "eb:da:d4:9e:dc:9c:f0:24:47:35:77:cd:17:c2:fc:cd"
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
 workflows:
   build_and_deploy:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
