@@ -1,24 +1,49 @@
-# README
+# Anytime Nature
+自然の写真だけが投稿できる写真投稿サイトです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+作品URL: https://www.anytime-nature.xyz/
 
-Things you may want to cover:
+## 制作背景
+自然を見ることでリラックスしたり、ストレスが軽減する効果があると言われています。
 
-* Ruby version
+私自身も、自然に触れることを目的に旅行に行くことが好きなのですが、日常生活の中でも自然を見る機会を増やしたいと感じ、このアプリを作ろうと考えました。
 
-* System dependencies
+自然を見てリラックスすることがテーマなので、スライドショー表示機能を取り入れることで、写真を探すなどの煩雑な操作を極力無くすことを意識しました。
 
-* Configuration
+## 使用技術
 
-* Database creation
+### バックエンド
+Ruby / Ruby on Rails
+### フロントエンド
+HTML / CSS / Haml / SCSS / JavaScript / jQuery
+### 環境構築
+#### 開発環境
+Docker ( MySQL / Nginx / puma )
+#### 本番環境
+- MySQL / Nginx / Unicorn
 
-* Database initialization
+- AWS ( EC2 / S3 / RDS / Route53 / ELB / ACM ) 
 
-* How to run the test suite
+- CircleCIによるCI/CDパイプライン構築
 
-* Services (job queues, cache servers, search engines, etc.)
+## アプリケーションの機能一覧
+- アカウント登録 / ログイン機能 ( devise )
+- 管理ユーザー機能
+- CRUD機能
+- 画像アップロード機能 ( CarrierWave, AWS S3 )
+- ページネーション機能 ( kaminari )
+- 投稿の検索 / ソート機能 ( ransack )
+- カテゴリー登録&検索機能 ( ancestry )
+- タグ登録&検索機能 ( tag-it )
+- 投稿へのコメント機能
+- 投稿のお気に入り機能
+- フォロー機能
+- 通知機能
+- 投稿一覧のスライドショー表示機能 ( Slick )
+- 単体・機能・統合テスト ( rspec )
 
-* Deployment instructions
-
-* ...
+## 今後の開発予定
+- お気に入りのフォルダ分け機能
+- スライドショーの詳細設定機能
+- レスポンシブ化
+- 統合テストの充実
