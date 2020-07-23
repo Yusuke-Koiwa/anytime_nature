@@ -4,14 +4,13 @@
       Log in
     = link_to "→ アカウント作成", new_user_registration_path, class: "form__title--other"
   .login_message
-    %h3 以下のアカウントでログイン出来ます。
-    %ul
-      %li メールアドレス: test@test.com
-      %li パスワード: aaa111
+    = link_to '→ ゲストログインする', users_guest_sign_in_path, method: :post
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
+      Email
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
     .field
+      Password
       = f.password_field :password, autocomplete: "current-password", placeholder: "Password"
     .actions
       = f.submit "ログイン", class: "submit-btn"

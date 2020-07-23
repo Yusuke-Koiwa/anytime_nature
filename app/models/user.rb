@@ -64,4 +64,10 @@ class User < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def self.guest
+    find_by(email: 'test@test.com') do |user|
+      user.password = "aaa111"
+    end
+  end
+
 end

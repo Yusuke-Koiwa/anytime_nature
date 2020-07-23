@@ -28,6 +28,13 @@
 
   .login_message {
     margin-bottom: 30px;
+
+    a {
+      color: $main-color;
+      &:hover {
+        color: $main-color-light;
+      }
+    }
   }
 
   .field {
