@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'sessions/sessions#guest_login'
+  end
   root to: "pictures#index"
   resources :users, only: %i[show edit update] do
     resources :relationships, only: %i[create destroy]
