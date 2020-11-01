@@ -38,7 +38,7 @@
         - else
           - url = "/categories/#{picture.category.id}/#{picture.id}"
         = link_to url do
-          = image_tag picture.image_url
+          = image_tag picture.image_url(:middle)
         .picture-info
           .picture-comments
             = icon('far', 'comment')
