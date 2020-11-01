@@ -26,7 +26,7 @@
     - @pictures.each do |picture|
       .picture
         = link_to picture_path(picture) do
-          = image_tag picture.image_url
+          = image_tag picture.image_url(:middle)
         .picture-info
           .picture-comments
             = icon('far', 'comment')
