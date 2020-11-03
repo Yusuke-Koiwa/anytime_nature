@@ -2,11 +2,12 @@
   .loader
 
 #pictures-nav
-  - breadcrumb :favorite
-  = render "layouts/breadcrumbs"
-  #action-buttons
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+  #nav-container
+    - breadcrumb :favorite
+    = render "layouts/breadcrumbs"
+    #action-buttons
+      = link_to new_picture_path, class: "btn new-picture-link" do
+        投稿する
 
 - if @pictures.present?
   .pictures-actions

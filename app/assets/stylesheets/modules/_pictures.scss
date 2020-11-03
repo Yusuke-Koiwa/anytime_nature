@@ -1,10 +1,16 @@
 #pictures-nav {
-  @include line_up_side(space-between);
   width: 100%;
   height: 80px;
-  padding: 0 45px;
-  position: relative;
+  padding: 0 40px;
   border-bottom: 1px solid whitesmoke;
+}
+
+#nav-container {
+  @include line_up_side(space-between);
+  height: 100%;
+  position: relative;
+  max-width: 1750px;
+  margin: 0 auto;
 }
 
 #front-back {
@@ -44,7 +50,7 @@
   }
 }
 
-#category-search a{
+#category-search {
   color: $main-color;
 
   &:hover {
@@ -54,20 +60,23 @@
 }
 
 #search-home {
-  @include line_up_side(space-between);
+  position: relative;
+  width: 400px;
   line-height: 30px;
 
   button {
     display: block;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
     background-color: $main-color;
     color: white;
     width: 30px;
     height: 30px;
-    margin-left: 3px;
     border-style: none;
-    border-radius: 3px;
+    border-radius: 2px;
     cursor: pointer;
-    
+
     &:hover {
       background-color: #3fd6c7;
     }
@@ -75,9 +84,12 @@
 }
 
 #keyword-input {
-  width: 400px;
+  width: 100%;
   height: 30px;
   padding: 0 5px;
+  background-color: whitesmoke;
+  border: none;
+  font-size: 16px;
 }
 
 #pictures-index-actions {
@@ -200,7 +212,7 @@
         transform: scale(1.05, 1.05);
       }
     }
-  
+
     .picture-info {
       @include line_up_side(flex-end);
       background: linear-gradient(to bottom, #333, rgba(51, 51, 51, 0.8));
@@ -286,5 +298,40 @@
   a:hover {
     color: gray;
     text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  #action-buttons {
+    display: none;
+  }
+
+  #search-home{
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #pictures-nav {
+    padding: 0 20px;
+    height: 50px;
+  }
+
+  #category-search {
+    display: none;
+  }
+
+  #search-home {
+    width: 100%;
+    min-width: 280px;
+  }
+
+  #keyword-input {
+    font-size: 14px;
+    height: 30px;
+  }
+
+  .picture, .picture a img {
+    height: 200px !important;
   }
 }

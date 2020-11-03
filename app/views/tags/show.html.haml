@@ -2,13 +2,13 @@
   .loader
 
 #pictures-nav
+  #nav-container
+    - breadcrumb :tag_show
+    = render "layouts/breadcrumbs"
 
-  - breadcrumb :tag_show
-  = render "layouts/breadcrumbs"
-
-  #action-buttons
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+    #action-buttons
+      = link_to new_picture_path, class: "btn new-picture-link" do
+        投稿する
 
 - if @pictures.present?
   .pictures-actions

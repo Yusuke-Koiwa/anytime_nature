@@ -39,13 +39,13 @@
         - if user_signed_in?
           %ul#mypage-menu
             = link_to "マイページ", user_path(current_user), class: "menu-link"
-            = link_to new_picture_path, class: "menu-link menu-link--post" do
+            = link_to new_picture_path, class: "menu-link menu-link--hidden" do
               = icon('fas', 'upload')
               %span="投稿する"
             = link_to "お気に入り", favorite_users_path, class: "menu-link"
-            = link_to "フォロー", following_user_path(current_user), class: "menu-link"
-            = link_to "フォロワー", follower_user_path(current_user), class: "menu-link"
+            = link_to "フォロー / フォロワー", following_user_path(current_user), class: "menu-link"
             = link_to "通知", notifications_path, class: "menu-link"
+            = link_to 'カテゴリー検索', categories_path, class: "menu-link menu-link--hidden"
             = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
     = render 'layouts/flash'
     = yield

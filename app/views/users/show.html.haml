@@ -2,21 +2,24 @@
   .loader
 
 #pictures-nav
-  - if @user == current_user
-    - breadcrumb :mypage
-  - else
-    - breadcrumb :user
-  = render "layouts/breadcrumbs"
-  #action-buttons
-    - if user_signed_in? && @user == current_user
-      = link_to favorite_users_path, class: "btn favorite-picture-link" do
-        お気に入りした写真
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+  #nav-container
+    - if @user == current_user
+      - breadcrumb :mypage
+    - else
+      - breadcrumb :user
+    = render "layouts/breadcrumbs"
+    #action-buttons
+      - if user_signed_in? && @user == current_user
+        = link_to favorite_users_path, class: "btn favorite-picture-link" do
+          お気に入りした写真
+      = link_to new_picture_path, class: "btn new-picture-link" do
+        投稿する
+
 - if user_signed_in? && @user == current_user
   = render partial: "users/mypage_header", locals: { user: @user }
 - else
   = render partial: "users/user_header", locals: { user: @user }
+
 .user-contents
   - if @pictures.present?
     .pictures-actions

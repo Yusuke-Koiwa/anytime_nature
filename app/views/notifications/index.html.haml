@@ -1,11 +1,12 @@
 #pictures-nav
-  - breadcrumb :notifications
-  = render "layouts/breadcrumbs"
-  #action-buttons
-    = link_to favorite_users_path, class: "btn favorite-picture-link" do
-      お気に入りした写真
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+  #nav-container
+    - breadcrumb :notifications
+    = render "layouts/breadcrumbs"
+    #action-buttons
+      = link_to favorite_users_path, class: "btn favorite-picture-link" do
+        お気に入りした写真
+      = link_to new_picture_path, class: "btn new-picture-link" do
+        投稿する
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 .notifications
