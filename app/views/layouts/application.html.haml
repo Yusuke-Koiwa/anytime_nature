@@ -2,6 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width,initial-scale=1.0"}
     %title AnytimeNature
     = csrf_meta_tags
     = csp_meta_tag
@@ -9,38 +10,40 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    .header
-      .header__left
-        = link_to root_path, class: "logo header-menu" do
-          Anytime Nature
-        .header-about
-          〜自然の写真共有サイト〜
+    #header
+      #header__container
+        #header__container__left
+          = link_to root_path, class: "logo header-menu" do
+            Anytime Nature
+          #header-about
+            〜自然の写真だけの投稿サイト〜
 
-      .header__right
+        #header__container__right
+          - if user_signed_in?
+            = link_to notifications_path, class: "header-menu bell" do
+              = icon('far', 'bell')
+              - if unchecked_notifications.any?
+                .notice-circle
+                  = @notifications.size
+            = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
+              マイページ
+            %span.nav_toggle
+              %i
+              %i
+              %i
+          - else
+            = link_to new_user_registration_path, class: "header-menu" do
+              登録
+            = link_to new_user_session_path, class: "header-menu" do
+              ログイン
         - if user_signed_in?
-          = link_to notifications_path, class: "header-menu bell" do
-            = icon('far', 'bell')
-            - if unchecked_notifications.any?
-              .notice-circle
-                = @notifications.size
-          = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
-            マイページ
-          %span.nav_toggle
-            %i
-            %i
-            %i
-        - else
-          = link_to new_user_registration_path, class: "header-menu" do
-            新規登録
-          = link_to new_user_session_path, class: "header-menu" do
-            ログイン
-      - if user_signed_in?
-        %ul#mypage-menu
-          = link_to "マイページ", user_path(current_user), class: "menu-link"
-          = link_to "お気に入り", favorite_users_path, class: "menu-link"
-          = link_to "フォロー", following_user_path(current_user), class: "menu-link"
-          = link_to "フォロワー", follower_user_path(current_user), class: "menu-link"
-          = link_to "通知", notifications_path, class: "menu-link"
-          = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
+          %ul#mypage-menu
+            = link_to "マイページ", user_path(current_user), class: "menu-link"
+            = link_to "投稿する", new_picture_path, class: "menu-link menu-link--post"
+            = link_to "お気に入り", favorite_users_path, class: "menu-link"
+            = link_to "フォロー", following_user_path(current_user), class: "menu-link"
+            = link_to "フォロワー", follower_user_path(current_user), class: "menu-link"
+            = link_to "通知", notifications_path, class: "menu-link"
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
     = render 'layouts/flash'
     = yield

@@ -8,7 +8,9 @@ $(function(){
   $('#mypage-menu').hover(function(){
     $('#mypage-menu').addClass('show');
   }, function(){
-    $('#mypage-menu').removeClass('show');
+    if (!($('.nav_toggle').hasClass('show'))) {
+      $('#mypage-menu').removeClass('show');
+    }
   });
 
   $('.nav_toggle').on('click', function(){
