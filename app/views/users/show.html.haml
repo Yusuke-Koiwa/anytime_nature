@@ -24,10 +24,10 @@
   - if @pictures.present?
     .pictures-actions
       .menu
-        = link_to slideshow_user_path(@user, params: {q: @params}), class: "slideshow-link" do
+        = link_to slideshow_user_path(@user, params: {q: @params}), id: "slideshow-link" do
           = icon('fa', 'images')
           %span<>スライドショー
-      = search_form_for @q, url: user_path(@user), class: "menu" do |f|
+      = search_form_for @q, url: user_path(@user), class: "menu", id: "#select-sort" do |f|
         = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
   .user-contents__body
     .pictures-index

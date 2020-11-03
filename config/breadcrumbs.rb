@@ -3,7 +3,6 @@ crumb :root do
 end
 
 crumb :show do
-  picture = Picture.find(params[:id])
   link "写真", "#"
 end
 
@@ -51,23 +50,13 @@ crumb :post_show do |user|
   end
 end
 
-crumb :popular_show do |user|
-  user = User.find(params[:id])
-  link "人気投稿", "#"
-  if user == current_user
-    parent :mypage
-  else
-    parent :user
-  end
-end
-
 crumb :favorite_show do
-  link "写真", "#"
+  link "", "#"
   parent :favorite
 end
 
 crumb :category_index do
-  link "カテゴリーから探す", categories_path
+  link "カテゴリー", categories_path
 end
 
 crumb :parent_category do |category|
@@ -84,7 +73,7 @@ end
 
 crumb :category_picture do |category|
   category = Category.find(params[:id])
-  link "写真", "#"
+  link "", "#"
   if category.root?
     parent :parent_category
   else
@@ -98,7 +87,7 @@ crumb :tag_show do |tag|
 end
 
 crumb :tag_picture do |tag|
-  link "写真", "#"
+  link "", "#"
   parent :tag_show
 end
 

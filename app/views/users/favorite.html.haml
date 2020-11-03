@@ -12,10 +12,10 @@
 - if @pictures.present?
   .pictures-actions
     .menu
-      = link_to favorite_slideshow_users_path(params: {q: @params}), class: "slideshow-link" do
+      = link_to favorite_slideshow_users_path(params: {q: @params}), id: "slideshow-link" do
         = icon('fa', 'images')
         %span<>スライドショー
-    = search_form_for @q, url: favorite_users_path, class: "menu" do |f|
+    = search_form_for @q, url: favorite_users_path, class: "menu", id: "#select-sort" do |f|
       = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
 
 .pictures-index
