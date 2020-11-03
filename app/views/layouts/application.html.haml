@@ -25,6 +25,10 @@
                 = @notifications.size
           = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
             マイページ
+          %span.nav_toggle
+            %i
+            %i
+            %i
         - else
           = link_to new_user_registration_path, class: "header-menu" do
             新規登録
