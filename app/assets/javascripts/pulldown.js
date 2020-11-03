@@ -1,17 +1,17 @@
 $(function(){
   $('#mypage-link').hover(function(){
-    $('#mypage-menu').show();
+    $('#mypage-menu').addClass('show');
   }, function(){
-    $('#mypage-menu').hide();
+    $('#mypage-menu').removeClass('show');
   });
 
   $('#mypage-menu').hover(function(){
-    $('#mypage-menu').show();
+    $('#mypage-menu').addClass('show');
   }, function(){
-    $('#mypage-menu').hide();
+    $('#mypage-menu').removeClass('show');
   });
 
   $('.nav_toggle').on('click', function(){
-    $('.nav_toggle, nav').toggleClass('show')
-  })
+    $('.nav_toggle, #mypage-menu').toggleClass('show');
+  });
 });
