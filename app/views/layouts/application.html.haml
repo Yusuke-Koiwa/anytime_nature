@@ -39,7 +39,9 @@
         - if user_signed_in?
           %ul#mypage-menu
             = link_to "マイページ", user_path(current_user), class: "menu-link"
-            = link_to "投稿する", new_picture_path, class: "menu-link menu-link--post"
+            = link_to new_picture_path, class: "menu-link menu-link--post" do
+              = icon('fas', 'upload')
+              %span="投稿する"
             = link_to "お気に入り", favorite_users_path, class: "menu-link"
             = link_to "フォロー", following_user_path(current_user), class: "menu-link"
             = link_to "フォロワー", follower_user_path(current_user), class: "menu-link"

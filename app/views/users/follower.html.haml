@@ -1,7 +1,7 @@
-.pictures-nav
+#pictures-nav
   - breadcrumb :follower
   = render "layouts/breadcrumbs"
-  .links
+  #action-buttons
     - if user_signed_in? && @user == current_user
       = link_to favorite_users_path, class: "btn favorite-picture-link" do
         お気に入りした写真

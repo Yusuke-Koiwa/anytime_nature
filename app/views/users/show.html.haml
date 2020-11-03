@@ -1,13 +1,13 @@
 #loading
   .loader
 
-.pictures-nav
+#pictures-nav
   - if @user == current_user
     - breadcrumb :mypage
   - else
     - breadcrumb :user
   = render "layouts/breadcrumbs"
-  .links
+  #action-buttons
     - if user_signed_in? && @user == current_user
       = link_to favorite_users_path, class: "btn favorite-picture-link" do
         お気に入りした写真

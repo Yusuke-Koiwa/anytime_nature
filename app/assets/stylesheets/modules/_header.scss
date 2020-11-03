@@ -98,6 +98,11 @@
         &:hover {
           background-color: #abf8e454;
         }
+
+        .fa-upload {
+          color: $main-color;
+          margin-right: 5px;
+        }
       }
     }
     
@@ -128,7 +133,7 @@
           bottom: 0;
         }
       }
-  
+
       &.show i {
         &:nth-child(1) {
           transform: translateY(13px) rotate(-45deg);
