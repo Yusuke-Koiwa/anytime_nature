@@ -128,3 +128,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+a {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  cursor:pointer;
+}
