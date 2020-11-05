@@ -2,20 +2,18 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      picture: 写真
     attributes:
       user:
         id: ID
-        name: ニックネーム
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード再入力
+        name: Nickname
+        email: Email
+        password: Password
+        password_confirmation: Password 再入力
         current_password: 現在のパスワード
         crypted_password: パスワード
         created_at: 作成日
         updated_at: 更新日
-    models:
-      picture: 写真
-    attributes:
       picture:
         id: ID
         title: タイトル
