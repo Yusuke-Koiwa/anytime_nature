@@ -9,7 +9,7 @@
   z-index: 9999;
 
   .loader {
-    color: #ffffff;
+    color: $main-color;
     font-size: 20px;
     margin: 100px auto;
     width: 1em;
@@ -23,6 +23,7 @@
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     top: 40%;
+    opacity: 0.5;
   }
   @-webkit-keyframes load4 {
     0%,
