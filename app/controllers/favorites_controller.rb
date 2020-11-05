@@ -20,7 +20,6 @@ class FavoritesController < ApplicationController
   end
 
   def move_to_login
-    flash[:alert] = "ログインが必要です"
-    redirect_to new_user_session_path
+    redirect_to new_user_session_path, alert: "ログインが必要です"
   end
 end

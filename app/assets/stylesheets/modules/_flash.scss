@@ -5,6 +5,8 @@
   width: 100%;
   top: 50px;
   z-index: 20;
+  height: 50px;
+  line-height: 50px;
 
   .alert{
     background-color: salmon;
@@ -12,5 +14,11 @@
   
   .notice {
     background-color: $main-color;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #flash {
+    font-size: 14px;
   }
 }

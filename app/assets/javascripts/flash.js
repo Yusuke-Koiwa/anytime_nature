@@ -1,5 +1,7 @@
 $(function(){
-  setTimeout(function(){
-    $('#flash').fadeOut();
-  }, 1500)
+  if ($('#flash')) {
+    setTimeout(function(){
+      $('#flash').fadeOut();
+    }, 2000)
+  }
 });
