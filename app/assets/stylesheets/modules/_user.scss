@@ -1,13 +1,10 @@
-.form {
-  position: fixed;
-  z-index: 5;
+#account-form {
   background-color: white;
-  width: 500px;
+  max-width: 500px;
+  width: 95%;
+  margin: 60px auto;
   padding: 30px;
   border: 1px solid $main-color;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   box-shadow: 1px 1px 5px gray;
 
   &__title {
@@ -23,10 +20,14 @@
     &--other {
       color: gray;
       font-size: 14px;
+
+      &:hover {
+        color: #333333;
+      }
     }
   }
 
-  .login_message {
+  #login_message {
     margin-bottom: 30px;
 
     a {
@@ -52,6 +53,7 @@
 
     .prev-contents {
       text-align: center;
+      margin-top: 15px;
 
       img {
         width: 100px;
@@ -67,22 +69,20 @@
     }
   }
 
-  .actions {
-    width: 100%;
-    text-align: center;
+  #submit-btn {
+    background: linear-gradient(to right, #23aeba,#53d8b9);
+    color: white;
+    display: block;
+    margin: 0 auto 10px;
+    border-style: none;
+    border-radius: 25px;
+    max-width: 250px;
+    width: 95%;
+    height: 50px;
+    cursor: pointer;
 
-    input {
-      background: linear-gradient(to right, #23aeba,#53d8b9);
-      color: white;
-      border-style: none;
-      border-radius: 25px;
-      width: 50%;
-      height: 50px;
-      cursor: pointer;
-
-      &:hover {
-        background: linear-gradient(to right, #26bdca,#59e7c6);;
-      }
+    &:hover {
+      background: linear-gradient(to right, #26bdca,#59e7c6);;
     }
   }
 }
@@ -95,5 +95,17 @@
   li {
     list-style-type: disc;
     list-style-position:inside;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #account-form {
+    margin: 30px auto;
+    padding: 30px 20px;
+  }
+
+  #login_message, #error_explanation {
+    font-size: 14px;
   }
 }
