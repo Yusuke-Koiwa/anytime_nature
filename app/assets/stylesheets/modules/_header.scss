@@ -1,6 +1,8 @@
 @import "mixin/mixin";
 
 #header {
+  position: fixed;
+  z-index: 20;
   background-color: white;
   color: #333;
   width: 100%;
@@ -44,6 +46,7 @@
     position: relative;
     max-width: 1750px;
     margin: 0 auto;
+    height: 50px;
 
       &__left {
         display: flex;
@@ -63,48 +66,74 @@
       &__right {
         display: flex;
         align-items: center;
+        height: 100%;
       }
   }
 
-  .nav_toggle {
-    display: none;
-    position: relative;
-    width: 2rem;
-    height: 1.75rem;
-    cursor: pointer;
+}
 
-    i {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background-color: $main-color;
-      position: absolute;
-      transition: transform .5s, opacity .5s;
+#nav_toggle {
+  display: none;
+  position: relative;
+  width: 2rem;
+  height: 1.75rem;
+  cursor: pointer;
 
-      &:nth-child(1) {
-        top: 0;
-      }
-      &:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      &:nth-child(3) {
-        bottom: 0;
-      }
+  i {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: $main-color;
+    position: absolute;
+    transition: transform .5s, opacity .5s;
+
+    &:nth-child(1) {
+      top: 0;
     }
-
-    &.show i {
-      &:nth-child(1) {
-        transform: translateY(13px) rotate(-45deg);
-      }
-      &:nth-child(2) {
-        opacity: 0;
-      }
-      &:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
-      }
+    &:nth-child(2) {
+      top: 0;
+      bottom: 0;
+      margin: auto;
     }
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  &.show i {
+    &:nth-child(1) {
+      transform: translateY(12px) rotate(-45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: translateY(-12px) rotate(45deg);
+    }
+  }
+}
+
+#login-icon {
+  display: none;
+
+  #login-wraper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $main-color;
+
+    &:hover {
+      color: $main-color-light;
+    }
+  }
+
+  i {
+    font-size: 22px;
+  }
+
+  span {
+    font-size: 10px;
+    line-height: 10px;
   }
 }
 
@@ -119,7 +148,7 @@
   opacity: 0;
   text-align: center;
   visibility: hidden;
-  transition: opacity .5s, visibility .5s;
+  transition: opacity .3s, visibility .3s;
 
   &.show {
     opacity: 1;
@@ -148,6 +177,11 @@
       margin-right: 5px;
     }
   }
+}
+
+#content-space {
+  width: 100%;
+  height: 50px;
 }
 
 #breadcrumbs {
@@ -179,11 +213,7 @@
     right: -35px !important;
   }
 
-  .nav_toggle {
-    display: block !important;
-  }
-
-  .menu-link--hidden {
+  #nav_toggle, .menu-link--hidden, #login-icon {
     display: block !important;
   }
 }

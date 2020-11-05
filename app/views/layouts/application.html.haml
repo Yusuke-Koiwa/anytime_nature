@@ -27,7 +27,7 @@
                   = @notifications.size
             = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
               マイページ
-            %span.nav_toggle
+            %span#nav_toggle
               %i
               %i
               %i
@@ -36,6 +36,10 @@
               登録
             = link_to new_user_session_path, class: "header-menu" do
               ログイン
+            = link_to new_user_session_path, id: "login-icon" do
+              #login-wraper
+                = icon('fas', 'sign-in-alt')
+                %span="Log in"
         - if user_signed_in?
           %ul#mypage-menu
             = link_to "マイページ", user_path(current_user), class: "menu-link"
@@ -49,5 +53,6 @@
               = icon('fas', 'search')
               %span='カテゴリー検索'
             = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
+    #content-space
     = render 'layouts/flash'
     = yield
