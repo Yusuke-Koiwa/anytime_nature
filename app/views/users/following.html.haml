@@ -14,11 +14,11 @@
 - else
   = render partial: "users/user_header", locals: { user: @user }
 
-.user-contents
-  .user-contents__nav
+#user-contents
+  #user-contents__nav
     = link_to 'フォロー', following_user_path(@user), class: "menu menu--active"
     = link_to 'フォロワー', follower_user_path(@user), class: "menu menu--no-active"
-  .user-contents__users
+  #user-contents__users
     - if @users.present?
       - @users.each do |other|
         .user-box

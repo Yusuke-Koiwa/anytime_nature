@@ -1,16 +1,18 @@
-.user-header
-  .user-header__name
-    .user-name
+#user-header
+  #user-header__name
+    #user-name
       = user.name
-    = link_to edit_user_path(current_user), class: "user-edit-btn" do
+    = link_to edit_user_path(current_user), id: "user-edit-btn" do
       = icon('fa', 'edit')
-  .user-header__icon
+  #user-header__icon
     = image_tag user.image.url
-  .user-menu
-    = link_to "投稿：#{user.pictures.count}", user_path(user)
-    %span /
-    = "お気に入り獲得：#{user.favorites_sum}"
-    %span /
-    = link_to "フォロー：#{user.follow_users.count}", following_user_path(user)
-    %span /
-    = link_to "フォロワー：#{user.follower_users.count}", follower_user_path(user)
+  #user-menu
+    #user-menu__left
+      = link_to "投稿：#{user.pictures.count}", user_path(user)
+      %span /
+      = "お気に入り獲得：#{user.favorites_sum}"
+      %span#partition /
+    #user-menu__right
+      = link_to "フォロー：#{user.follow_users.count}", following_user_path(user)
+      %span /
+      = link_to "フォロワー：#{user.follower_users.count}", follower_user_path(user)
