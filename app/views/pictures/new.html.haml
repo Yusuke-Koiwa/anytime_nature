@@ -15,9 +15,11 @@
         %label<>カテゴリー
         %span<>必須
       .field__input.category-input
-        = f.collection_select :category_id, @parents, :id, :name, { prompt: "選択して下さい" }, { id: "category-select" }
-        %select#children-categories{:name => "picture[category_id]"}
-          %option{:value => ""} 選択して下さい
+        #main-category
+          = f.collection_select :category_id, @parents, :id, :name, { prompt: "選択して下さい" }, { id: "category-select" }
+        #sub-category
+          %select#children-categories{:name => "picture[category_id]"}
+            %option{:value => ""} 選択して下さい
 
     .field
       .field__title
@@ -27,4 +29,4 @@
         %ul#picture-tags
           = hidden_field_tag :all_tags_hidden, @all_tags
 
-    = f.submit "投稿する", id: "submit-btn"
+    = f.submit "投稿する", id: "pic-submit-btn"

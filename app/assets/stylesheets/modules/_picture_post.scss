@@ -69,9 +69,18 @@
         object-fit: contain;
       }
     }
+
+    #main-category {
+      margin-bottom: 15px;
+    }
+
+    .error-message {
+      color: red;
+      padding: 10px 5px;
+    }
   }
 
-  #submit-btn {
+  #pic-submit-btn {
     display: block;
     margin: 60px auto 20px;
     background: linear-gradient(to right, #23aeba,#53d8b9);
@@ -152,7 +161,11 @@
     margin: 0;
     padding: 50px 15px;
   }
-  #category-select {
-    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 380px) {
+  .default-prev {
+    height: 200px !important;
+    line-height: 200px !important;
   }
 }
