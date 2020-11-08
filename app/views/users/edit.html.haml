@@ -1,6 +1,6 @@
-.form
-  .form__title
-    .form__title--active
+#account-form
+  #account-form__title
+    #account-form__title--active
       ユーザー編集
   = form_with(model: @user, local: true) do |f|
     = render "devise/shared/error_messages", resource: @user
@@ -15,5 +15,6 @@
         .prev-contents
           .prev-content
             = image_tag @user.image.url, alt: "preview", class: "prev-image"
-    .actions
-      = f.submit "アカウント更新", class: "submit-btn"
+    = f.submit "アカウント更新", id: "submit-btn"
+  #back
+    = link_to "戻る", user_path(@user), id: "back-link"

@@ -85,6 +85,20 @@
       background: linear-gradient(to right, #26bdca,#59e7c6);;
     }
   }
+
+  #back {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #back-link {
+    color: gray;
+
+    &:hover {
+      color: #333;
+      text-decoration: underline;
+    }
+  }
 }
 
 #error_explanation {
