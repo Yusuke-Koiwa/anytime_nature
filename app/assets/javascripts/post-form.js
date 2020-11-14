@@ -72,6 +72,9 @@ $(function(){
   }
 
   $(window).load(function() {
+    if (categorySelectID.length === 0) {
+      return;
+    }
     let parentCategoryVal = categorySelectID.val();
     if (parentCategoryVal !== "") {
       categorySelectID.addClass('selected');
