@@ -24,7 +24,7 @@
     - @pictures.each do |picture|
       .picture
         = link_to "/tags/#{@tag.id}/#{picture.id}" do
-          = image_tag picture.image_url(:middle)
+          = image_tag picture.image_url(:middle), class: "picture-image"
         .picture-info
           .picture-comments
             = icon('far', 'comment')

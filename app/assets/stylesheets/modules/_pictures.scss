@@ -15,11 +15,11 @@
     margin: 3px;
     overflow: hidden;
 
-    img {
+    .picture-image {
       transition: transform 0.3s;
       height: 250px;
-  
-      &:hover {
+
+      &.zoom-in {
         transform: scale(1.05, 1.05);
       }
     }
