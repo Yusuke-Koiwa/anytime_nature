@@ -1,7 +1,7 @@
-.notifications {
+#notifications {
   background-color: whitesmoke;
   color: #333;
-  padding: 30px 45px;
+  padding: 30px;
 
   &__list {
     max-width: 1000px;
@@ -16,11 +16,12 @@
     }
 
     &__contents {
-      padding: 30px;
-
+      padding: 0 30px;
+      
       .notification-box {
         padding: 20px;
         border-bottom: 1px solid lightgray;
+        overflow-x: scroll;
 
         a {
           color: $main-color;
@@ -36,10 +37,17 @@
           @include line_up_side(space-between);
 
           .sentence {
-            @include line_up_side(center);
+            @include line_up_side(left);
+            flex-wrap: wrap;
 
             &__visitor {
               @include line_up_side(center);
+              white-space: nowrap;
+            }
+
+            &--break {
+              @include line_up_side(center);
+              white-space: nowrap;
             }
 
             .user-icon {
@@ -55,12 +63,19 @@
           }
 
           .time {
-            font-size: 14px;
+            font-size: 12px;
+            margin-left: 30px;
+            white-space: nowrap;
+            color: gray;
+            text-align: right;
           }
         }
 
         &__bottom {
-          padding-top: 10px;
+          margin-top: 15px;
+          padding: 3px 10px;
+          border: 1px solid lightgray;
+          border-radius: 5px;
         }
       }
 
@@ -68,5 +83,21 @@
         text-align: center;
       }
     }
+  }
+}
+
+@media screen and (max-width: 959px) {
+  #notifications {
+    padding: 15px 15px;
+    &__list__contents {
+      font-size: 14px;
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .notification-box {
+    padding: 20px 0 !important;
   }
 }

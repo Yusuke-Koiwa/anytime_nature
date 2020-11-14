@@ -9,11 +9,11 @@
         投稿する
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
-.notifications
-  .notifications__list
-    .notifications__list__title
+#notifications
+  #notifications__list
+    #notifications__list__title
       %h2 通知一覧
-    .notifications__list__contents
+    #notifications__list__contents
       - if @notifications.exists?
         = render notifications
       - else
