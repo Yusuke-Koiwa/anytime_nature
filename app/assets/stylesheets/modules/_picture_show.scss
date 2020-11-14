@@ -90,7 +90,7 @@ text-align: center;
     height: 100vh;
   }
 
-  #picture-title-edit {
+  #edit-form-body {
     background-color: white;
     z-index: 20;
     position: relative;
@@ -98,9 +98,11 @@ text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    max-width: 500px;
+    width: 95%;
     border-radius: 10px;
     padding: 25px;
+    box-shadow: 0 1px 3px #999;
 
     #close-btn {
       color: gray;
@@ -132,9 +134,10 @@ text-align: center;
         margin-bottom: 20px;
       }
 
-      input[type="text"] {
-        width: 400px;
+      .ui-autocomplete-input {
+        width: 90%;
         height: 35px;
+        margin: 0 auto;
       }
 
       input.send-btn {
@@ -153,5 +156,11 @@ text-align: center;
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #edit-form-body .ui-autocomplete-input {
+    width: 100% !important;
   }
 }
