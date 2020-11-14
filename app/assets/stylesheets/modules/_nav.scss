@@ -117,8 +117,10 @@
 
 #q_sorts {
   font-size: 12px;
-  cursor: pointer;
   height: 30px;
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 959px) {
@@ -154,7 +156,6 @@
   }
 
   #keyword-input {
-    font-size: 14px;
     height: 30px;
   }
 }

@@ -27,15 +27,25 @@
     }
   }
 
-  #login_message {
-    margin-bottom: 30px;
-
-    a {
-      color: $main-color;
-      &:hover {
-        color: $main-color-light;
-      }
+  #guest_login {
+    display: block;
+    background-color: $main-color;
+    width: 150px;
+    height: 30px;
+    margin: 0 auto 30px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 15px;
+    &:hover {
+      background-color: $main-color-light;
     }
+  }
+
+  #new_user {
+    padding-top: 15px;
+    border-top: 1px solid lightgray;
   }
 
   .field {
@@ -119,7 +129,7 @@
     padding: 30px 20px;
   }
 
-  #login_message, #error_explanation {
+  #error_explanation {
     font-size: 14px;
   }
 }

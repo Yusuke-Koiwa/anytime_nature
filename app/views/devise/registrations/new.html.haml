@@ -19,6 +19,6 @@
         = f.file_field :image, class: "file-input"
         .prev-contents
           .default-prev
-            = image_tag asset_path("default.png")
-            %p デフォルト
-    = f.submit "アカウント作成", id: "submit-btn"
+            = image_tag asset_path("default.png"), class: "btn-shaddow"
+
+    = f.submit "アカウント作成", id: "submit-btn", class: "btn-shaddow"

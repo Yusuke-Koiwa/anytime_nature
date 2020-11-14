@@ -129,7 +129,11 @@ a {
   box-sizing: border-box;
 }
 
-a {
+a, #submit-btn {
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   cursor:pointer;
+}
+
+#submit-btn:focus, #comment-submit:focus {
+	color: transparent;
 }
