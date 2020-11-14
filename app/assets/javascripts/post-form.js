@@ -1,4 +1,9 @@
 $(function(){
+  const categorySelectID = $('#category-select');
+  const childrenCategoriesID = $('#children-categories');
+  const mainCategoryID = $('#main-category');
+  const subCategoryID = $('#sub-category');
+  const picSubmitBtn = $('#pic-submit-btn');
   let preventSubmit = true;
 
   function appendOption(category){
@@ -20,17 +25,15 @@ $(function(){
   }
 
   function checkCategory(errorCount) {
-    if ($('#category-select').val() == "") {
-      let el = $('#main-category');
+    if (categorySelectID.val() == "") {
       let message = "メインカテゴリーを選択して下さい";
-      appendErrorMessage(el, message);
+      appendErrorMessage(mainCategoryID, message);
 
       return errorCount + 1;
     }
-    if ($('#children-categories').val() == "") {
-      let el = $('#sub-category');
+    if (childrenCategoriesID.val() == "") {
       let message = "サブカテゴリーを選択して下さい";
-      appendErrorMessage(el, message);
+      appendErrorMessage(subCategoryID, message);
 
       return errorCount + 1;
     }
@@ -44,11 +47,11 @@ $(function(){
   }
 
   $(document).on("change", "#category-select", function(){
-    let parentCategory = $("#category-select").val();
+    let parentCategory = categorySelectID.val();
     if (parentCategory == "") {
-      $("#children-categories").empty();
+      childrenCategoriesID.empty();
       let insertHtml = '<option value="">選択して下さい</option>';
-      $('#children-categories').append(insertHtml);
+      childrenCategoriesID.append(insertHtml);
 
       return;
     }
@@ -59,19 +62,19 @@ $(function(){
       dataType: "json"
     })
     .done(function(children){
-      $('#children-categories').empty();
+      childrenCategoriesID.empty();
       let insertHtml = '<option value="">選択して下さい</option>';
       children.forEach(function(child){
         insertHtml += appendOption(child);
       });
-      $('#children-categories').append(insertHtml);
+      childrenCategoriesID.append(insertHtml);
     })
     .fail(function(){
       alert("カテゴリーを取得出来ませんでした")
     })
   });
 
-  $('#pic-submit-btn').on('click', function(e){
+  picSubmitBtn.on('click', function(e){
     if (preventSubmit === true) {
       e.preventDefault();
       $('.error-message').each(function() {
@@ -85,7 +88,7 @@ $(function(){
         return;
       }
       preventSubmit = false;
-      $('#pic-submit-btn').trigger('click');
+      picSubmitBtn.trigger('click');
     }
   })
 });

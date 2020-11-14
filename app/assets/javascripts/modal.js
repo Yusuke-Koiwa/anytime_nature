@@ -1,15 +1,19 @@
 $(function(){
+  const modal = $('#modal');
+  const closeBtn = $('#close-btn');
+  const editBtn = $('#edit-btn');
+  const editFormID = $('#edit-form');
 
-  $('#close-btn').on('click', function(){
-    $('#edit-form').fadeOut();
+  closeBtn.on('click', function(){
+    editFormID.fadeOut();
   });
 
-  $('#modal').on('click', function(){
-    $('#edit-form').fadeOut();
+  modal.on('click', function(){
+    editFormID.fadeOut();
   });
 
-  $('#edit-btn').on('click', function(){
-    $('#edit-form').fadeIn();
+  editBtn.on('click', function(){
+    editFormID.fadeIn();
   });
 
 });

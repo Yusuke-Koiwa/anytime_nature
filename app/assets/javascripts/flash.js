@@ -1,7 +1,8 @@
 $(function(){
-  if ($('#flash')) {
+  const flashID = $('#flash');
+  if (flashID) {
     setTimeout(function(){
-      $('#flash').fadeOut();
+      flashID.fadeOut();
     }, 2000)
   }
 });
