@@ -10,7 +10,7 @@
         投稿する
 .category-index
   - @parents.each_with_index do |parent, index|
-    .category-box
+    .category-box.box-shaddow
       = link_to category_path(parent) do
         %label.parent-category
           .category-box__name

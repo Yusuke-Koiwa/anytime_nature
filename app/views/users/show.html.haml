@@ -33,7 +33,7 @@
     .pictures-index
       - if @pictures.present?
         - @pictures.each do |picture|
-          .picture
+          .picture.box-shaddow
             = link_to "/users/#{@user.id}/#{picture.id}" do
               = image_tag picture.image_url(:middle), class: "picture-image"
             .picture-info

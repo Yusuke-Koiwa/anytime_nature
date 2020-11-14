@@ -33,7 +33,7 @@
 .pictures-index
   - if @pictures.present?
     - @pictures.each do |picture|
-      .picture
+      .picture.box-shaddow
         - if @category.root?
           - url = "/categories/parent/#{picture.category.parent.id}/#{picture.id}"
         - else
