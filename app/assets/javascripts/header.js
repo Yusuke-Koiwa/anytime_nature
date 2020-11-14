@@ -1,7 +1,23 @@
-$(window).scroll(function() {
-  if ($(window).scrollTop() < 10){ 
-    $('#header').css('box-shadow', 'none');
-    return; 
-  }
-  $('#header').css('box-shadow', '0px 2px 2px 1px rgba(51,48,0,0.4)');
-})
+$(function() {
+  const headerID = $('#header');
+  let basePosition = $(window).scrollTop();
+
+  $(window).scroll(function() {
+  let currentPosition = $(window).scrollTop();
+    if (currentPosition < 10){ 
+      headerID.removeClass('header-shaddow');
+      basePosition = currentPosition;
+
+      return; 
+    }
+
+    if (currentPosition > basePosition) {
+      headerID.addClass('header-hide').removeClass('header-shaddow');
+      basePosition = currentPosition;
+
+      return;
+    }
+    headerID.removeClass('header-hide').addClass('header-shaddow');
+    basePosition = currentPosition;
+  })
+});
