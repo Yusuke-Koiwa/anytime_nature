@@ -27,17 +27,21 @@
       }
     }
 
-    input {
-      height: 35px;
-      width: 300px;
+    input, select {
+      height: 40px;
       padding: 0 5px;
+      border-style: none;
+      border: 1px solid lightgray;
+      border-radius: 3px;
     }
 
     select {
-      height: 35px;
       width: 150px;
-      padding: 0 5px;
+      color: gray;
       cursor: pointer;
+      &.selected {
+        color: #333;
+      }
     }
 
     .file-input {
@@ -138,7 +142,6 @@
   .tagit-new input {
     max-width: 400px;
     width: 100%;
-    height: 35px;
   }
 }
 

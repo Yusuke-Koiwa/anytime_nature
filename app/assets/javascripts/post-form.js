@@ -6,6 +6,31 @@ $(function(){
   const picSubmitBtn = $('#pic-submit-btn');
   let preventSubmit = true;
 
+  function fetchChildrenCategories(parentCategoryVal) {
+    $.ajax({
+      url: "/categories/children",
+      type: "GET",
+      data: {parentCategory: parentCategoryVal},
+      dataType: "json"
+    })
+    .done(function(children){
+      categorySelectID.addClass('selected');
+      appendChildrenCategories(children);
+    })
+    .fail(function(){
+      alert("カテゴリーを取得出来ませんでした");
+    })
+  }
+
+  function appendChildrenCategories(children) {
+    childrenCategoriesID.empty().removeClass('selected');
+    let insertHtml = '<option value="">選択して下さい</option>';
+    children.forEach(function(child){
+      insertHtml += appendOption(child);
+    });
+    childrenCategoriesID.append(insertHtml);
+  }
+
   function appendOption(category){
     let html = `<option value="${category.id}">
                   ${category.name}
@@ -46,33 +71,34 @@ $(function(){
     el.append(errorMessage);
   }
 
-  $(document).on("change", "#category-select", function(){
-    let parentCategory = categorySelectID.val();
-    if (parentCategory == "") {
-      childrenCategoriesID.empty();
+  $(window).load(function() {
+    let parentCategoryVal = categorySelectID.val();
+    if (parentCategoryVal !== "") {
+      categorySelectID.addClass('selected');
+      fetchChildrenCategories(parentCategoryVal);
+    }
+  })
+
+  categorySelectID.on("change", function(){
+    let parentCategoryVal = categorySelectID.val();
+    if (parentCategoryVal == "") {
+      categorySelectID.removeClass('selected');
+      childrenCategoriesID.empty().removeClass('selected');
       let insertHtml = '<option value="">選択して下さい</option>';
       childrenCategoriesID.append(insertHtml);
 
       return;
     }
-    $.ajax({
-      url: "/categories/children",
-      type: "GET",
-      data: {parentCategory: parentCategory},
-      dataType: "json"
-    })
-    .done(function(children){
-      childrenCategoriesID.empty();
-      let insertHtml = '<option value="">選択して下さい</option>';
-      children.forEach(function(child){
-        insertHtml += appendOption(child);
-      });
-      childrenCategoriesID.append(insertHtml);
-    })
-    .fail(function(){
-      alert("カテゴリーを取得出来ませんでした")
-    })
+    fetchChildrenCategories(parentCategoryVal);
   });
+
+  childrenCategoriesID.on('change', function() {
+    if (childrenCategoriesID.val() !== "") {
+      childrenCategoriesID.addClass('selected');
+    } else {
+      childrenCategoriesID.removeClass('selected');
+    }
+  })
 
   picSubmitBtn.on('click', function(e){
     if (preventSubmit === true) {
