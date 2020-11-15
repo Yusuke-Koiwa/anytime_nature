@@ -1,20 +1,19 @@
 .categories {
-  background-color: whitesmoke;
   font-size: 14px;
   padding-top: 10px;
   text-align: center;
-
+  
   a {
     font-size: 15px;
     color: $main-color;
     margin: 0 5px;
-
+    
     &:hover {
       text-decoration: underline;
       color: $main-color-light;
     }
   }
-
+  
   .current-category {
     color: $main-color;
     margin: 0 5px;
