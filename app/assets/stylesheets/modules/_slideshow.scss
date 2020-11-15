@@ -4,9 +4,9 @@
   position: absolute;
   z-index: 5;
   color: lightgray;
-  top: 70px;
-  right: 45px;
-  font-size: 20px;
+  top: 10px;
+  right: 30px;
+  font-size: 18px;
   line-height: 25px;
 
   .back-btn {
@@ -34,10 +34,11 @@
 }
 
 #slideshow-contents {
-  padding: 60px 0 30px;
+  padding: 50px 0 30px;
   background-color: #545454;
   overflow-x: hidden;
   position: relative;
+  height: 100vh;
 
   .slide-arrow {
     position: absolute;
@@ -63,12 +64,12 @@
   .slick-track {
     
     .slide {
-      height: calc(100vh - 165px);
+      height: calc(100vh - 100px);
       @include line_up_vertical(center);
       
       img {
         margin: 0 auto;
-        max-height: calc(100vh - 230px);
+        max-height: calc(100vh - 150px);
         max-width: 1200px;
         width: 90%;
         object-fit: contain;
@@ -143,4 +144,22 @@
 }
 .slick-dotted {
   margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 959px) {
+  #slideshow-contents {
+    padding: 50px 0 0;
+  }
+  .slideshow-actions {
+    right: 15px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #slideshow-contents {
+    .slide-arrow {
+      display: none !important;
+    }
+  }
 }

@@ -141,7 +141,7 @@ text-align: center;
       }
 
       input.send-btn {
-        background: linear-gradient(to right, #23aeba,#53d8b9);
+        background-color: $main-color;
         color: white;
         border-style: none;
         border-radius: 20px;
@@ -152,7 +152,7 @@ text-align: center;
         cursor: pointer;
 
         &:hover {
-          background: linear-gradient(to right, #26bdca,#59e7c6);;
+          background-color: $main-color-light;
         }
       }
     }

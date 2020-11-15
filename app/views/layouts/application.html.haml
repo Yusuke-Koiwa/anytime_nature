@@ -10,53 +10,53 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    #header
-      #header__container
-        #header__container__left
-          = link_to root_path, class: "logo header-menu" do
-            Anytime Nature
-          #header-about
-            〜自然の写真だけの投稿サイト〜
-
-        #header__container__right
+    - unless request.path.include?("slideshow")
+      #header
+        #header__container
+          #header__container__left
+            = link_to root_path, class: "logo header-menu" do
+              Anytime Nature
+            #header-about
+              〜自然の写真だけの投稿サイト〜
+          #header__container__right
+            - if user_signed_in?
+              = link_to notifications_path, class: "header-menu bell" do
+                = icon('far', 'bell')
+                - if unchecked_notifications.any?
+                  .notice-circle
+                    = @notifications.size
+              = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
+                マイページ
+              %span#nav_toggle
+                %i
+                %i
+                %i
+            - else
+              = link_to new_user_registration_path, class: "header-menu" do
+                登録
+              = link_to new_user_session_path, class: "header-menu" do
+                ログイン
+              = link_to new_user_session_path, id: "login-icon" do
+                #login-icon-wrapper
+                  = icon('fas', 'sign-in-alt')
+                  %span="Log in"
           - if user_signed_in?
-            = link_to notifications_path, class: "header-menu bell" do
-              = icon('far', 'bell')
-              - if unchecked_notifications.any?
-                .notice-circle
-                  = @notifications.size
-            = link_to user_path(current_user), class: "header-menu", id: "mypage-link" do
-              マイページ
-            %span#nav_toggle
-              %i
-              %i
-              %i
-          - else
-            = link_to new_user_registration_path, class: "header-menu" do
-              登録
-            = link_to new_user_session_path, class: "header-menu" do
-              ログイン
-            = link_to new_user_session_path, id: "login-icon" do
-              #login-icon-wrapper
-                = icon('fas', 'sign-in-alt')
-                %span="Log in"
-        - if user_signed_in?
-          %ul#mypage-menu
-            = link_to "マイページ", user_path(current_user), class: "menu-link"
-            = link_to new_picture_path, class: "menu-link menu-link--hidden" do
-              = icon('fas', 'upload')
-              %span="投稿する"
-            = link_to "お気に入り", favorite_users_path, class: "menu-link"
-            = link_to "フォロー / フォロワー", following_user_path(current_user), class: "menu-link"
-            = link_to notifications_path, class: "menu-link" do
-              %span= "通知"
-              - if unchecked_notifications.any?
-                %span.notice-circle
-                  = @notifications.size
-            = link_to categories_path, class: "menu-link menu-link--hidden" do
-              = icon('fas', 'search')
-              %span='カテゴリー検索'
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
-    #content-space
-    = render 'layouts/flash'
+            %ul#mypage-menu
+              = link_to "マイページ", user_path(current_user), class: "menu-link"
+              = link_to new_picture_path, class: "menu-link menu-link--hidden" do
+                = icon('fas', 'upload')
+                %span="投稿する"
+              = link_to "お気に入り", favorite_users_path, class: "menu-link"
+              = link_to "フォロー / フォロワー", following_user_path(current_user), class: "menu-link"
+              = link_to notifications_path, class: "menu-link" do
+                %span= "通知"
+                - if unchecked_notifications.any?
+                  %span.notice-circle
+                    = @notifications.size
+              = link_to categories_path, class: "menu-link menu-link--hidden" do
+                = icon('fas', 'search')
+                %span='カテゴリー検索'
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか?' }, class: "menu-link"
+      #content-space
+      = render 'layouts/flash'
     = yield

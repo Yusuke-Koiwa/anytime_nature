@@ -87,7 +87,7 @@
   #pic-submit-btn {
     display: block;
     margin: 60px auto 20px;
-    background: linear-gradient(to right, #23aeba,#53d8b9);
+    background-color: $main-color;
     color: white;
     font-weight: bold;
     border-style: none;
@@ -99,7 +99,7 @@
     cursor: pointer;
 
     &:hover {
-      background: linear-gradient(to right, #26bdca,#59e7c6);;
+      background-color: $main-color-light;
     }
   }
 }

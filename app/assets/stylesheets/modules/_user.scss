@@ -80,7 +80,7 @@
   }
 
   #submit-btn {
-    background: linear-gradient(to right, #23aeba,#53d8b9);
+    background-color: $main-color;
     color: white;
     display: block;
     margin: 0 auto 10px;
@@ -92,7 +92,7 @@
     cursor: pointer;
 
     &:hover {
-      background: linear-gradient(to right, #26bdca,#59e7c6);;
+      background-color: $main-color-light; 
     }
   }
 
