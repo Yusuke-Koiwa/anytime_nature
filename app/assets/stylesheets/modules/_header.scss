@@ -224,6 +224,9 @@
 }
 
 @media screen and (max-width: 959px) {
+  #header {
+    padding: 0 30px;
+  }
   #header__container__right > .header-menu, #header-about {
     display: none;
   }

@@ -3,7 +3,7 @@
 
 #pictures-nav
   #nav-container
-    = link_to 'カテゴリーから探す', categories_path, id: "category-search"
+    = link_to 'カテゴリーから探す', categories_path, id: "category-search", class: "btn-shaddow"
 
     = search_form_for @q, url: pictures_path, id: "search-home" do |f|
       = f.search_field :tags_name_cont, id: "keyword-input", placeholder: "キーワードで探す"
