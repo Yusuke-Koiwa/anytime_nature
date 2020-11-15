@@ -5,7 +5,7 @@
     #action-buttons
       - if user_signed_in? && @user == current_user
         = link_to favorite_users_path, class: "btn btn-shaddow favorite-picture-link" do
-          お気に入りした写真
+          お気に入り
       = link_to new_picture_path, class: "btn btn-shaddow new-picture-link" do
         投稿する
 
