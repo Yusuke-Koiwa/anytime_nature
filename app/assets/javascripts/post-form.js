@@ -1,4 +1,7 @@
 $(function(){
+  if ($('#post').length === 0) {
+    return;
+  }
   const categorySelectID = $('#category-select');
   const childrenCategoriesID = $('#children-categories');
   const mainCategoryID = $('#main-category');
@@ -72,9 +75,6 @@ $(function(){
   }
 
   $(window).load(function() {
-    if (categorySelectID.length === 0) {
-      return;
-    }
     let parentCategoryVal = categorySelectID.val();
     if (parentCategoryVal !== "") {
       categorySelectID.addClass('selected');

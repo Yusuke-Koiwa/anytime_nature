@@ -1,9 +1,9 @@
 $(function() {
   const slideshowContentsID = $('#slideshow-contents');
+  if (slideshowContentsID.length) {
   const playBtnID = $('#play-btn');
   const stopBtnID = $('#stop-btn');
 
-  if (slideshowContentsID.length) {
     slideshowContentsID.slick({
         dots: true,
         autoplay: false,
@@ -32,5 +32,4 @@ $(function() {
       slideshowContentsID.slick('slickPause');
     });
   }
-
 });
