@@ -48,7 +48,11 @@
               %span="投稿する"
             = link_to "お気に入り", favorite_users_path, class: "menu-link"
             = link_to "フォロー / フォロワー", following_user_path(current_user), class: "menu-link"
-            = link_to "通知", notifications_path, class: "menu-link"
+            = link_to notifications_path, class: "menu-link" do
+              %span= "通知"
+              - if unchecked_notifications.any?
+                %span.notice-circle
+                  = @notifications.size
             = link_to categories_path, class: "menu-link menu-link--hidden" do
               = icon('fas', 'search')
               %span='カテゴリー検索'

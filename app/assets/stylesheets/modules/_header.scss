@@ -189,6 +189,17 @@
       color: $main-color;
       margin-right: 5px;
     }
+
+    .notice-circle {
+      background-color: $main-color-light;
+      color: white;
+      height: 24px;
+      padding: 2.5px 5px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+    }
   }
 }
 
