@@ -28,17 +28,10 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 14px;
 
     &:hover {
       background-color: $main-color-light;
-    }
-  }
-}
-
-@media screen and (max-width: 559px) {
-  #tags {
-    .tag {
-      font-size: 14px;
     }
   }
 }
