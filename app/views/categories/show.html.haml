@@ -29,8 +29,8 @@
     = search_form_for @q, url: category_path(@category), class: "menu", id: "#select-sort" do |f|
       = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
 
-.pictures-index
-  - if @pictures.present?
+- if @pictures.present?
+  .pictures-index
     - @pictures.each do |picture|
       .picture.box-shaddow
         - if @category.root?
@@ -45,7 +45,8 @@
             = picture.comments_count
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
-  - else
-    投稿がありません
+  = paginate @pictures
 
-= paginate @pictures
+- else
+  .no-pictures
+    投稿がありません

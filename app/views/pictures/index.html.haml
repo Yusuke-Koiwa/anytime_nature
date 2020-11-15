@@ -20,8 +20,8 @@
       = link_to new_picture_path, class: "btn new-picture-link btn-shaddow" do
         投稿する
 
-.pictures-index.pictures-index--home
-  - if @pictures.present?
+- if @pictures.present?
+  .pictures-index.pictures-index--home
     - @pictures.each do |picture|
       .picture.box-shaddow
         = link_to picture_path(picture) do
@@ -32,6 +32,7 @@
             = picture.comments_count
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
-  - else
+  = paginate @pictures
+- else
+  .no-pictures
     投稿がありません
-= paginate @pictures
