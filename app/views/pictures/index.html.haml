@@ -9,9 +9,8 @@
       = f.search_field :tags_name_cont, id: "keyword-input", placeholder: "キーワードで探す"
       #pictures-index-actions
         .menu
-          = link_to slideshow_pictures_path(params: {q: @params}), id: "slideshow-link" do
+          = link_to slideshow_pictures_path(params: {q: @params}), id: "slideshow-link", class: "btn-shaddow" do
             = icon('fa', 'images')
-            %span<>スライドショー
         .menu#select-sort
           = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
       = button_tag type: "submit", class: "btn-shaddow" do

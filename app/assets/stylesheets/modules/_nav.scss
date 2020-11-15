@@ -35,10 +35,16 @@
     height: 30px;
     border-style: none;
     border-radius: 2px;
+    margin-top: -1px;
     cursor: pointer;
 
     &:hover {
       background-color: #3fd6c7;
+    }
+    &:focus {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      outline: none;
     }
   }
 }
@@ -99,28 +105,30 @@
 }
 
 #slideshow-link {
-  line-height: 20px;
+  display: block;
+  background-color: $main-color;
+  color: white;
+  width: 40px;
+  height: 40px;
   margin-right: 20px;
-  color: $main-color;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
 
-  i {
-    font-size: 20px;
-  }
-  span {
-    font-size: 12px;
-    margin-left: 5px;
-  }
   &:hover {
-    color: $main-color-light;
+    background-color: $main-color-light;
   }
 }
 
 #q_sorts {
   font-size: 12px;
-  height: 30px;
-  cursor: pointer;
-  border: 1px solid gray;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid lightgray;
+  color: #333;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 959px) {
