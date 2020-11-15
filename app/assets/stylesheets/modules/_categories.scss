@@ -82,3 +82,20 @@
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .category-box {
+    width: 95vw;
+    padding: 20px;
+
+    &__name {
+      font-size: 16px !important;
+    }
+
+    &__image {
+      width: 250px !important;
+      height: 175px !important;
+      margin: 0 auto;
+    }
+  }
+}
