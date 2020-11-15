@@ -160,6 +160,11 @@ text-align: center;
 }
 
 @media screen and (max-width: 559px) {
+  .picture-content {
+    .picture-user {
+      font-size: 14px;
+    }
+  }
   #edit-form-body .ui-autocomplete-input {
     width: 100% !important;
   }

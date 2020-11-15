@@ -34,3 +34,11 @@
     }
   }
 }
+
+@media screen and (max-width: 559px) {
+  #tags {
+    .tag {
+      font-size: 14px;
+    }
+  }
+}
