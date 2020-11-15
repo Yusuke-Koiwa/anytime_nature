@@ -31,6 +31,6 @@
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
   = paginate @pictures
-  - else
-    .no-pictures
-      お気に入りがありません
+- else
+  .no-pictures
+    お気に入りがありません
