@@ -14,7 +14,7 @@
         = f.file_field :image, class: "file-input"
         .prev-contents
           .prev-content
-            = image_tag @user.image.url, alt: "preview", class: "prev-image"
-    = f.submit "アカウント更新", id: "submit-btn"
+            = image_tag @user.image.url, alt: "preview", class: "prev-image btn-shaddow"
+    = f.submit "アカウント更新", id: "submit-btn", class: "btn-shaddow"
   #back
     = link_to "戻る", user_path(@user), id: "back-link"
