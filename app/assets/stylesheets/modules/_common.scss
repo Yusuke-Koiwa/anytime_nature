@@ -1,0 +1,25 @@
+$main-color: #3ac9ba;
+$main-color-light: #3dd3c4;
+
+body {
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  background-color: whitesmoke;
+  min-height: 100vh;
+}
+
+.box-shaddow {
+  box-shadow: 0 1px 3px rgb(200, 200, 200);
+}
+
+.btn-shaddow {
+  box-shadow: 0 1px 3px rgb(200, 200, 200);
+  &:active {
+    box-shadow: none;
+    transform: translateY(1px);
+  }
+}

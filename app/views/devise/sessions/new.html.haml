@@ -1,10 +1,9 @@
-.form
-  .form__title
-    .form__title--active
+#account-form
+  #account-form__title
+    #account-form__title--active
       Log in
-    = link_to "→ アカウント作成", new_user_registration_path, class: "form__title--other"
-  .login_message
-    = link_to '→ ゲストログインする', users_guest_sign_in_path, method: :post
+    = link_to "→ アカウント作成", new_user_registration_path, id: "account-form__title--other"
+  = link_to 'ゲストログインする', users_guest_sign_in_path, method: :post, id: "guest_login", class: "btn-shaddow"
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       Email
@@ -12,5 +11,4 @@
     .field
       Password
       = f.password_field :password, autocomplete: "current-password", placeholder: "Password"
-    .actions
-      = f.submit "ログイン", class: "submit-btn"
+    = f.submit "ログイン", id: "submit-btn", class: "btn-shaddow"

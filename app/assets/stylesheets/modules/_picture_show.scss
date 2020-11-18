@@ -32,6 +32,7 @@
     .fav-btn {
       margin-right: 5px;
       font-size: 20px;
+      transition: .3s;
       &:hover {
         filter: drop-shadow(0 0 5px red);
       }
@@ -57,7 +58,7 @@
     .action-btn {
       color: gray;
       margin: 0 7px;
-      font-size: 15px;
+      font-size: 14px;
       text-decoration: underline;
       cursor: pointer;
 
@@ -89,7 +90,7 @@ text-align: center;
     height: 100vh;
   }
 
-  #picture-title-edit {
+  #edit-form-body {
     background-color: white;
     z-index: 20;
     position: relative;
@@ -97,9 +98,11 @@ text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    max-width: 500px;
+    width: 95%;
     border-radius: 10px;
     padding: 25px;
+    box-shadow: 0 1px 3px #999;
 
     #close-btn {
       color: gray;
@@ -131,13 +134,14 @@ text-align: center;
         margin-bottom: 20px;
       }
 
-      input[type="text"] {
-        width: 400px;
+      .ui-autocomplete-input {
+        width: 90%;
         height: 35px;
+        margin: 0 auto;
       }
 
       input.send-btn {
-        background: linear-gradient(to right, #23aeba,#53d8b9);
+        background-color: $main-color;
         color: white;
         border-style: none;
         border-radius: 20px;
@@ -148,9 +152,20 @@ text-align: center;
         cursor: pointer;
 
         &:hover {
-          background: linear-gradient(to right, #26bdca,#59e7c6);;
+          background-color: $main-color-light;
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .picture-content {
+    .picture-user {
+      font-size: 14px;
+    }
+  }
+  #edit-form-body .ui-autocomplete-input {
+    width: 100% !important;
   }
 }

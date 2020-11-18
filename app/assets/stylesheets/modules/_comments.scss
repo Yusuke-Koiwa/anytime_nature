@@ -69,6 +69,7 @@
 
       textarea {
         width: 90%;
+        margin-bottom: 15px;
         padding: 5px;
         height: 75px;
         resize: none;
@@ -80,8 +81,9 @@
         color: white;
         margin: 0 auto;
         border-style: none;
+        border-radius: 20px;
         height: 40px;
-        width: 55px;
+        width: 80px;
         cursor: pointer;
         &:hover {background-color: $main-color-light;}
       }
@@ -89,6 +91,31 @@
 
     .comment-message {
       padding: 10px 10px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .comments-wrapper .comment-contents {
+    padding: 20px 0;
+
+    &__title {
+      padding: 20px 15px;
+    }
+
+    #comments-index .comment {
+      padding: 15px;
+
+      &__head {
+        &__left {
+          font-size: 14px;
+        }
+        &__right {
+          .comment-time {
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
 }

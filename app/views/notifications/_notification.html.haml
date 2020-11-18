@@ -11,26 +11,29 @@
 
       - case notification.action
       - when 'follow' then
-        = "あなたをフォローしました"
+        .sentence--break
+          = "あなたをフォローしました"
       - when 'favorite' then
-        = link_to 'あなたの投稿', notification.picture
-        = link_to picture_path(notification.picture) do
-          = image_tag notification.picture.image.url(:thumb), class: "picture"
-        = "をお気に入り登録しました"
+        .sentence--break
+          %span= 'あなたの投稿'
+          = link_to picture_path(notification.picture) do
+            = image_tag notification.picture.image.url(:thumb), class: "picture"
+        %span= "をお気に入り登録しました"
       - when 'comment' then
         - if notification.picture.user_id == visited.id
-          = link_to "あなたの投稿", picture_path(notification.picture)
-          = link_to picture_path(notification.picture) do
-            = image_tag notification.picture.image.url(:thumb), class: "picture"
+          .sentence--break
+            = link_to "あなたの投稿", picture_path(notification.picture)
+            = link_to picture_path(notification.picture) do
+              = image_tag notification.picture.image.url(:thumb), class: "picture"
         - else
-          = link_to user_path(notification.picture.user) do
-            = image_tag notification.picture.user.image.url, class: "user-icon" 
-          = link_to "#{notification.picture.user.name}", user_path(notification.picture.user)
-          = "の"
-          = link_to "投稿", picture_path(notification.picture)
-          = link_to picture_path(notification.picture) do
-            = image_tag notification.picture.image.url(:thumb), class: "picture"
-        = "にコメントしました"
+          .sentence--break
+            = link_to user_path(notification.picture.user) do
+              = image_tag notification.picture.user.image.url, class: "user-icon" 
+            = link_to "#{notification.picture.user.name}", user_path(notification.picture.user)
+            %span= "の投稿"
+            = link_to picture_path(notification.picture) do
+              = image_tag notification.picture.image.url(:thumb), class: "picture"
+        %span= "にコメントしました"
     .time
       = time_ago_in_words(notification.created_at).upcase
       %span<> 前

@@ -1,8 +1,8 @@
-.post
+#post
   = form_with model: @picture, local: true do |f|
     .field
       .field__title
-        %label<>画像選択
+        %label<>画像アップロード
         %span<>必須
       .field__input
         = f.label :image, class: 'image_label' do
@@ -15,7 +15,12 @@
         %label<>カテゴリー
         %span<>必須
       .field__input.category-input
-        = f.collection_select :category_id, @parents, :id, :name, {prompt: "選択して下さい"}, {class: "select-default", id: "category-select"}
+        #main-category
+          = f.collection_select :category_id, @parents, :id, :name, { prompt: "選択して下さい" }, { id: "category-select" }
+        #sub-category
+          %select#children-categories{:name => "picture[category_id]"}
+            %option{:value => ""} 選択して下さい
+
     .field
       .field__title
         %label<>タグ
@@ -24,5 +29,4 @@
         %ul#picture-tags
           = hidden_field_tag :all_tags_hidden, @all_tags
 
-    .action
-      = f.submit "投稿する", class: "submit-btn"
+    = f.submit "投稿する", id: "pic-submit-btn", class: "btn-shaddow"

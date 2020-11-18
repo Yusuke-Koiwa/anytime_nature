@@ -1,13 +1,9 @@
-.form {
-  position: fixed;
-  z-index: 5;
+#account-form {
   background-color: white;
-  width: 500px;
+  max-width: 500px;
+  width: 95%;
+  margin: 60px auto;
   padding: 30px;
-  border: 1px solid $main-color;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   box-shadow: 1px 1px 5px gray;
 
   &__title {
@@ -23,18 +19,32 @@
     &--other {
       color: gray;
       font-size: 14px;
+
+      &:hover {
+        color: #333333;
+      }
     }
   }
 
-  .login_message {
-    margin-bottom: 30px;
-
-    a {
-      color: $main-color;
-      &:hover {
-        color: $main-color-light;
-      }
+  #guest_login {
+    display: block;
+    background-color: $main-color;
+    width: 150px;
+    height: 30px;
+    margin: 0 auto 30px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 15px;
+    &:hover {
+      background-color: $main-color-light;
     }
+  }
+
+  #new_user {
+    padding-top: 15px;
+    border-top: 1px solid lightgray;
   }
 
   .field {
@@ -52,6 +62,7 @@
 
     .prev-contents {
       text-align: center;
+      margin-top: 15px;
 
       img {
         width: 100px;
@@ -67,22 +78,34 @@
     }
   }
 
-  .actions {
-    width: 100%;
+  #submit-btn {
+    background-color: $main-color;
+    color: white;
+    display: block;
+    margin: 0 auto 10px;
+    border-style: none;
+    border-radius: 25px;
+    max-width: 250px;
+    width: 95%;
+    height: 50px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-color-light; 
+    }
+  }
+
+  #back {
     text-align: center;
+    margin-top: 20px;
+  }
 
-    input {
-      background: linear-gradient(to right, #23aeba,#53d8b9);
-      color: white;
-      border-style: none;
-      border-radius: 25px;
-      width: 50%;
-      height: 50px;
-      cursor: pointer;
+  #back-link {
+    color: gray;
 
-      &:hover {
-        background: linear-gradient(to right, #26bdca,#59e7c6);;
-      }
+    &:hover {
+      color: #333;
+      text-decoration: underline;
     }
   }
 }
@@ -95,5 +118,17 @@
   li {
     list-style-type: disc;
     list-style-position:inside;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #account-form {
+    margin: 30px auto;
+    padding: 30px 20px;
+  }
+
+  #error_explanation {
+    font-size: 14px;
   }
 }

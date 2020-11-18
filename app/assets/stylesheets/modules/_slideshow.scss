@@ -4,9 +4,9 @@
   position: absolute;
   z-index: 5;
   color: lightgray;
-  top: 70px;
-  right: 45px;
-  font-size: 20px;
+  top: 10px;
+  right: 30px;
+  font-size: 18px;
   line-height: 25px;
 
   .back-btn {
@@ -34,16 +34,17 @@
 }
 
 #slideshow-contents {
-  padding: 60px 0 30px;
+  padding-top: 40px;
   background-color: #545454;
   overflow-x: hidden;
   position: relative;
+  height: 100vh;
 
   .slide-arrow {
     position: absolute;
     color: lightgray;
     z-index: 5;
-    top: 45%;
+    top: 50%;
     cursor: pointer;
     font-size: 20px;
 
@@ -63,12 +64,12 @@
   .slick-track {
     
     .slide {
-      height: calc(100vh - 165px);
+      height: calc(100vh - 90px);
       @include line_up_vertical(center);
       
       img {
         margin: 0 auto;
-        max-height: calc(100vh - 230px);
+        max-height: calc(100vh - 90px);
         max-width: 1200px;
         width: 90%;
         object-fit: contain;
@@ -76,27 +77,38 @@
 
       .picture-actions {
         @include line_up_side(center);
-        margin: 20px 0;
+        margin-top: -40px;
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
 
         .picture-link {
-          background-color: gray;
+          background-color: whitesmoke;
           display: block;
           text-align: center;
-          width: 125px;
+          width: 100px;
           height: 30px;
           line-height: 30px;
           border-radius: 15px;
-    
+          font-size: 14px;
+          color: #333;
+
           &:hover {
             background-color: lightgray;
+            color: #333;
           }
         }
           
         .picture-favorite {
           @include line_up_side(center);
-          color: lightgray;
-          margin-left: 20px;
-  
+          background-color: whitesmoke;
+          color: gray;
+          margin-left: 10px;
+          width: 50px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 15px;
+
           .fav-btn {
             margin-right: 5px;
             font-size: 18px;
@@ -110,7 +122,7 @@
             }
   
             &--off {
-              color: lightgray;
+              color: gray;
             }
           }
   
@@ -119,12 +131,20 @@
           }
         }
       }
+
+      &:hover {
+        .picture-actions {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
     }
   }
 
   .slick-dots {
     background-color: #545454 !important;
     position: static !important;
+    padding-top: 10px;
 
     button {
       &:before {
@@ -143,4 +163,19 @@
 }
 .slick-dotted {
   margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 959px) {
+  .slideshow-actions {
+    right: 15px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #slideshow-contents {
+    .slide-arrow {
+      display: none !important;
+    }
+  }
 }

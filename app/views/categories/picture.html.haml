@@ -1,28 +1,11 @@
-.pictures-nav
+#pictures-nav
+  #nav-container
+    - breadcrumb :category_picture
+    = render "layouts/breadcrumbs"
 
-  - breadcrumb :category_picture
-  = render "layouts/breadcrumbs"
-
-  .front-back
-    - if @previous.present?
-      = link_to "/categories/#{@category.id}/#{@previous.id}", class: "page-btn" do
-        = icon('fas', 'caret-left')
-    - else
-      = icon('fas', 'caret-left', class: "page-btn disappear")
-    .front-back__count
-      .front-back__count__top
-        = link_to "#{@category.name}", category_path(@category)
-      .front-back__count__bottom
-        = "(#{@count}/#{@pictures.size})"
-    - if @next.present?
-      = link_to "/categories/#{@category.id}/#{@next.id}", class: "page-btn" do
-        = icon('fas', 'caret-right')
-    - else
-      = icon('fas', 'caret-right', class: "page-btn disappear")
-
-  .links
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+    #action-buttons
+      = link_to new_picture_path, class: "btn btn-shaddow new-picture-link" do
+        投稿する
 
 = render partial: "pictures/picture", locals: { picture: @picture, category: @category, tag_list: @tag_list, all_tags: @all_tags }
 = render "comments/contents"

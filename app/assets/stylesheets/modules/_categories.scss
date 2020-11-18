@@ -1,20 +1,19 @@
 .categories {
-  background-color: whitesmoke;
   font-size: 14px;
   padding-top: 10px;
   text-align: center;
-
+  
   a {
     font-size: 15px;
     color: $main-color;
     margin: 0 5px;
-
+    
     &:hover {
       text-decoration: underline;
       color: $main-color-light;
     }
   }
-
+  
   .current-category {
     color: $main-color;
     margin: 0 5px;
@@ -29,7 +28,6 @@
 
   .category-box {
     background-color: whitesmoke;
-    box-shadow: 1px 1px 3px gray;
     margin: 20px;
     padding: 20px 30px;
     border-radius: 10px;
@@ -80,6 +78,23 @@
           color: $main-color-light;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .category-box {
+    width: 95vw;
+    padding: 20px;
+
+    &__name {
+      font-size: 16px !important;
+    }
+
+    &__image {
+      width: 250px !important;
+      height: 175px !important;
+      margin: 0 auto;
     }
   }
 }

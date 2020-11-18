@@ -1,15 +1,16 @@
 #loading
   .loader
 
-.pictures-nav
-  - breadcrumb :category_index
-  = render "layouts/breadcrumbs"
-  .links
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+#pictures-nav
+  #nav-container
+    - breadcrumb :category_index
+    = render "layouts/breadcrumbs"
+    #action-buttons
+      = link_to new_picture_path, class: "btn btn-shaddow new-picture-link" do
+        投稿する
 .category-index
   - @parents.each_with_index do |parent, index|
-    .category-box
+    .category-box.box-shaddow
       = link_to category_path(parent) do
         %label.parent-category
           .category-box__name

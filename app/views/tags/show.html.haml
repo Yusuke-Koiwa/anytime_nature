@@ -1,37 +1,37 @@
 #loading
   .loader
 
-.pictures-nav
+#pictures-nav
+  #nav-container
+    - breadcrumb :tag_show
+    = render "layouts/breadcrumbs"
 
-  - breadcrumb :tag_show
-  = render "layouts/breadcrumbs"
-
-  .links
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+    #action-buttons
+      = link_to new_picture_path, class: "btn btn-shaddow new-picture-link" do
+        投稿する
 
 - if @pictures.present?
   .pictures-actions
     .menu
-      = link_to slideshow_tag_path(@tag, params: {q: @params}), class: "slideshow-link" do
+      = link_to slideshow_tag_path(@tag, params: {q: @params}), id: "slideshow-link", class: "btn-shaddow" do
         = icon('fa', 'images')
-        %span<>スライドショー
-    = search_form_for @q, url: tag_path(@tag), class: "menu" do |f|
-      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
 
-.pictures-index
-  - if @pictures.present?
+    = search_form_for @q, url: tag_path(@tag), class: "menu", id: "#select-sort" do |f|
+      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+
+- if @pictures.present?
+  .pictures-index
     - @pictures.each do |picture|
-      .picture
+      .picture.box-shaddow
         = link_to "/tags/#{@tag.id}/#{picture.id}" do
-          = image_tag picture.image_url(:middle)
+          = image_tag picture.image_url(:middle), class: "picture-image"
         .picture-info
           .picture-comments
             = icon('far', 'comment')
             = picture.comments_count
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
-  - else
+  = paginate @pictures
+- else
+  .no-pictures
     投稿がありません
-
-= paginate @pictures

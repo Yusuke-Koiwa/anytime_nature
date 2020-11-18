@@ -5,6 +5,12 @@
   width: 100%;
   top: 50px;
   z-index: 20;
+  height: 80px;
+  line-height: 80px;
+  animation-name: fade-out;
+  animation-duration: 3s;
+  visibility: hidden;
+  opacity: 0;
 
   .alert{
     background-color: salmon;
@@ -12,5 +18,24 @@
   
   .notice {
     background-color: $main-color;
+  }
+}
+
+@keyframes fade-out {
+  0% {visibility: visible; opacity: 1;}
+  70% {visibility: visible; opacity: 1;}
+  100% {visibility: hidden; opacity: 0;}
+}
+
+@media screen and (max-width: 959px) {
+  #flash {
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #flash {
+    font-size: 14px;
   }
 }

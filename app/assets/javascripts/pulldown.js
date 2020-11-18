@@ -1,13 +1,24 @@
 $(function(){
-  $('#mypage-link').hover(function(){
-    $('#mypage-menu').show();
+  const mypageLinkID = $('#mypage-link');
+  const mypageMenuID = $('#mypage-menu');
+  const navToggleID = $('#nav_toggle');
+
+  mypageLinkID.hover(function(){
+    mypageMenuID.addClass('show');
   }, function(){
-    $('#mypage-menu').hide();
+    mypageMenuID.removeClass('show');
   });
 
-  $('#mypage-menu').hover(function(){
-    $('#mypage-menu').show();
+  mypageMenuID.hover(function(){
+    mypageMenuID.addClass('show');
   }, function(){
-    $('#mypage-menu').hide();
+    if (!(navToggleID.hasClass('show'))) {
+      mypageMenuID.removeClass('show');
+    }
+  });
+
+  navToggleID.on('click', function(){
+    navToggleID.toggleClass('show');
+    mypageMenuID.toggleClass('show');
   });
 });

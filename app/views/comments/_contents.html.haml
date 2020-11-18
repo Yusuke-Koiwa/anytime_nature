@@ -11,6 +11,6 @@
       - if user_signed_in?
         = form_with(model: [@picture, @comment], url: picture_comments_path(@picture), id: "comment-form") do |f|
           = f.text_area :text, placeholder: "コメントを入力"
-          = f.submit "送信", id: "comment-submit"
+          = f.submit "送信", id: "comment-submit", class: "btn-shaddow"
       - else
         コメントの投稿にはログインが必要です

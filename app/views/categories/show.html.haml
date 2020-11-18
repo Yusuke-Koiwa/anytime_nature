@@ -1,18 +1,18 @@
 #loading
   .loader
 
-.pictures-nav
-  - if @category.root?
-    - breadcrumb :parent_category
-  - else
-    - breadcrumb :child_category
-  = render "layouts/breadcrumbs"
-  .links
-    = link_to new_picture_path, class: "btn new-picture-link" do
-      投稿する
+#pictures-nav
+  #nav-container
+    - if @category.root?
+      - breadcrumb :parent_category
+    - else
+      - breadcrumb :child_category
+    = render "layouts/breadcrumbs"
+    #action-buttons
+      = link_to new_picture_path, class: "btn btn-shaddow new-picture-link" do
+        投稿する
 
 .categories
-  %span<> 関連カテゴリー：
   - @category_links.each do |link|
     - if link == @category
       %span.current-category
@@ -23,29 +23,30 @@
 - if @pictures.present?
   .pictures-actions
     .menu
-      = link_to slideshow_category_path(@category, params: {q: @params}), class: "slideshow-link" do
-        = icon('fa', 'images')
-        %span<>スライドショー
-    = search_form_for @q, url: category_path(@category), class: "menu" do |f|
-      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC', 'お気に入りの少ない順': 'favorites_count ASC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+      = link_to slideshow_category_path(@category, params: {q: @params}), id: "slideshow-link", class: "btn-shaddow" do
+        = icon('fa' , 'images')
 
-.pictures-index
-  - if @pictures.present?
+    = search_form_for @q, url: category_path(@category), class: "menu", id: "#select-sort" do |f|
+      = f.select( :sorts, { '新着順': 'id DESC', '古い順': 'id ASC', 'お気に入りの多い順': 'favorites_count DESC' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' } )
+
+- if @pictures.present?
+  .pictures-index
     - @pictures.each do |picture|
-      .picture
+      .picture.box-shaddow
         - if @category.root?
           - url = "/categories/parent/#{picture.category.parent.id}/#{picture.id}"
         - else
           - url = "/categories/#{picture.category.id}/#{picture.id}"
         = link_to url do
-          = image_tag picture.image_url(:middle)
+          = image_tag picture.image_url(:middle), class: "picture-image"
         .picture-info
           .picture-comments
             = icon('far', 'comment')
             = picture.comments_count
           .picture-favorite{id: "favorite-#{picture.id}"}
             = render partial: "pictures/favorite", locals: { picture: picture }
-  - else
-    投稿がありません
+  = paginate @pictures
 
-= paginate @pictures
+- else
+  .no-pictures
+    投稿がありません
