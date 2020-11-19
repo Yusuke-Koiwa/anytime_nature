@@ -1,7 +1,7 @@
 # Anytime Nature
 自然の写真だけの写真投稿サイトです。
 
-作品URL: https://www.anytime-nature.xyz/
+作品URL: https://anytime-nature.herokuapp.com/
 
 <img src="https://user-images.githubusercontent.com/63847712/88137883-7e1f6900-cc27-11ea-9829-c3217190994b.jpg" width=75% alt="トップページ">
 
@@ -29,11 +29,11 @@ HTML / CSS / Haml / SCSS / JavaScript / jQuery
 #### 開発環境
 Docker ( MySQL / Nginx / puma )
 #### 本番環境
-MySQL / Nginx / Unicorn
+AWS ( ~~EC2~~ / S3 / ~~RDS / Route53 / ELB / ACM~~ )
 
-AWS ( EC2 / S3 / RDS / Route53 / ELB / ACM ) 
+~~CircleCIによるパイプライン構築 ( Rspec → Capistranoデプロイ )~~
 
-CircleCIによるパイプライン構築 ( Rspec → Capistranoデプロイ )
+料金面を考慮し、herokuへ移転しました。現在はAWS S3のみ使用しています。（2020/11/19 追記）
 
 ## アプリケーションの機能一覧
 - アカウント登録 / ログイン機能 ( devise )
@@ -52,13 +52,8 @@ CircleCIによるパイプライン構築 ( Rspec → Capistranoデプロイ )
 - 単体・機能・統合テスト ( Rspec )
 
 ## インフラ構成図
+※サーバーをherokuに移転したため、現在の構成とは異なります。（2020/11/19 追記）
 <img src="https://user-images.githubusercontent.com/63847712/88137054-ad34db00-cc25-11ea-9f4b-681e4db2de09.png" width=75% alt="インフラ構成図">
 
 ## DB設計
 <img src="https://user-images.githubusercontent.com/63847712/88134713-51b41e80-cc20-11ea-8877-8582c7a33ae3.png" width=95% alt="DB設計">
-
-## 今後の開発予定
-- お気に入りのフォルダ分け機能
-- スライドショーの詳細設定機能
-- レスポンシブ化
-- 統合テストの充実
